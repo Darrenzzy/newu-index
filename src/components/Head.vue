@@ -22,7 +22,7 @@ export default {
       msg: String
     },
     created(){
-      console.log(this.$i18n.locale)
+    //   console.log(this.$i18n.locale)
     },
     methods:{
       handleLanguage(language){

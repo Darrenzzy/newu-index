@@ -6,7 +6,6 @@ Vue.use(VueI18n)
 import zh from './locale/zh';
 import en from './locale/en';
 
-console.log(zh)
 const i18n = new  VueI18n({
     locale: localStorage.getItem("locale") || "zh",
     messages: {
