@@ -75,7 +75,7 @@ export default {
     font-size: 0;
     background-color: rgba(14,25,45,1);
     transform: rotateY(90deg);
-    transition: transform .6s cubic-bezier(.935,.015,.335,.92) 0s,background-color 0s linear .32s,-webkit-transform .6s cubic-bezier(.935,.015,.335,.92) 0s;
+    transition: transform .6s cubic-bezier(.935,.015,.335,.92) 0s,background-color 0s linear .7s,-webkit-transform .6s cubic-bezier(.935,.015,.335,.92) 0s;
     transform-origin: left;
 }
 .section-product__cards__item__bg__mask i {
@@ -86,6 +86,42 @@ export default {
     font-size: 0;
 }
 .js-scroll-show .section-product__cards__item__bg__mask i:first-child{
+    transition-delay: .6s;
+    transform-origin: left;
+}
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(2), 
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(3){
+    transition-delay: .6s;
+    transform-origin: right;
+}
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(5), 
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(6){
+    transition-delay: .6s;
+    transform-origin: right;
+}
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(7), 
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(8){
+     transition-delay: .6s;
+    transform-origin: left;
+}
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(9), 
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(10){
+    transition-delay: .6s;
+    transform-origin: right;
+}
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(11){
+    transition-delay: .6s;
+    transform-origin: left;
+}
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(12), 
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(13) {
+    -webkit-transition-delay: .6s;
+    transition-delay: .6s;
+    -webkit-transform-origin: right;
+    transform-origin: right;
+}
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(14), 
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(15){
     transition-delay: .6s;
     transform-origin: left;
 }
@@ -108,4 +144,10 @@ export default {
     transform: rotateY(90deg);
 }
    
+.section-product__cards__item.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(2), .section-product__cards__item.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(3) {
+    -webkit-transition-delay: .6s;
+    transition-delay: .6s;
+    -webkit-transform-origin: right;
+    transform-origin: right;
+}
 </style>
