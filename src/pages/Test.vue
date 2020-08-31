@@ -75,13 +75,13 @@ export default {
     font-size: 0;
     background-color: rgba(14,25,45,1);
     transform: rotateY(90deg);
-    transition: transform .6s cubic-bezier(.935,.015,.335,.92) 0s,background-color 0s linear .7s,-webkit-transform .6s cubic-bezier(.935,.015,.335,.92) 0s;
+    transition: transform .6s cubic-bezier(.935,.015,.335,.92) 0s,background-color 0s linear .6s;
     transform-origin: left;
 }
 .section-product__cards__item__bg__mask i {
     display: block;
-    width: 153px;
-    height: 81px;
+    width: 20%;
+    height: 20%;
     background-color: #0e192d;
     font-size: 0;
 }
@@ -94,11 +94,16 @@ export default {
     transition-delay: .6s;
     transform-origin: right;
 }
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(4){
+    transition-delay: .6s;
+    transform-origin: left;
+}
 .js-scroll-show .section-product__cards__item__bg__mask i:nth-child(5), 
 .js-scroll-show .section-product__cards__item__bg__mask i:nth-child(6){
     transition-delay: .6s;
     transform-origin: right;
 }
+
 .js-scroll-show .section-product__cards__item__bg__mask i:nth-child(7), 
 .js-scroll-show .section-product__cards__item__bg__mask i:nth-child(8){
      transition-delay: .6s;
@@ -115,9 +120,7 @@ export default {
 }
 .js-scroll-show .section-product__cards__item__bg__mask i:nth-child(12), 
 .js-scroll-show .section-product__cards__item__bg__mask i:nth-child(13) {
-    -webkit-transition-delay: .6s;
     transition-delay: .6s;
-    -webkit-transform-origin: right;
     transform-origin: right;
 }
 .js-scroll-show .section-product__cards__item__bg__mask i:nth-child(14), 
@@ -125,15 +128,41 @@ export default {
     transition-delay: .6s;
     transform-origin: left;
 }
-
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(16), 
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(17){
+    transition-delay: .6s;
+    transform-origin: right;
+}
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(18){
+    transition-delay: .6s;
+    transform-origin: left;
+}
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(19), 
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(20){
+    transition-delay: .6s;
+    transform-origin: right;
+}
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(21), 
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(22){
+    transition-delay: .6s;
+    transform-origin: left;
+}
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(23), 
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(24){
+    transition-delay: .6s;
+    transform-origin: right;
+}
+.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(25){
+    transition-delay: .6s;
+    transform-origin: left;
+}
 .js-scroll-show .section-product__cards__item__bg__mask i{
     transform: rotateY(0deg);
     transition: transform .5s cubic-bezier(.935,.015,.335,.92);
-    /*transition: transform .5s cubic-bezier(.935,.015,.335,.92),-webkit-transform .5s cubic-bezier(.935,.015,.335,.92); */
 } 
-.is-show .section-product__cards__item__bg__image{
+/* .is-show .section-product__cards__item__bg__image{
     opacity: 1;
-}
+} */
 
 .is-show .section-product__cards__item__bg__mask{
     /* 这个是不显示的 */
@@ -144,10 +173,4 @@ export default {
     transform: rotateY(90deg);
 }
    
-.section-product__cards__item.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(2), .section-product__cards__item.js-scroll-show .section-product__cards__item__bg__mask i:nth-child(3) {
-    -webkit-transition-delay: .6s;
-    transition-delay: .6s;
-    -webkit-transform-origin: right;
-    transform-origin: right;
-}
 </style>

@@ -28,6 +28,9 @@ export default {
     margin: 0;
  
   }
+  *:focus{
+    outline: none;
+  }
   html,body{
     width: 100%;
     margin: 0;

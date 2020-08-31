@@ -1,37 +1,58 @@
 <template>
     <div>
-        <h3>Home</h3>
-        <!-- <img src="./../assets/banner.png"/> -->
-        <div class="canvas">
-            <div class="canvas_content">
-                <a href="#">
-                    <div class="canvas_item">
-                        <p class="canvas_title">Company</p>
-                        <p class="canvas_text">社会概要</p>
-                    </div>
-                </a>
-                 <a href="#">
-                    <div class="canvas_item">
-                        <p class="canvas_title">Company</p>
-                        <p class="canvas_text">社会概要</p>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="canvas_item">
-                        <p class="canvas_title">Company</p>
-                        <p class="canvas_text">社会概要</p>
-                    </div>
-                </a>
-            </div>
+        <div class="video_box">
+            <video class="video" src="http://cdn.jian24.com/1548381208553958.mp4" preload="none" controls="controls" height="100%" >
+            </video>
         </div>
+        <div class="table_box">
+            <el-table
+                :data="tableData"
+                style="width: 100%">
+                <el-table-column
+                    prop="date"
+                    label="日期"
+                    width="180">
+                </el-table-column>
+                <el-table-column
+                    prop="name"
+                    label="姓名"
+                    width="180">
+                </el-table-column>
+                <el-table-column
+                    prop="address"
+                    label="地址">
+                </el-table-column>
+            </el-table>
+        </div>
+        <!-- <img src="./../assets/banner.png"/> -->
+       
     </div>
 </template>
 <script>
     export default {
         name: 'Home',
-        // props: {
-        //     msg: String
-        // }
+        data() {
+            return {
+                tableData: [{
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                    date: '2016-05-04',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1517 弄'
+                }, {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1519 弄'
+                }, {
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1516 弄'
+                }]
+            }
+        },
+ 
         created(){
             
             this.$Axios.post('api/admin/v1/sysUser',{
@@ -53,88 +74,19 @@
         }
     }
 </script>
-<style scoped>
-    /* div{
-        background: #23242c;
-        widows: 100%;
-        height: 800px;
-    } */
-    h3 {
-      margin: 40px 0 0;
-      color: #42b983;
+<style scoped lang="less">
+   .video_box{
+       width: 100%;
+       height: 400px;
+       background: black;
     }
-    .canvas{
-        background: url('./../assets/link-card-bg.png');
-        width: 100%;
-        height: 370px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .canvas_content{
-        display: flex;
-    }
-    .canvas_content a{
-        display: block;
-        margin: 0 20px;
-        border: 1px solid #ffffff;
-        width: 320px;
-        max-width: 320px;
-        position: relative;
-        z-index: 10;
-        color: #ffffff;
-        transition: -webkit-transform .25s ease;
-        transition: transform .25s ease;
-        transition: transform .25s ease,-webkit-transform .25s ease;
-    }
-    .canvas_content a::before{
-        position: absolute;
-        top: 0;
-        content: "";
-        display: block;
-        width: 320px;
-        height: 100%;
-        z-index: -1;
-        background-color: #fff;
-        -webkit-transform: rotateY(90deg);
-        transform: rotateY(90deg);
-        background-clip: content-box;
-        -webkit-transform-origin: right;
-        transform-origin: right;
-        transition: -webkit-transform .25s ease;
-        transition: transform .25s ease;
-        transition: transform .25s ease,-webkit-transform .25s ease;
-    }
-    .canvas_content a:hover:before {
-        -webkit-transform: rotateY(0deg);
-        transform: rotateY(0deg);
-        -webkit-transform-origin: left;
-        transform-origin: left;
-        background: #ffffff;
-        color: #0e192d;
-    }
-    .canvas_content a:hover{
-        color: #0e192d;
-    }
-    .canvas_item{
-        padding: 37px 0 25px;
-    }
-    .canvas_title{
-        text-align: center;
-        padding: 0 0 15px;
-        font-weight: 700;
-    }
-    .canvas_text::before{
-        content: "";
-        width: 106px;
-        height: 1px;
-        background: #fff;
-        display: block;
-        margin: 0 auto 18px;
-    }
-    .canvas_text{
-        text-align: center;
-        font-weight: 700;
-    }
-    
+    .video{
+       width: 50%;
+       margin: 0 auto;
+       height: 100%;
+       display: block;
+    }   
+    .table_box{
+
+    } 
 </style>
