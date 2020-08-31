@@ -1,6 +1,5 @@
 {
   mode: 'development',
-  context: '/Users/guoguo/Desktop/study/nuoyou',
   node: {
     setImmediate: false,
     process: 'mock',
