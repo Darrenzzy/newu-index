@@ -1,6 +1,17 @@
 <template>
     <div class="home">
-        <div class="line"></div>
+        <div class="line">
+            <div class="fixed_home">
+                <div class="fixed_content">
+                    <div class="fixed_dot"></div>
+                    <div class="fixed_font">首</div>
+                    <div class="fixed_font" style="margin-top: 13px;">页</div>
+                    <div class="fixed_home_img">
+                        <img src="./../assets/images/fixed_home.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="video_box">
             <!-- <video class="video" src="http://cdn.jian24.com/1548381208553958.mp4" preload="none" controls="controls" height="100%" >
             </video> -->
@@ -24,7 +35,7 @@
                     <div class="title">风险等级</div>
                 </div>
                 <div class="table_list">
-                    <div class="column_content">
+                    <div class="column_content" v-for="(item, index) in 6" :key="index">
                         <div class="content">基金名称</div>
                         <div class="content"><span class="blur">3%</span></div>
                         <div class="content"><span class="blur">3%</span></div>
@@ -94,7 +105,7 @@
                     <img src="./../assets/images/circle.png"/>
                 </div>
                 <div class="company_left">
-                    <h4 class="company_left_h4" @click="handleTestMask('foucs_right')">价值投资</h4>
+                    <h4 class="company_left_h4" @click="handleTestMask('foucs_right')">·价值投资</h4>
                     <p class="company_left_p" style="margin-bottom: 30px;">
                             基本面研究为首要依据，诺游投研团队具
                         有平均10年以上高级版行业研究从业经历
@@ -241,6 +252,45 @@ import font_logo from "./../assets/images/font_logo.png";
         border-left: 1px solid #FF0000;
         height: 100%;
         z-index: 2;
+        .fixed_home{
+            position: fixed;
+            top: 256px;
+            left: 15%;
+            background: #C00000;
+            width: 48px;
+            height: 126px;
+            transform: translateX(-100%);
+            color: #ffffff;
+            font-size: 15px;
+            font-family: Source Han Serif CN;
+            font-weight: 800;
+            padding: 15px 0;
+            box-sizing: border-box;
+            .fixed_content{
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                align-items: center;
+                height: 100%;
+            }
+            .fixed_dot{
+                width: 4px;
+                height: 4px;
+                background: #ffffff;
+                border-radius: 50%;
+            }
+            .fixed_font{
+                width: 14px;
+            }
+            .fixed_home_img{
+                width: 30px;
+                img{
+                    width: 100%;
+                }
+            }
+
+
+        }
     }
    .video_box{
        width: 100%;
@@ -334,10 +384,10 @@ import font_logo from "./../assets/images/font_logo.png";
                         width: 70px;
                         position: absolute;
                         backdrop-filter: blur(3px);
-                        left: 0;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
+                        left: -10px;
+                        top: -10px;
+                        right: -10px;
+                        bottom: -10px;
                         margin: auto;
                     }
                 }
@@ -376,7 +426,7 @@ import font_logo from "./../assets/images/font_logo.png";
         }
     }
     .company{
-        padding-top: 50px;
+        padding-top: 84px;
         padding-bottom: 360px;
         .company_title{
             height: 44px;

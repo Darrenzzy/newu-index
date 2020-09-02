@@ -2,9 +2,14 @@
     <div class="footer">
         <div class="line"></div>
         <div class="footer_menu_box">
-            <div class="menu_box">
+            <div class="menu_box top_menu">
                 <div class="menu_logo">
                     <img src="./../assets/images/footer_logo.png" />
+                </div>
+                <div class="privacy">
+                    <a href="#">隐私</a>
+                    <span>|</span>
+                    <a href="#">用户协议</a>
                 </div>
                 
             </div>
@@ -60,6 +65,9 @@
         justify-content: space-between;
         padding: 45px 0 60px;
     }
+    .top_menu{
+        text-align: center;
+    }
     .menu_box{
         .menu_logo{
             width: 90px;
@@ -70,6 +78,20 @@
                 min-width: 100%;
                 min-height: 100%;
                 object-fit: cover;
+            }
+        }
+        .privacy{
+            margin-top: 20px;
+            a, span{
+                font-size: 11px;
+                font-family: Source Han Serif CN;
+                font-weight: 800;
+                color: #EFEFED;
+                opacity: 0.6;
+            }
+            span{
+                display: inline-block;
+                margin: 0 3px;
             }
         }
         .menu_title{
