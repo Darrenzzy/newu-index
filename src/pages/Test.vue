@@ -1,7 +1,7 @@
 <template>
     <div>
         <button @click="getref"  class="test">获取H1元素</button>
-                <!-- <img src="./../assets/top-vextminer.png" /> -->
+                <!-- <img src="./../assets/images/top-vextminer.png" /> -->
 
         <div class="section-product__cards__item__bg js-scroll-show" ref="test">
             <!-- <div class="section-product__cards__item__bg__inner"> -->

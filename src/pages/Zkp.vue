@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>ZKp</h3>
-        <!-- <img src="./../assets/banner.png"/> -->
+        <!-- <img src="./../assets/images/banner.png"/> -->
         <div class="canvas">
             <div class="canvas_content">
                 <a href="#">
@@ -64,7 +64,7 @@
       color: #42b983;
     }
     .canvas{
-        background: url('./../assets/link-card-bg.png');
+        background: url('./../assets/images/link-card-bg.png');
         width: 100%;
         height: 370px;
         display: flex;

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>AboutNu oyou</h3>
-        <!-- <img src="./../assets/banner.png"/> -->
+        <!-- <img src="./../assets/images/banner.png"/> -->
     </div>
 </template>
 <script>

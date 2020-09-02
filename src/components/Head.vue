@@ -2,7 +2,7 @@
     <div class="header">
         <div class="header_box">
             <div class="header_left">
-                <img src="./../assets/logo.png" />
+                <img src="./../assets/images/logo.png" />
             </div>
             <div class="header_right">
                  <router-link to="/"><div class="header_item">首页</div></router-link>
@@ -34,10 +34,9 @@ export default {
 }
 </script>
 <style scoped lang="less">
-
     .header{
         width: 100%;
-        height: 70px;
+        height: 80px;
         // border: 1px solid skyblue;
     }
     .header_box{
@@ -50,8 +49,8 @@ export default {
         // border: 1px solid red; 
     }
     .header_left{
-        width: 30px;
-        height: 30px;
+        width: 50px;
+        height: 50px;
     }
     .header_left img{
         width: 100%;
@@ -71,18 +70,19 @@ export default {
     }
     .router-link-exact-active {
         .header_item{
-            color: red;
+            color: #FF3F1C;
             position: relative;
             /* border-bottom: 1px solid #ff7d00; */
             &::after{
                 content: "aa";
                 position: absolute;
-                bottom: 10px;
-                background-size: 15px;
+                bottom: 8px;
+                background-size: 26px;
+                width: 26px;
                 color: transparent;
-                left: calc(50% - 8px);
+                left: calc(50% - 13px);
                 background-repeat: no-repeat;
-                background-image: url("./../assets/logo.png");
+                background-image: url("./../assets/images/active_item.png");
             }
         }
     }
