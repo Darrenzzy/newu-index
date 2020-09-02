@@ -13,7 +13,29 @@
         <div class="table_box">
             <div class="table_content">
                 <div class="table_title">诺游基金</div>
-                <el-table
+                <div class="column_title"> 
+                    <div class="title">基金名称</div>
+                    <div class="title">基金代码</div>
+                    <div class="title">净值日期</div>
+                    <div class="title">单位净值</div>
+                    <div class="title">累计净值</div>
+                    <div class="title">涨跌幅</div>
+                    <div class="title">成立以来</div>
+                    <div class="title">风险等级</div>
+                </div>
+                <div class="table_list">
+                    <div class="column_content">
+                        <div class="content">基金名称</div>
+                        <div class="content"><span class="blur">3%</span></div>
+                        <div class="content"><span class="blur">3%</span></div>
+                        <div class="content"><span class="blur">3%</span></div>
+                        <div class="content"><span class="blur">3%</span></div>
+                        <div class="content red_color"><span class="blur">涨跌幅</span></div>
+                        <div class="content red_color"><span class="blur">成立以来</span></div>
+                        <div class="content"><span class="blur">风险等级</span></div>
+                    </div>
+                </div>
+                <!-- <el-table
                     :data="tableData"
                     style="width: 100%">
                     <el-table-column
@@ -30,7 +52,7 @@
                         prop="address"
                         label="地址">
                     </el-table-column>
-                </el-table>
+                </el-table> -->
             </div>
         </div>
         <div class="pic">
@@ -257,7 +279,8 @@ import font_logo from "./../assets/images/font_logo.png";
         margin: 0 auto;
         padding: 100px 0;
         .table_content{
-            box-shadow: 0 0 15px rgba(0,0,0,.05);
+            // box-shadow: 0 0 15px rgba(0,0,0,.05);
+            box-shadow: 4px 5px 23px 9px rgba(76, 76, 76, 0.29);
             padding-bottom: 40px;
             border-radius: 4px;
         }
@@ -268,6 +291,58 @@ import font_logo from "./../assets/images/font_logo.png";
             color: #ffffff;
             text-align: center;
             border-radius: 4px 4px 0 0;
+            position: relative;
+        }
+        .column_title{
+            display: flex;
+            justify-content: space-between;
+            background: #EDEDED;
+            padding: 0 30px;
+            .title{
+                width: 12.5%;
+                height: 38px;
+                line-height: 38px;
+                font-size: 12px;
+                font-family: Source Han Serif CN;
+                font-weight: 400;
+                color: #999999;
+            }
+        }
+        .table_list{
+            padding: 0 30px;
+            .column_content{
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px dotted #D6D6D6;
+                .content{
+                    width: 12.5%;
+                    height: 50px;
+                    line-height: 50px;
+                    font-size: 12px;
+                    font-family: Source Han Serif CN;
+                    font-weight: 800;
+                    color: #666666;
+                }
+                .red_color{
+                    color: #C80200;
+                }
+                .blur{
+                    position: relative;
+                    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+                    &::before{
+                        content: "";
+                        width: 70px;
+                        position: absolute;
+                        backdrop-filter: blur(3px);
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        margin: auto;
+                    }
+                }
+            }
+
         }
     } 
     .pic{

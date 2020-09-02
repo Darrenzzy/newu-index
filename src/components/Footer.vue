@@ -10,27 +10,27 @@
             </div>
             <div class="menu_box">
                 <div class="menu_title">理念</div>
-                <div class="menu">价值投资</div>
-                <div class="menu">资产分配灵活性</div>
-                <div class="menu">仓位管控</div>
+                <div class="menu"><a href="">价值投资</a></div>
+                <div class="menu"><a href="">资产分配灵活性</a></div>
+                <div class="menu"><a href="">仓位管控</a></div>
             </div>
             <div class="menu_box">
                 <div class="menu_title">基金产品</div>
-                <div class="menu">产品介绍</div>
-                <div class="menu">产品净重</div>
-                <div class="menu">认购流程</div>
+                <div class="menu"><a href="">产品介绍</a></div>
+                <div class="menu"><a href="">产品净重</a></div>
+                <div class="menu"><a href="">认购流程</a></div>
             </div>
             <div class="menu_box">
                 <div class="menu_title">关于诺游</div>
-                <div class="menu">公司介绍</div>
-                <div class="menu">司名释义</div>
-                <div class="menu">标识释义</div>
+                <div class="menu"><a href="">公司介绍</a></div>
+                <div class="menu"><a href="">司名释义</a></div>
+                <div class="menu"><a href="">标识释义</a></div>
             </div>
             <div class="menu_box">
                 <div class="menu_title">用户中心</div>
-                <div class="menu">诺游基金</div>
-                <div class="menu">尊户查询</div>
-                <div class="menu">专户预约</div>
+                <div class="menu"><a href="">诺游基金</a></div>
+                <div class="menu"><a href="">尊户查询</a></div>
+                <div class="menu"><a href="">专户预约</a></div>
             </div>
         </div>
         <div class="address">
@@ -80,12 +80,15 @@
             margin-bottom: 24px;
         }
         .menu{
-            font-size: 11px;
-            font-family: Source Han Serif CN;
-            font-weight: 800;
-            color: #EFEFED;
-            opacity: 0.4;
-            margin-bottom: 17px;
+                margin-bottom: 17px;
+            a{
+
+                font-size: 11px;
+                font-family: Source Han Serif CN;
+                font-weight: 800;
+                color: #EFEFED;
+                opacity: 0.4;
+            }
         }
     }
     .address{
