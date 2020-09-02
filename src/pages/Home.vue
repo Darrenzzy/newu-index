@@ -47,17 +47,17 @@
             <div class="company_content">
                 <div class="company_right" ref="companyRight">
                     <div class="js_show top" ref="topImg">
-                        <div class="small_img">
+                        <div class="small_img top_img">
                             <img src="./../assets/images/touzi.png"/>
                         </div>
                     </div>
                      <div class="js_show left" ref="leftImg">
-                        <div class="small_img">
+                        <div class="small_img left_img">
                             <img src="./../assets/images/shichang.png"/>
                         </div>
                     </div>
                     <div class="js_show right" ref="rightImg">
-                         <div class="small_img">
+                         <div class="small_img right_img">
                             <img src="./../assets/images/fengkong.png"/>
                         </div>
                     </div>
@@ -145,12 +145,12 @@ import font_logo from "./../assets/images/font_logo.png";
                     this.$refs.companyRight.style.transform = "scale(0.0001)";
 
                 }
-                if (scrollHeight > 1510 &&  scrollHeight < 1750) {
+                if (scrollHeight > 1300 &&  scrollHeight < 1650) {
                     this.handleTestMask("topImg", "foucs_top");
                 } else {
                     this.handleRemove("topImg", "foucs_top");
                 }
-                if ( scrollHeight> 1750 && scrollHeight < 2000) {
+                if ( scrollHeight> 1650 && scrollHeight < 2100) {
                     this.handleTestMask("leftImg", "foucs_left")
                     if (this.$refs.logo_img) {
                         this.$refs.logo_img.setAttribute("src", font_logo)
@@ -160,7 +160,7 @@ import font_logo from "./../assets/images/font_logo.png";
                     this.handleRemove("leftImg", "foucs_left");
                 }
 
-                if ( scrollHeight > 2050) {
+                if ( scrollHeight > 2101) {
                 // if ( scrollHeight> 2050 && scrollHeight < 2970) {
 
                     this.handleTestMask("rightImg", "foucs_right");
@@ -173,7 +173,6 @@ import font_logo from "./../assets/images/font_logo.png";
         },
         methods:{
             handleTestMask(obj, className){
-                console.log('/////////');
                 if (this.$refs[obj]) {
                     if (!this.$refs[obj].classList.contains("is_show")) {
                         this.$refs[obj].classList.add(className)
@@ -183,8 +182,6 @@ import font_logo from "./../assets/images/font_logo.png";
             },
             handleRemove(obj, className){
                 if (this.$refs[obj]) {
-                console.log("................")
-
                     this.$refs[obj].classList.remove(className);
                     this.$refs[obj].classList.remove("is_show");
                 }
@@ -235,6 +232,7 @@ import font_logo from "./../assets/images/font_logo.png";
            height: 68px;
            margin: auto;
            text-align: center;
+           cursor: pointer;
             img{
                width: 68px;
                height: 68px;
@@ -380,6 +378,8 @@ import font_logo from "./../assets/images/font_logo.png";
                     box-sizing: border-box;
                     position: relative;
                     transition: transform 1s ease ;
+                    line-height: .8;
+
                     img{
                         max-height: 100%;
                         max-width: 100%;
@@ -393,10 +393,28 @@ import font_logo from "./../assets/images/font_logo.png";
                 }
             }
             .is_show{
-                .small_img{
-                    border: 1px solid red;
+                .right_img{
+                    border: 1px solid rgba(188, 304, 40, .8);
+                    box-shadow: 0 0 15px rgba(188, 304, 40, .5);
                     img{
-                        border: 1px solid red;
+                        border: 1px solid rgba(232, 34, 45, .7);
+                        box-shadow: 0 0 15px rgba(232, 34, 45, .5);
+                    }
+                }
+                .left_img{
+                    border: 1px solid rgba(232, 34, 47, .8);
+                    box-shadow: 0 0 15px rgba(232, 34, 45, .5);
+                    img{
+                        border: 1px solid rgba(232, 34, 45, .7);
+                        box-shadow: 0 0 15px rgba(232, 34, 45, .5);
+                    }
+                }
+                .top_img{
+                    border: 1px solid rgba(32, 334, 89, .8);
+                    box-shadow: 0 0 15px rgba(32, 334, 45, .5);
+                    img{
+                        border: 1px solid rgba(232, 34, 45, .7);
+                        box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     }
                 }
             }

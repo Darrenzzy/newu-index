@@ -34,9 +34,7 @@
             </div>
         </div>
         <div class="address">
-            <p>
-                公司地址：上海市浦东新区明月路188弄27号　邮编：XXXXX
-            </p>
+            <p>公司地址：上海市浦东新区明月路188弄27号  邮编：XXXXX</p>
         </div>
     </div>
 </template>
