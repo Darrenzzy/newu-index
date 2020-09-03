@@ -37,6 +37,10 @@ export default {
     .header{
         width: 100%;
         height: 80px;
+        background: #ffffff;
+        position: fixed;
+        z-index: 4;
+        box-shadow: 0 2px 4px 0 rgba(255,244,233,.07);
         // border: 1px solid skyblue;
     }
     .header_box{
