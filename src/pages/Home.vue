@@ -169,21 +169,22 @@ import font_logo from "./../assets/images/font_logo.png";
                 let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
                 console.log(scrollHeight)
                 // if (scrollHeight > 1300 && scrollHeight < 2500) {
-                if (scrollHeight > 1300) {
-                    // this.$refs.companyRight.style.display = "block";
-                    this.$refs.companyRight.style.transform = "scale(1)";
-
+                if (scrollHeight > 1705) {
+                    this.$refs.companyRight.style.display = "block";
+                    // this.$refs.companyRight.style.transform = "scale(1)";
                 } else {
-                    // this.$refs.companyRight.style.display = "none";
-                    this.$refs.companyRight.style.transform = "scale(0.0001)";
-
+                    this.$refs.companyRight.style.display = "none";
+                    // this.$refs.companyRight.style.transform = "scale(0.0001)";
                 }
-                if (scrollHeight > 1300 &&  scrollHeight < 1650) {
+
+
+                if (scrollHeight > 1014 &&  scrollHeight < 2080) {
                     this.handleTestMask("topImg", "foucs_top");
+                    this.$refs.logo_img.setAttribute("src", logo);
                 } else {
                     this.handleRemove("topImg", "foucs_top");
                 }
-                if ( scrollHeight> 1650 && scrollHeight < 2100) {
+                if ( scrollHeight> 2080 && scrollHeight < 2354) {
                     this.handleTestMask("leftImg", "foucs_left")
                     if (this.$refs.logo_img) {
                         this.$refs.logo_img.setAttribute("src", font_logo)
@@ -192,10 +193,8 @@ import font_logo from "./../assets/images/font_logo.png";
                 else {
                     this.handleRemove("leftImg", "foucs_left");
                 }
-
-                if ( scrollHeight > 2101) {
+                if ( scrollHeight > 2354) {
                 // if ( scrollHeight> 2050 && scrollHeight < 2970) {
-
                     this.handleTestMask("rightImg", "foucs_right");
                     this.$refs.logo_img.setAttribute("src", logo);
                 } 
@@ -254,7 +253,7 @@ import font_logo from "./../assets/images/font_logo.png";
         z-index: 2;
         .fixed_home{
             position: fixed;
-            top: 256px;
+            // top: 256px;
             left: 15%;
             background: #C00000;
             width: 48px;
@@ -467,15 +466,17 @@ import font_logo from "./../assets/images/font_logo.png";
         }
         @media screen and (min-width:769px) {
             .company_right{
-                width: 26%;
-                right: 10%;
+                // width: 26%;
+                width: 20%;
+                right: 20%;
             }
         
         }
         @media screen and (max-width:770px) {
             .company_right{
-                width: 26%;
-                right: 10%;
+                width: 20%;
+                right: 20%;
+                // right: 10%;
             }
         
         }
@@ -487,10 +488,9 @@ import font_logo from "./../assets/images/font_logo.png";
             // position: absolute;
             position: fixed;
             top: 294px;
-            right: 10%;
             margin-top: 30px;
-            // display: none;
-            transform: scale(0.0001);
+            display: none;
+            // transform: scale(0.0001);
             transition: transform 1s ease;
             .js_show{
                 position: absolute;
@@ -520,26 +520,26 @@ import font_logo from "./../assets/images/font_logo.png";
             .is_show{
                 .right_img{
                     border: 1px solid rgba(188, 304, 40, .8);
-                    box-shadow: 0 0 15px rgba(188, 304, 40, .5);
+                    // box-shadow: 0 0 15px rgba(188, 304, 40, .5);
                     img{
                         border: 1px solid rgba(232, 34, 45, .7);
-                        box-shadow: 0 0 15px rgba(232, 34, 45, .5);
+                        // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     }
                 }
                 .left_img{
                     border: 1px solid rgba(232, 34, 47, .8);
-                    box-shadow: 0 0 15px rgba(232, 34, 45, .5);
+                    // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     img{
                         border: 1px solid rgba(232, 34, 45, .7);
-                        box-shadow: 0 0 15px rgba(232, 34, 45, .5);
+                        // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     }
                 }
                 .top_img{
                     border: 1px solid rgba(32, 334, 89, .8);
-                    box-shadow: 0 0 15px rgba(32, 334, 45, .5);
+                    // box-shadow: 0 0 15px rgba(32, 334, 45, .5);
                     img{
                         border: 1px solid rgba(232, 34, 45, .7);
-                        box-shadow: 0 0 15px rgba(232, 34, 45, .5);
+                        // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     }
                 }
             }
