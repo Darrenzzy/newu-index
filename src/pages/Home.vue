@@ -169,7 +169,7 @@ import font_logo from "./../assets/images/font_logo.png";
                 let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
                 console.log(scrollHeight)
                 // if (scrollHeight > 1300 && scrollHeight < 2500) {
-                if (scrollHeight > 1705) {
+                if (scrollHeight > 1705 && scrollHeight < 2700) {
                     this.$refs.companyRight.style.display = "block";
                     // this.$refs.companyRight.style.transform = "scale(1)";
                 } else {
@@ -442,7 +442,6 @@ import font_logo from "./../assets/images/font_logo.png";
             margin-right: 100px;
             position: relative;
         }
-      
         .company_left{
             width: 35%;
             margin-bottom: 130px;
@@ -488,6 +487,7 @@ import font_logo from "./../assets/images/font_logo.png";
             // position: absolute;
             position: fixed;
             top: 294px;
+            // top: 20px;
             margin-top: 30px;
             display: none;
             // transform: scale(0.0001);
