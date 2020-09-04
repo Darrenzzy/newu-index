@@ -29,20 +29,24 @@
                 <div class="introduce_left"></div>
                 <div class="fund_name_list">
                     <div class="fund_detail">
-                        <div class="fund_detail_title">诺游A</div>
+                        <div class="fund_detail_title">{{this.fundDetail.name}}</div>
                         <div class="fund_detail_desc">
-                            坚守价值与成长相结合的投资模式，专注于挖掘企业内生增长价值
-                            和成长性；同时兼顾收益率曲线的稳定性与资产配置的流动性、灵
-                            活性， 为投资者创造持续稳定的（高于指数增长？/且高于同类产
-                            品？）的业绩回报。
+                            {{this.fundDetail.desc}}
                         </div>
+                        <div class="more">了解更多》</div>
 
                     </div>
                     <div class="tab">
-                        <div class="tab_list focus_tab_list">诺游A</div>
-                        <div class="tab_list">诺游B</div>
+                        <div 
+                            v-for="(item,index) in fundList" 
+                            :key="index" :class="activeIndex == index?'tab_list focus_tab_list': 'tab_list' " 
+                            @click="handleFundClick(index)"
+                        >
+                            {{item.name}}
+                        </div>
+                        <!-- <div class="tab_list">诺游B</div>
                         <div class="tab_list">诺游C</div>
-                        <div class="tab_list">诺游D</div>
+                        <div class="tab_list">诺游D</div> -->
 
 
                     </div>
@@ -158,8 +162,8 @@
                         <div class="input_box">
                             <el-form-item label="城市:">
                                 <el-select v-model="formInline.city" placeholder="">
-                                <el-option label="区域一" value="shanghai"></el-option>
-                                <el-option label="区域二" value="beijing"></el-option>
+                                <el-option label="上海" value="shanghai"></el-option>
+                                <el-option label="北京" value="beijing"></el-option>
                                 </el-select>
                             </el-form-item>
                         </div>
@@ -204,6 +208,38 @@
     export default {
         data() {
             return {
+                activeIndex: 0,
+                fundDetail:{},
+                fundList:[
+                    {
+                        name: "诺游A",
+                        title: "诺游A",
+                        desc: `诺游A 坚守价值与成长相结合的投资模式，专注于挖掘企业内生增长价值和成长
+                                性；同时兼顾收益率曲线的稳定性与资产配置的流动性、灵活性， 为投资
+                                者创造持续稳定的（高于指数增长？/且高于同类产品？）的业绩回报。`
+                    },
+                     {
+                        name: "诺游B",
+                        title: "诺游B",
+                        desc: `诺游B 坚守价值与成长相结合的投资模式，专注于挖掘企业内生增长价值和成长
+                                性；同时兼顾收益率曲线的稳定性与资产配置的流动性、灵活性， 为投资
+                                者创造持续稳定的（高于指数增长？/且高于同类产品？）的业绩回报。`
+                    },
+                     {
+                        name: "诺游C",
+                        title: "诺游C",
+                        desc: `诺游C 坚守价值与成长相结合的投资模式，专注于挖掘企业内生增长价值和成长
+                                性；同时兼顾收益率曲线的稳定性与资产配置的流动性、灵活性， 为投资
+                                者创造持续稳定的（高于指数增长？/且高于同类产品？）的业绩回报。`
+                    },
+                     {
+                        name: "诺游D",
+                        title: "诺游D",
+                        desc: `诺游D 坚守价值与成长相结合的投资模式，专注于挖掘企业内生增长价值和成长
+                                性；同时兼顾收益率曲线的稳定性与资产配置的流动性、灵活性， 为投资
+                                者创造持续稳定的（高于指数增长？/且高于同类产品？）的业绩回报。`
+                    },
+                ],
                 formInline: {
                     user: '',
                     region: '',
@@ -240,6 +276,13 @@
                 }
                 });
             },
+            handleFundClick(activeIndex){
+                this.activeIndex = activeIndex;
+                this.fundDetail = this.fundList.find((item,index)=>{
+                    return activeIndex == index;
+                })
+                console.log(this.fundDetail)
+            },
             resetForm(formName) {
                 this.$refs[formName].resetFields();
             }
@@ -249,6 +292,7 @@
         //     msg: String
         // }
         created(){
+            this.handleFundClick(0);
             this.$Axios.post('api/admin/v1/sysUser',{
                 deptId: 10,
                 email: "123@qq.com",
@@ -353,6 +397,7 @@
             padding: 48px 28px 50px;
             box-sizing: border-box;
             overflow: hidden;
+            position: relative;
             .fund_detail_title{
                 font-size: 25px;
                 font-family: Source Han Serif CN;
@@ -368,6 +413,20 @@
                 color: #2A2A2A;
                 line-height: 25px;
                 margin-top: 20px;
+            }
+            .more{
+                color: #ffffff;
+                background: #C80200;
+                cursor: pointer;
+                width: 87px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                font-size: 12px;
+                position: absolute;
+                right: 28px;
+                bottom: 40px;
+
             }
         }
         .tab{
