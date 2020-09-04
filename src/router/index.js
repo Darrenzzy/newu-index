@@ -12,6 +12,8 @@ import Fund from '../pages/Fund'
 import AboutNuoyou from '../pages/AboutNuoyou'
 import Login from '../pages/Login'
 import UserCenter from '../pages/UserCenter'
+import Law from '../pages/Law'
+
 
 
 export default new VueRouter({
@@ -21,6 +23,8 @@ export default new VueRouter({
         { path: '/test', component: Test },
         { path: '/zkp', component: Zkp },
         { path: '/userCenter', component: UserCenter },
+        { path: '/law', component: Law },
+
         { path: '/fund', component: Fund},
         { path: '/about_nuoyou', component: AboutNuoyou },
         { path: '/login', component: Login },
