@@ -22,7 +22,7 @@
             <div class="menu_box">
                 <div class="menu_title">基金产品</div>
                 <div class="menu"><a href="">产品介绍</a></div>
-                <div class="menu"><a href="">产品净重</a></div>
+                <div class="menu"><a href="">产品净值</a></div>
                 <div class="menu"><a href="">认购流程</a></div>
             </div>
             <div class="menu_box">

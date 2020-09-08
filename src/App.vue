@@ -1,20 +1,20 @@
 <template>
   <div id="app">
-    <Head />
+    <!-- <Head /> -->
     <router-view></router-view>
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
 
 <script>
-import Head from './components/Head.vue'
-import Footer from './components/Footer.vue'
+// import Head from './components/Head.vue'
+// import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
-    Head,
-    Footer
+    // Head,
+    // Footer
   }
 }
 </script>
@@ -26,12 +26,14 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     padding: 0;
     margin: 0;
+    height: 100%;
   }
   *:focus{
     outline: none;
   }
   html,body{
     width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
   }
@@ -140,7 +142,7 @@ export default {
         text-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         &::before{
           content: "";
-          width: 70px;
+          // width: 70px;
           position: absolute;
           backdrop-filter: blur(3px);
           left: -10px;

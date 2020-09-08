@@ -1,129 +1,137 @@
 <template>
-    <div class="fund">
-        <div class="line">
-            <div class="fixed_home">
-                <div class="fixed_content">
-                    <div class="fixed_dot"></div>
-                    <div class="fixed_font">首</div>
-                    <div class="fixed_font" style="margin-top: 13px;">页</div>
-                    <div class="fixed_home_img">
-                        <img src="./../assets/images/fixed_home.png" />
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="banner">
-            <div class="banner_content">
-                <span class="">介绍 </span>
-                <div class="fund_name">诺游基金产品</div>
-                <p class="fund_desc">
-                    坚守价值与成长相结合的投资模式，专注于挖掘企业内生增长价值和成长
-                    性；同时兼顾收益率曲线的稳定性与资产配置的流动性、灵活性， 为投资
-                    者创造持续稳定的（高于指数增长？/且高于同类产品？）的业绩回报。
-                </p>
-            </div>
-        </div>
-        <div class="introduce">
-            <h3 class="fund_public_title">产品介绍</h3>
-            <div class="introduce_content">
-                <div class="introduce_left"></div>
-                <div class="fund_name_list">
-                    <div class="fund_detail">
-                        <div class="fund_detail_title">{{this.fundDetail.name}}</div>
-                        <div class="fund_detail_desc">
-                            {{this.fundDetail.desc}}
-                        </div>
-                        <div class="more">了解更多》</div>
-
-                    </div>
-                    <div class="tab">
-                        <div 
-                            v-for="(item,index) in fundList" 
-                            :key="index" :class="activeIndex == index?'tab_list focus_tab_list': 'tab_list' " 
-                            @click="handleFundClick(index)"
-                        >
-                            {{item.name}}
-                        </div>
-                        <!-- <div class="tab_list">诺游B</div>
-                        <div class="tab_list">诺游C</div>
-                        <div class="tab_list">诺游D</div> -->
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="net">
-            <h3 class="fund_public_title">产品净值</h3>
-            <div class="net_content">
-                <div class="table_content">
-                    <div class="table_title">诺游基金</div>
-                    <div class="column_title"> 
-                        <div class="title">基金名称</div>
-                        <div class="title">基金代码</div>
-                        <div class="title">净值日期</div>
-                        <div class="title">单位净值</div>
-                        <div class="title">累计净值</div>
-                        <div class="title">涨跌幅</div>
-                        <div class="title">成立以来</div>
-                        <div class="title">风险等级</div>
-                    </div>
-                    <div class="table_list">
-                        <div class="column_content" v-for="(item, index) in 6" :key="index">
-                            <div class="content">基金名称</div>
-                            <div class="content"><span class="blur">3%</span></div>
-                            <div class="content"><span class="blur">3%</span></div>
-                            <div class="content"><span class="blur">3%</span></div>
-                            <div class="content"><span class="blur">3%</span></div>
-                            <div class="content red_color"><span class="blur">涨跌幅</span></div>
-                            <div class="content red_color"><span class="blur">成立以来</span></div>
-                            <div class="content"><span class="blur">风险等级</span></div>
+    <div>
+        <Head />
+        <div class="fund">
+            <SendEmail />
+            <div class="line">
+                <div class="fixed_home">
+                    <div class="fixed_content">
+                        <div class="fixed_dot"></div>
+                        <div class="fixed_font">首</div>
+                        <div class="fixed_font" style="margin-top: 13px;">页</div>
+                        <div class="fixed_home_img">
+                            <img src="./../assets/images/fixed_home.png" />
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="banner">
+                <div class="banner_content">
+                    <span class="">介绍 </span>
+                    <div class="fund_name">诺游基金产品</div>
+                    <p class="fund_desc">
+                        坚守价值与成长相结合的投资模式，专注于挖掘企业内生增长价值和成长
+                        性；同时兼顾收益率曲线的稳定性与资产配置的流动性、灵活性， 为投资
+                        者创造持续稳定的（高于指数增长？/且高于同类产品？）的业绩回报。
+                    </p>
+                </div>
+            </div>
+            <div class="introduce">
+                <h3 class="fund_public_title">产品介绍</h3>
+                <div class="introduce_content">
+                    <div class="introduce_left"></div>
+                    <div class="fund_name_list">
+                        <div class="fund_detail">
+                            <div class="fund_detail_title">{{this.fundDetail.name}}</div>
+                            <div class="fund_detail_desc">
+                                {{this.fundDetail.desc}}
+                            </div>
+                            <div class="more">了解更多》</div>
 
-        </div>
-        <div class="process">
-            <h3 class="fund_public_title">认购流程</h3>
-            <div class="process_content">
-                <p class="process_p">
-                    1.委托人签署信托合同：委托人在产品规定的有效时间范围内，跟信托公司、投资顾问或代销机构联系，获取信托合同进行签署，并提交相关证件；
-                </p>
-                <p class="process_p">
-                    2.委托人汇款：委托人在产品规定的有效时间范围内，将认购资金及认购费用，通过银行汇款到该信托产品指定的托管银行帐户；
-                </p>
-                <p class="process_p">
-                    3.委托人取得合同：在认购产品成立后，或日常开放日认购后，在合同规定的N个（一般为10个）工作日内，委托人将取得由信托公司签署并盖章的有效合同。 备注： 若委托人为自然人，需提供以下资料： （1）委托人的身份证明文件（身份证或护照）复印件一式两份； （2）委托人的信托利益分配账户（户名需与身份证为同一人）复印件一式两份（该账户应与合同上填写的信托利益分配账户为同一账户）； （3）委托人的信托资金划入认购账户的银行汇款凭证复印件一式一份，并在汇款备注中注明：“XX认购重阳XX期”； （4）以上复印件上均需客户本人签字，并注明：“仅供认购重阳XX期信托计划”。
-                </p>
-                <p class="process_p" style="margin-top: 30px;">
-                    备注
-                </p>
-                <p class="process_p">
-                    若委托人为自然人，需提供以下资料：
-                </p>
-                <p class="process_p">
-                    （1）委托人的身份证明文件（身份证或护照）复印件一式两份； 
-                </p>
-                <p class="process_p">
-                    （2）委托人的信托利益分配账户（户名需与身份证为同一人）复印件一式两份（该账户应与合同上填写的信托利益分配账户为同一账户）；
-                </p>
-                <p class="process_p">
-                    （3）委托人的信托资金划入认购账户的银行汇款凭证复印件一式一份，并在汇款备注中注明：“XX认购重阳XX期”； 
-                </p>
-                <p class="process_p">
-                    （4）以上复印件上均需客户本人签字，并注明：“仅供认购重阳XX期信托计划”。
-                </p>
+                        </div>
+                        <div class="tab">
+                            <div 
+                                v-for="(item,index) in fundList" 
+                                :key="index" :class="activeIndex == index?'tab_list focus_tab_list': 'tab_list' " 
+                                @click="handleFundClick(index)"
+                            >
+                                {{item.name}}
+                            </div>
+                            <!-- <div class="tab_list">诺游B</div>
+                            <div class="tab_list">诺游C</div>
+                            <div class="tab_list">诺游D</div> -->
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="net">
+                <h3 class="fund_public_title">产品净值</h3>
+                <div class="net_content">
+                    <div class="table_content">
+                        <div class="table_title">诺游基金</div>
+                        <div class="column_title"> 
+                            <div class="title">基金名称</div>
+                            <div class="title">基金代码</div>
+                            <div class="title">净值日期</div>
+                            <div class="title">单位净值</div>
+                            <div class="title">累计净值</div>
+                            <div class="title">涨跌幅</div>
+                            <div class="title">成立以来</div>
+                            <div class="title">风险等级</div>
+                        </div>
+                        <div class="table_list">
+                            <div class="column_content" v-for="(item, index) in 6" :key="index">
+                                <div class="content">基金名称</div>
+                                <div class="content"><span class="blur">3%</span></div>
+                                <div class="content"><span class="blur">3%</span></div>
+                                <div class="content"><span class="blur">3%</span></div>
+                                <div class="content"><span class="blur">3%</span></div>
+                                <div class="content red_color"><span class="blur">涨跌幅</span></div>
+                                <div class="content red_color"><span class="blur">成立以来</span></div>
+                                <div class="content"><span class="blur">风险等级</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
+            <div class="process">
+                <h3 class="fund_public_title">认购流程</h3>
+                <div class="process_content">
+                    <p class="process_p">
+                        1.委托人签署信托合同：委托人在产品规定的有效时间范围内，跟信托公司、投资顾问或代销机构联系，获取信托合同进行签署，并提交相关证件；
+                    </p>
+                    <p class="process_p">
+                        2.委托人汇款：委托人在产品规定的有效时间范围内，将认购资金及认购费用，通过银行汇款到该信托产品指定的托管银行帐户；
+                    </p>
+                    <p class="process_p">
+                        3.委托人取得合同：在认购产品成立后，或日常开放日认购后，在合同规定的N个（一般为10个）工作日内，委托人将取得由信托公司签署并盖章的有效合同。 备注： 若委托人为自然人，需提供以下资料： （1）委托人的身份证明文件（身份证或护照）复印件一式两份； （2）委托人的信托利益分配账户（户名需与身份证为同一人）复印件一式两份（该账户应与合同上填写的信托利益分配账户为同一账户）； （3）委托人的信托资金划入认购账户的银行汇款凭证复印件一式一份，并在汇款备注中注明：“XX认购重阳XX期”； （4）以上复印件上均需客户本人签字，并注明：“仅供认购重阳XX期信托计划”。
+                    </p>
+                    <p class="process_p" style="margin-top: 30px;">
+                        备注
+                    </p>
+                    <p class="process_p">
+                        若委托人为自然人，需提供以下资料：
+                    </p>
+                    <p class="process_p">
+                        （1）委托人的身份证明文件（身份证或护照）复印件一式两份； 
+                    </p>
+                    <p class="process_p">
+                        （2）委托人的信托利益分配账户（户名需与身份证为同一人）复印件一式两份（该账户应与合同上填写的信托利益分配账户为同一账户）；
+                    </p>
+                    <p class="process_p">
+                        （3）委托人的信托资金划入认购账户的银行汇款凭证复印件一式一份，并在汇款备注中注明：“XX认购重阳XX期”； 
+                    </p>
+                    <p class="process_p">
+                        （4）以上复印件上均需客户本人签字，并注明：“仅供认购重阳XX期信托计划”。
+                    </p>
 
+                </div>
+
+            </div>
+            <AppoinmentForm />
+            <!-- <img src="./../assets/images/banner.png"/> -->
         </div>
-        <AppoinmentForm />
-        <!-- <img src="./../assets/images/banner.png"/> -->
+        <Footer />
     </div>
 </template>
 <script>
-    import AppoinmentForm from "./../components/AppoinmentForm"
+    import AppoinmentForm from "./../components/AppoinmentForm";
+    import Footer from './../components/Footer';
+    import Head from './../components/Head.vue';
+    import SendEmail from './../components/SendEmail';
     export default {
         data() {
             return {
@@ -161,7 +169,10 @@
             };
         },
         components:{
-            AppoinmentForm
+            AppoinmentForm,
+            Footer,
+            Head,
+            SendEmail
         },
         methods:{
             handleFundClick(activeIndex){

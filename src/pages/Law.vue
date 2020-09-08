@@ -20,16 +20,19 @@
             </div>
         </div>
         <div class="button">
-            <div class="button_style" style="margin-right: 30px;" @click="toLogin">接受</div>
-            <div class="button_style">不接受</div>
+            <div class="button_style" style="margin-right: 30px;" @click="toRegister">接受</div>
+            <div class="button_style" @click="goHistory">不接受</div>
         </div>
     </div>
 </template>
 <script>
 export default {
     methods:{
-        toLogin(){
-            console.log("////////")
+        toRegister(){
+            this.$router.push({path:'/register'});
+        },
+        goHistory(){
+            this.$router.go(-1)
         }
     }
 }
@@ -80,8 +83,8 @@ export default {
             margin: 50px auto 0;
             .button_style{
                 width: 87px;
-                height: 23px;
-                line-height: 23px;
+                height: 26px;
+                line-height: 26px;
                 text-align: center;
                 font-size: 12px;
                 font-family: Source Han Serif CN;

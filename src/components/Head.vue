@@ -5,10 +5,33 @@
                 <img src="./../assets/images/logo.png" />
             </div>
             <div class="header_right">
-                 <router-link to="/"><div class="header_item">首页</div></router-link>
-                 <router-link to="/fund"><div class="header_item">基金产品</div></router-link>
-                 <router-link to="/about_nuoyou"> <div class="header_item"> 关于诺游 </div> </router-link>
-                 <router-link to="/login"> <div class="header_item"> 用户登录 </div> </router-link>
+                <router-link to="/"><div class="header_item">首页</div></router-link>
+                <router-link to="/fund"><div class="header_item">基金产品</div></router-link>
+                <router-link to="/about_nuoyou"> <div class="header_item"> 关于诺游 </div> </router-link>
+                <div v-if="showUser">
+                    <el-popover
+                        placement="top-start"
+                        width="140"
+                        trigger="hover"
+                        enterable="true"
+                        popper-class="user_popper"
+                        close-delay=300000
+                    >
+                        <div class="user_box">
+                            <div class="item">{{username}}</div>
+                            <div class="item">{{mobile}}</div>
+                            <div class="item">{{email}}</div>
+                            <div class="item" style="border-bottom:unset; cursor:pointer;" @click="LogOut">退出</div>
+                        </div>
+                        <div class="header_item" slot="reference" style="cursor:pointer;">
+                            <img src="./../assets/images/user.png" alt="">
+                        </div> 
+
+                    </el-popover>
+                </div>
+                <router-link to="/login" target="_blank" v-else> 
+                    <div class="header_item"> 用户登录 </div> 
+                </router-link>
                  <!-- <div @click="handleLanguage('en')"> 英语</div>
                  <div @click="handleLanguage('zh')"> 中文</div> -->
 
@@ -22,18 +45,78 @@ export default {
     props: {
       msg: String
     },
+    data(){
+        return{
+            showUser: false,
+            username: "",
+            mobile: "",
+            email: "",
+
+        }
+    },
     created(){
     //   console.log(this.$i18n.locale)
+        this.showOpacity()
+        console.log("///////////")
     },
     methods:{
-      handleLanguage(language){
-        localStorage.setItem("locale",language)
-        this.$i18n.locale = language;
-      }
+        handleLanguage(language){
+            localStorage.setItem("locale",language)
+            this.$i18n.locale = language;
+        },
+        showOpacity(){
+            if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
+                console.log('1111111111')
+                this.showUser = true;
+                this.username = localStorage.getItem("username");
+                this.email = localStorage.getItem("email");
+                this.mobile = localStorage.getItem("mobile");
+                return true;
+
+            } else {
+                console.log('222222222')
+                this.showUser = false;
+                return false;
+            }
+        },
+        LogOut(){
+            localStorage.removeItem("username");
+            localStorage.removeItem("email");
+            localStorage.removeItem("mobile");
+            this.$router.push({path:'/login'});
+            this.showUser = false;
+            this.$message({
+                message: '退出成功',
+                type: 'success'
+            });
+        }
+
     }
 }
 </script>
 <style scoped lang="less">
+    .user_popper{
+        border: 10px solid red;
+        padding: 0;
+        .user_box{
+            width: 146px;
+            box-sizing: border-box;
+            background: #EFEFEF;
+            border: 3px solid rgba(76, 76, 76, 1);
+            box-shadow: 3px 5px 22px 9px rgba(76, 76, 76, 0.06);
+            .item{
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                border-bottom: 1px solid lightslategrey;
+                width: 100%;
+                font-size: 12px;
+                font-family: Source Han Serif CN;
+                font-weight: 800;
+                color: #333333;
+            }
+        }
+    }
     .header{
         width: 100%;
         height: 80px;
@@ -63,14 +146,18 @@ export default {
     .header_right{
         display: flex;
         align-items: center;
-        a{
-            margin-left: 60px;
-        }
     }
     .header_item{
         color: black;
         height: 40px;
         line-height: 40px;
+        margin-left: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 18px;
+        }
     }
     .router-link-exact-active {
         .header_item{

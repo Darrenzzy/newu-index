@@ -1,92 +1,100 @@
 <template>
-    <div class="fund">
-        <SendEmail />
-        <div class="line">
-            <div class="fixed_home">
-                <div class="fixed_content">
-                    <div class="fixed_dot"></div>
-                    <div class="fixed_font">首</div>
-                    <div class="fixed_font" style="margin-top: 13px;">页</div>
-                    <div class="fixed_home_img">
-                        <img src="./../assets/images/fixed_home.png" />
+    <div>
+        <Head />
+        <div class="fund">
+            <SendEmail />
+            <div class="line">
+                <div class="fixed_home">
+                    <div class="fixed_content">
+                        <div class="fixed_dot"></div>
+                        <div class="fixed_font">首</div>
+                        <div class="fixed_font" style="margin-top: 13px;">页</div>
+                        <div class="fixed_home_img">
+                            <img src="./../assets/images/fixed_home.png" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="banner">
-            <div class="banner_content">
-                <div class="fund_name">诺游投资</div>
-                <p class="fund_desc">
-                    诺游投资坚守价值与成长相结合的投资模式，专注于挖掘企业 内生增长价值和成长性
-                </p>
-                <p class="fund_desc" style="margin-top: 30px;">
-                    同时兼顾收益率曲线的稳定性与资产配置的流动性、灵活性， 努力为投资者创造持续稳定的业绩回报。
-                </p>
-            </div>
-        </div>
-        <div class="company_introduce">
-            <div class="title">公司介绍</div>
-            <p class="desc">
-                上海诺游投资管理有限公司成立于2016年4月。2017年6月5日经中国证券投资基金业协会登记备案， 取得私募投资基金管理人资格，登记编号为P1062983。
-            </p>
-            <p class="desc" style="margin-top: 20px;">
-                经过多年积累，诺游投资已拥有一支既富理论造诣又经市场锤炼的投研团队，核心投研人员超过10人。
-            </p>
-        </div>
-        <div class="company_bg"></div>
-
-
-
-        <div class="explain">
-            <div class="left">
-                <div class="left_content flex">
-                    <div class="leftImg">
-                        <img src="./../assets/images/font_logo.png"/>
-                    </div>
-                </div>
-            </div>
-            <div class="right">
-                <div class="right_content">
-                    <div class="font_title">司名释义</div>
-                    <p class="font_p">诺代表，和客户之间的承诺与信任。</p>
-                    <p class="font_p">游代表，一种流动性，像鱼儿在大海中畅游一样，</p>
-                    <p class="font_p">享受投资带来的乐趣和持久的收益。</p>
-                </div>
-                
-            </div>
-        </div>
-        <div class="explain">
-            <div class="left back_white" style="order:1;">
-                <div class="left_content">
-                    <div class="font_title">标识释义</div>
-
-                    <p class="font_p" style="margin-bottom: 20px;">
-                        类似于树的标识，是“诺”的古字体。最初的设计灵感来源于一位13岁的小女孩。
+            <div class="banner">
+                <div class="banner_content">
+                    <div class="fund_name">诺游投资</div>
+                    <p class="fund_desc">
+                        诺游投资坚守价值与成长相结合的投资模式，专注于挖掘企业 内生增长价值和成长性
                     </p>
-                    <p class="font_p">
-                        小女孩说红和绿代表了股票有涨有跌， 但是我们的净值却是一直向上！类似于树的 图案，则代表欣欣向荣，一直向天空成长！ 事实上，我们所推崇的投资，就像孩子的眼界一样，希望看到最本质和最纯粹的东西，而不是复杂的表象。
+                    <p class="fund_desc" style="margin-top: 30px;">
+                        同时兼顾收益率曲线的稳定性与资产配置的流动性、灵活性， 努力为投资者创造持续稳定的业绩回报。
                     </p>
                 </div>
             </div>
+            <div class="company_introduce">
+                <div class="title">公司介绍</div>
+                <p class="desc">
+                    上海诺游投资管理有限公司成立于2016年4月。2017年6月5日经中国证券投资基金业协会登记备案， 取得私募投资基金管理人资格，登记编号为P1062983。
+                </p>
+                <p class="desc" style="margin-top: 20px;">
+                    经过多年积累，诺游投资已拥有一支既富理论造诣又经市场锤炼的投研团队，核心投研人员超过10人。
+                </p>
+            </div>
+            <div class="company_bg"></div>
 
-            <div class="left" style="order:2; background: #EAEAEA;">
-                <div class="left_content flex" style="float: left;">
-                    <div class="leftImg">
-                        <img src="./../assets/images/logo.png"/>
+
+
+            <div class="explain">
+                <div class="left">
+                    <div class="left_content flex">
+                        <div class="leftImg">
+                            <img src="./../assets/images/font_logo.png"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="right_content">
+                        <div class="font_title">司名释义</div>
+                        <p class="font_p">诺代表，和客户之间的承诺与信任。</p>
+                        <p class="font_p">游代表，一种流动性，像鱼儿在大海中畅游一样，</p>
+                        <p class="font_p">享受投资带来的乐趣和持久的收益。</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="explain">
+                <div class="left back_white" style="order:1;">
+                    <div class="left_content">
+                        <div class="font_title">标识释义</div>
+
+                        <p class="font_p" style="margin-bottom: 20px;">
+                            类似于树的标识，是“诺”的古字体。最初的设计灵感来源于一位13岁的小女孩。
+                        </p>
+                        <p class="font_p">
+                            小女孩说红和绿代表了股票有涨有跌， 但是我们的净值却是一直向上！类似于树的 图案，则代表欣欣向荣，一直向天空成长！ 事实上，我们所推崇的投资，就像孩子的眼界一样，希望看到最本质和最纯粹的东西，而不是复杂的表象。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="left" style="order:2; background: #EAEAEA;">
+                    <div class="left_content flex" style="float: left;">
+                        <div class="leftImg">
+                            <img src="./../assets/images/logo.png"/>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            
         
-     
-        <!-- <img src="./../assets/images/banner.png"/> -->
-    </div>
+            <!-- <img src="./../assets/images/banner.png"/> -->
+        </div>
+        <Footer />
+    </div> 
 </template>
 <script>
     import SendEmail from './../components/SendEmail';
+    import Head from './../components/Head.vue';
+    import Footer from './../components/Footer';
     export default {
         components:{
-            SendEmail
+            SendEmail,
+            Head,
+            Footer,
         },
         data() {
             return {

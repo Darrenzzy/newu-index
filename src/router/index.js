@@ -11,8 +11,13 @@ import Home from '../pages/Home'
 import Fund from '../pages/Fund'
 import AboutNuoyou from '../pages/AboutNuoyou'
 import Login from '../pages/Login'
+import Register from '../pages/Register'
 import UserCenter from '../pages/UserCenter'
 import Law from '../pages/Law'
+import UpdatePwd from '../pages/UpdatePwd'
+import ForgetPwd from '../pages/ForgetPwd'
+
+
 
 
 
@@ -24,11 +29,15 @@ export default new VueRouter({
         { path: '/zkp', component: Zkp },
         { path: '/userCenter', component: UserCenter },
         { path: '/law', component: Law },
+        { path: '/updatePwd', component: UpdatePwd },
+        { path: '/forgetPwd', component: ForgetPwd },
+
+
 
         { path: '/fund', component: Fund},
         { path: '/about_nuoyou', component: AboutNuoyou },
         { path: '/login', component: Login },
-        
+        { path: '/register', component: Register },
 
         { path: '*', redirect: "/"}
     ]

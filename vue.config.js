@@ -4,15 +4,15 @@ module.exports = {
     //     new MyAwesomeWebpackPlugin()
     //   ]
         devServer: {
-            // proxy: {
-                // '/api/': {
-                //     target: 'https://securityin.com',
-                //     changeOrigin: true,
-                //     pathRewrite: {
-                //     '^': '',
-                //     },
-                // }
-            // }
+            proxy: {
+                '/api/': {
+                    target: 'http://119.28.10.43:9500',
+                    changeOrigin: true,
+                    pathRewrite: {
+                    '^': '',
+                    },
+                }
+            }
         },
         module: {
             rules: [{

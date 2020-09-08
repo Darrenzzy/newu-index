@@ -1,75 +1,89 @@
 <template>
-    <div class="fund">
-        <div class="line">
-            <div class="fixed_home">
-                <div class="fixed_content">
-                    <div class="fixed_dot"></div>
-                    <div class="fixed_font">首</div>
-                    <div class="fixed_font" style="margin-top: 13px;">页</div>
-                    <div class="fixed_home_img">
-                        <img src="./../assets/images/fixed_home.png" />
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="banner">
-            <div class="banner_content">
-               
-            </div>
-        </div>
-        <div class="table">
-            <div class="table_box">
-                <div class="table_content">
-                    <div class="table_title">诺游基金</div>
-                    <div class="column_title"> 
-                        <div class="title">基金名称</div>
-                        <div class="title">基金代码</div>
-                        <div class="title">净值日期</div>
-                        <div class="title">单位净值</div>
-                        <div class="title">累计净值</div>
-                        <div class="title">涨跌幅</div>
-                        <div class="title">成立以来</div>
-                        <div class="title">风险等级</div>
-                    </div>
-                    <div class="table_list">
-                        <div class="column_content" v-for="(item, index) in 6" :key="index">
-                            <div class="content">基金名称</div>
-                            <div class="content"><span class="blur">3%</span></div>
-                            <div class="content"><span class="blur">3%</span></div>
-                            <div class="content"><span class="blur">3%</span></div>
-                            <div class="content"><span class="blur">3%</span></div>
-                            <div class="content red_color"><span class="blur">涨跌幅</span></div>
-                            <div class="content red_color"><span class="blur">成立以来</span></div>
-                            <div class="content"><span class="blur">风险等级</span></div>
+    <div>
+        <Head />
+        <div class="fund">
+            <div class="line">
+                <div class="fixed_home">
+                    <div class="fixed_content">
+                        <div class="fixed_dot"></div>
+                        <div class="fixed_font">首</div>
+                        <div class="fixed_font" style="margin-top: 13px;">页</div>
+                        <div class="fixed_home_img">
+                            <img src="./../assets/images/fixed_home.png" />
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="search">
-            <div class="left">
-
+            <div class="banner">
+                <div class="banner_content">
+                
+                </div>
             </div>
-            <div class="right">
-                <div class="right_content">
-                    <div class="search_title">尊户查询</div>
-                    <div class="search_link">
-                        券商入口
+            <div class="table">
+                <div class="table_box">
+                    <div class="table_content">
+                        <div class="table_title">诺游基金</div>
+                        <div class="column_title"> 
+                            <div class="title">基金名称</div>
+                            <div class="title" >基金代码</div>
+                            <div class="title" >净值日期</div>
+                            <div class="title">单位净值</div>
+                            <div class="title">累计净值</div>
+                            <div class="title">涨跌幅</div>
+                            <div class="title">成立以来</div>
+                            <div class="title">风险等级</div>
+                        </div>
+                        <div class="table_list">
+                            <div class="column_content" v-for="(item) in tableData" :key="item.ID">
+                                <div class="content">{{item.wond_name}}</div>
+                                <div class="content" >{{item.code}}</div>
+                                <div class="content" >{{formateTime(item.update_by)}}</div>
+                                <div class="content">{{item.net_worth}}</div>
+                                <div class="content">{{item.unit_worth}}</div>
+                                <div class="content red_color">{{item.build_before}}</div>
+                                <div class="content red_color">{{item.build_before}}</div>
+                                <div class="content">中风险</div>
+
+                                <!-- <div class="content"><span class="blur">3%</span></div>
+                                <div class="content"><span class="blur">3%</span></div>
+                                <div class="content"><span class="blur">3%</span></div>
+                                <div class="content"><span class="blur">3%</span></div>
+                                <div class="content red_color"><span class="blur">涨跌幅</span></div>
+                                <div class="content red_color"><span class="blur">成立以来</span></div>
+                                <div class="content"><span class="blur">风险等级</span></div> -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="search">
+                <div class="left">
+                </div>
+                <div class="right">
+                    <div class="right_content">
+                        <div class="search_title">尊户查询</div>
+                        <div class="search_link">
+                            券商入口
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+            <AppoinmentForm />
+            <!-- <img src="./../assets/images/banner.png"/> -->
         </div>
-        <AppoinmentForm />
-        <!-- <img src="./../assets/images/banner.png"/> -->
+        <Footer />
     </div>
 </template>
 <script>
     import AppoinmentForm from "./../components/AppoinmentForm"
+    import Head from './../components/Head.vue';
+    import Footer from './../components/Footer';
     export default {
         data() {
             return {
                 fundDetail:{},
+                tableData:[],
                 fundList:[
                     {
                         name: "诺游A",
@@ -103,7 +117,20 @@
             };
         },
         components:{
-            AppoinmentForm
+            AppoinmentForm,
+            Head,
+            Footer,
+        },
+        created(){
+            // if (this.showOpacity()) {
+                this.$Axios.get('/api/v1/netWorth/list',{}).then((data)=>{
+                    if (data.data.code == 200) {
+                        this.tableData = data.data.data.list
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            // }
         },
         methods:{
             handleFundClick(activeIndex){
@@ -111,29 +138,32 @@
                 this.fundDetail = this.fundList.find((item,index)=>{
                     return activeIndex == index;
                 })
-                console.log(this.fundDetail)
             },
+            formateTime(dateString){
+                var arr = dateString.split("T");
+                var d=arr[0];
+
+                var darr = d.split('-');
+
+                var t=arr[1];
+                var tarr = t.split('.000');
+                var marr = tarr[0].split(':');
+                darr.map(item=>{
+                    if (item < 10) {
+                        item += "0";
+                    }
+                })
+                if (parseInt(marr[2]) < 10) {
+                    marr[2] = "0" + parseInt(marr[2]);
+                } else {
+                    marr[2] = + parseInt(marr[2]);
+                }
+                // var timeStamp = parseInt(darr[0])+"-"+parseInt(darr[1])+"-"+parseInt(darr[2])+" "+parseInt(marr[0])+":"+parseInt(marr[1])+":"+parseInt(marr[2]);
+                var timeStamp = darr[0] +"-"+ darr[1] +"-"+ darr[2]+" "+ marr[0] +":"+ marr[1]+ ":" + marr[2];
+                    
+                return timeStamp
+            }
         },
-       
-        created(){
-            this.handleFundClick(0);
-            this.$Axios.post('api/admin/v1/sysUser',{
-                deptId: 10,
-                email: "123@qq.com",
-                nickName: "test2",
-                password: "123456",
-                phone: "17856376472",
-                postId: 1,
-                remark: "test2",
-                sex: "1",
-                status: "1",
-                username: "test2",
-            }).then(function(res){
-                console.log(res)
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
     }
 </script>
 <style scoped lang="less">

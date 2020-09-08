@@ -1,5 +1,8 @@
 <template>
+    <div>
+        <Head />
     <div class="home">
+         <SendEmail />
         <div class="line">
             <div class="fixed_home">
                 <div class="fixed_content">
@@ -34,16 +37,19 @@
                     <div class="title">成立以来</div>
                     <div class="title">风险等级</div>
                 </div>
-                <div class="table_list">
-                    <div class="column_content" v-for="(item, index) in 6" :key="index">
-                        <div class="content">基金名称</div>
-                        <div class="content"><span class="blur">3%</span></div>
-                        <div class="content"><span class="blur">3%</span></div>
-                        <div class="content"><span class="blur">3%</span></div>
-                        <div class="content"><span class="blur">3%</span></div>
-                        <div class="content red_color"><span class="blur">涨跌幅</span></div>
-                        <div class="content red_color"><span class="blur">成立以来</span></div>
-                        <div class="content"><span class="blur">风险等级</span></div>
+                <div class="table_list" style="cursor: pointer;" @click="handleTableClick">
+                    <div class="column_content" v-for="(item) in tableData" :key="item.ID">
+                        <div class="content">{{item.wond_name}}</div>
+                        <div class="content"><span :class="showOpacity() ?'': 'blur'">{{item.code}}</span></div>
+                        <div class="content">
+                            <span v-if="showOpacity()" >{{formateTime(item.update_by)}}</span>
+                            <span v-else  class="blur">{{(item.update_by)}}</span>
+                        </div>
+                        <div class="content"><span :class="showOpacity() ?'': 'blur'">{{item.net_worth}}</span></div>
+                        <div class="content"><span :class="showOpacity() ?'': 'blur'">{{item.unit_worth}}</span></div>
+                        <div class="content red_color"><span :class="showOpacity() ?'': 'blur'">{{item.build_before}}</span></div>
+                        <div class="content red_color"><span :class="showOpacity() ?'': 'blur'">{{item.build_before}}</span></div>
+                        <div class="content"><span :class="showOpacity() ?'': 'blur'">中风险</span></div>
                     </div>
                 </div>
             </div>
@@ -118,33 +124,108 @@
             </div>
         </div>
     </div>
+        <Footer />
+    </div>
 </template>
 <script>
 import logo from "./../assets/images/logo.png";
 import font_logo from "./../assets/images/font_logo.png";
+import Head from './../components/Head.vue';
+import Footer from './../components/Footer';
+import SendEmail from './../components/SendEmail';
 
     export default {
         name: 'Home',
+        components: {
+            Head,
+            Footer,
+            SendEmail
+        },
         data() {
             return {
-                tableData: [{
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1517 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1519 弄'
-                }, {
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1516 弄'
-                }]
+                tableData: [
+                    {
+                        build_before: "52", 
+                        code: 23444, 
+                        ID: 3, 
+                        last_year: "552", 
+                        net_worth: "552", 
+                        now_year: "111",
+                        create_by: "xxx",
+                        six_mouth: "222",
+                        three_muoth: "222",
+                        unit_worth: "222",
+                        update_by: "xxx",
+                        wond_name: "诺游一号"
+                    },
+                    {
+                        build_before: "52", 
+                        code: 23444, 
+                        ID: 4, 
+                        last_year: "552", 
+                        net_worth: "552", 
+                        now_year: "111",
+                        create_by: "xxx",
+                        six_mouth: "222",
+                        three_muoth: "222",
+                        unit_worth: "222",
+                        update_by: "xxx",
+                        wond_name: "诺游一号"
+                    },
+                    {
+                        build_before: "52", 
+                        code: 23444, 
+                        ID: 5, 
+                        last_year: "552", 
+                        net_worth: "552", 
+                        now_year: "111",
+                        create_by: "xxx",
+                        six_mouth: "222",
+                        three_muoth: "222",
+                        unit_worth: "222",
+                        update_by: "xxx",
+                        wond_name: "诺游一号"
+                    },
+                    {
+                        build_before: "52", 
+                        code: 23444, 
+                        ID: 6, 
+                        last_year: "552", 
+                        net_worth: "552", 
+                        now_year: "111",
+                        create_by: "xxx",
+                        six_mouth: "222",
+                        three_muoth: "222",
+                        unit_worth: "222",
+                        update_by: "xxx",
+                        wond_name: "诺游一号"
+                    }
+                ]
             }
+        },
+        created(){
+            if (this.showOpacity()) {
+                
+                this.$Axios.get('/api/v1/netWorth/list',{}).then((data)=>{
+                    if (data.data.code == 200) {
+                        this.tableData = data.data.data.list
+                    }
+                    // this.tableData = [
+                    //     {
+                    //         build_before: "52", code: 23444, ID: 3, last_year: "552", net_worth: "552", now_year: "111",
+                    //         create_by: "2020-08-17T17:03:31+08:00",
+                    //         six_mouth: "222",
+                    //         three_muoth: "222",
+                    //         unit_worth: "222",
+                    //         update_by: "2020-09-08T14:55:24+08:00",
+                    //         wond_name: "诺游一号"
+                    //     }
+                    // ]
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+            
         },
         mounted(){
             window.addEventListener('scroll',()=>{
@@ -158,7 +239,6 @@ import font_logo from "./../assets/images/font_logo.png";
                     this.$refs.companyRight.style.display = "none";
                     // this.$refs.companyRight.style.transform = "scale(0.0001)";
                 }
-
 
                 if (scrollHeight > 1014 &&  scrollHeight < 2080) {
                     this.handleTestMask("topImg", "foucs_top");
@@ -194,6 +274,49 @@ import font_logo from "./../assets/images/font_logo.png";
                     }
                 }
             },
+            showOpacity(){
+                if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
+                    return true
+                } else {
+                    return false;
+                }
+            },
+            handleTableClick(){
+                if (this.showOpacity()) {
+                    this.$router.push({path:'/userCenter'});
+                }else{
+                    this.$message({
+                        message: "请先登录",
+                        type: 'error',
+                    });
+                    setTimeout(()=>{
+                        this.$router.push({path:'/login'});
+                    },1000)
+                }
+            },
+            formateTime(dateString){
+                var arr = dateString.split("T");
+                var d=arr[0];
+
+                var darr = d.split('-');
+                var t=arr[1];
+                var tarr = t.split('.000');
+                var marr = tarr[0].split(':');
+                darr.map(item=>{
+                    if (item < 10) {
+                        item += "0";
+                    }
+                })
+                if (parseInt(marr[2]) < 10) {
+                    marr[2] = "0" + parseInt(marr[2]);
+                } else {
+                    marr[2] = + parseInt(marr[2]);
+                }
+                // var timeStamp = parseInt(darr[0])+"-"+parseInt(darr[1])+"-"+parseInt(darr[2])+" "+parseInt(marr[0])+":"+parseInt(marr[1])+":"+parseInt(marr[2]);
+                var timeStamp = darr[0] +"-"+ darr[1] +"-"+ darr[2]+" "+ marr[0] +":"+ marr[1]+ ":" + marr[2];
+                    
+                return timeStamp
+            },
             handleRemove(obj, className){
                 if (this.$refs[obj]) {
                     this.$refs[obj].classList.remove(className);
@@ -202,24 +325,6 @@ import font_logo from "./../assets/images/font_logo.png";
 
             }
         },
-        created(){
-            this.$Axios.post('api/admin/v1/sysUser',{
-                deptId: 10,
-                email: "123@qq.com",
-                nickName: "test2",
-                password: "123456",
-                phone: "17856376472",
-                postId: 1,
-                remark: "test2",
-                sex: "1",
-                status: "1",
-                username: "test2",
-            }).then(function(res){
-                console.log(res)
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
     }
 </script>
 <style scoped lang="less">

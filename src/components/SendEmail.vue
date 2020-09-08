@@ -8,6 +8,7 @@
                 enterable="true"
                 visible-arrow=false
                 popper-class="test"
+                close-delay=300000
             >
                 <div class="email_box">
                     <div class="top">
@@ -73,7 +74,6 @@ export default {
     },
     methods:{
         backTop(){
-            
            let top = document.documentElement.scrollTop || document.body.scrollTop
             // 实现滚动效果
             const timeTop = setInterval(() => {
@@ -101,12 +101,12 @@ export default {
     },
 }
 </script>
-<style  lang="less">
+<style  lang="less" scoped>
     .fixed_right{
         width: 47px;
         position: fixed;
         right: 10%;
-        top: 256px;
+        top: 356px;
         z-index: 10;
         .email, .bar_code, .back_top{
             width: 100%;
