@@ -16,11 +16,10 @@
                         </el-form-item>
                     </div>
                     <div class="input_box">
-                        <el-form-item label="电子邮件:">
+                        <el-form-item label="电子邮件:" prop="email">
                             <el-input v-model="formInline.email" placeholder="">电话</el-input>
                         </el-form-item>
                     </div>
-                    
                     <div class="input_box">
                         <el-form-item label="性别:" prop="sex">
                             <el-radio-group v-model="formInline.sex">
@@ -87,6 +86,18 @@ export default {
                 }
             }, 1000);
         };
+        var validateEmail = (rule, value, callback) => {
+            if (!value) {
+                return callback(new Error('邮箱不能为空'));
+            }
+            setTimeout(() => {
+                if ( /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(value) ) {
+                    callback();
+                } else {
+                    callback(new Error('邮箱格式不对'));
+                }
+            }, 1000);
+        }
         return {
             activeIndex: 0,
             selectData:[
@@ -143,6 +154,12 @@ export default {
                 mobile: [
                     { validator: validateMobile, trigger: 'blur' }
                 ],
+                email: [
+                    { validator: validateEmail, trigger: 'blur' }
+                ],
+                code: [
+                    { required: true, message: '验证码不能为空', trigger: 'blur' },
+                ]
             }
         };
     },

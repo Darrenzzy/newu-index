@@ -8,7 +8,6 @@
                 enterable="true"
                 visible-arrow=false
                 popper-class="test"
-                close-delay=4000000
             >
                 <div class="email_box">
                     <div class="top">
