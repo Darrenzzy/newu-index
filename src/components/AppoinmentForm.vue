@@ -16,28 +16,28 @@
                         </el-form-item>
                     </div>
                     <div class="input_box">
-                        <el-form-item label="电话:">
-                            <el-input v-model="formInline.mobile" placeholder="">电话</el-input>
-                        </el-form-item>
-                    </div>
-                        <div class="input_box">
-                            <el-form-item label="性别:" prop="sex">
-                                <el-radio-group v-model="formInline.sex">
-                                <el-radio label="0">先生</el-radio>
-                                <el-radio label="1">女士</el-radio>
-                                </el-radio-group>
-                            </el-form-item>
-                        </div>
-                    <div class="input_box">
                         <el-form-item label="电子邮件:">
                             <el-input v-model="formInline.email" placeholder="">电话</el-input>
+                        </el-form-item>
+                    </div>
+                    
+                    <div class="input_box">
+                        <el-form-item label="性别:" prop="sex">
+                            <el-radio-group v-model="formInline.sex">
+                            <el-radio label="0">先生</el-radio>
+                            <el-radio label="1">女士</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                    </div>
+                    <div class="input_box">
+                        <el-form-item label="电话:" prop="mobile">
+                            <el-input v-model="formInline.mobile" placeholder="">电话</el-input>
                         </el-form-item>
                     </div>
                     <div class="input_box">
                         <el-form-item label="城市:">
                             <el-select v-model="formInline.city" placeholder="">
-                            <el-option label="上海" value="shanghai"></el-option>
-                            <el-option label="北京" value="beijing"></el-option>
+                            <el-option :label="item" :value="item" v-for="(item, index) in selectData" :key="index"></el-option>
                             </el-select>
                         </el-form-item>
                     </div>
@@ -49,14 +49,24 @@
                             </el-radio-group>
                         </el-form-item>
                     </div>
+                    
                     <div class="input_box">
                         <el-form-item label="验证码:" prop="code">
                             <el-input v-model="formInline.code" placeholder="">电话</el-input>
                         </el-form-item>
                     </div>
-                    <div class="button_box">
-                        <div class="button" @click="onSubmit('form')">提交预约</div>
+                    <div class="input_box">
+                        <div class="button_box">
+                            <div class="button" @click="onSubmit('form')">提交预约</div>
+                        </div>
                     </div>
+
+                    <div class="input_box">
+                        
+                    </div>
+                    <!-- <div class="button_box">
+                        <div class="button" @click="onSubmit('form')">提交预约</div>
+                    </div> -->
                 </div>
             </el-form> 
         </div>
@@ -65,8 +75,56 @@
 <script>
 export default {
     data() {
+        var validateMobile = (rule, value, callback) => {
+            if (!value) {
+                return callback(new Error('手机号不能为空'));
+            }
+            setTimeout(() => {
+                if ( /^1(3|4|5|6|7|8|9)\d{9}$/.test(value) ) {
+                    callback();
+                } else {
+                    callback(new Error('手机号码格式不对'));
+                }
+            }, 1000);
+        };
         return {
             activeIndex: 0,
+            selectData:[
+                "北京市",
+                "天津市",
+                "上海市",
+                "重庆市",
+                "河北省",
+                "河南省",
+                "云南省",
+                "辽宁省",
+                "黑龙江省",
+                "湖南省",
+                "安徽省",
+                "山东省",
+                "新疆维",
+                "江苏省",
+                "浙江省",
+                "江西省",
+                "湖北省",
+                "广西壮族",
+                "甘肃省",
+                "山西省",
+                "内蒙古",
+                "陕西省",
+                "吉林省",
+                "福建省",
+                "贵州省",
+                "广东省",
+                "青海省",
+                "西藏",
+                "四川省",
+                "宁夏回族",
+                "海南省",
+                "台湾省",
+                "香港特别行政区",
+                "澳门特别行政区"
+            ],
             formInline: {
                 user: '',
                 region: '',
@@ -80,11 +138,10 @@ export default {
             labelPosition: "top",
             rules: {
                 user: [
-                    { required: true, message: '请输入活动名称', trigger: 'blur' },
-                    { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                    { required: true, message: '姓名不能为空', trigger: 'blur' },
                 ],
-                region: [
-                    { required: true, message: '请选择活动区域', trigger: 'change' }
+                mobile: [
+                    { validator: validateMobile, trigger: 'blur' }
                 ],
             }
         };
@@ -170,7 +227,8 @@ export default {
                         line-height: 30px;
                     }
                     /deep/.el-form-item{
-                        margin-bottom: unset;
+                        // margin-bottom: unset;
+                        margin-bottom: 15px;
                     }
                     /deep/ .el-input__inner{
                         border: unset;
@@ -216,7 +274,8 @@ export default {
                 }
                 .button_box{
                     width: 100%;
-                    margin-top: 10px;
+                    // margin-top: 10px;
+                    margin-top: 25px;
                     .button{
                         width: 137px;
                         height: 35px;

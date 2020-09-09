@@ -11,7 +11,7 @@
                         </div>
                         <div class="input_box">
                             <el-form-item label="密码:">
-                                <el-input v-model="formInline.password" placeholder=""></el-input>
+                                <el-input type="password" v-model="formInline.password" placeholder=""></el-input>
                             </el-form-item>
                         </div>
                         <div class="link_content">

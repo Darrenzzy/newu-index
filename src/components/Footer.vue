@@ -39,6 +39,16 @@
             </div>
         </div>
         <div class="address">
+            <div class="top">
+                <span class="item">联系我们</span>
+                <span class="boder_style"></span>
+                <span class="item">免责声明</span>
+                <span class="boder_style"></span>
+                <span class="item">权益须知</span>
+                <span class="boder_style"></span>
+                <span class="item">风险提示</span>
+
+            </div>
             <p>公司地址：上海市浦东新区明月路188弄27号  邮编：XXXXX</p>
         </div>
     </div>
@@ -114,8 +124,29 @@
         }
     }
     .address{
-        height: 50px;
+        // height: 50px;
         border-top: 1px solid #245800;
+        width: 70%;
+        margin-left: 15%;
+        .top{
+            text-align: center;
+            margin-top: 30px;
+            .item{
+                font-size: 11px;
+                font-family: Source Han Serif CN;
+                font-weight: 800;
+                color: #9A9A9A;
+                line-height: 27px;
+                opacity: 0.6;
+                cursor: pointer;
+            }
+            .boder_style{
+                height: 10px;
+                border-left: 1px solid #AEAEAC;
+                margin: 0 5px;
+                display: inline-block;
+            }
+        }
         p{
             text-align: center;
             line-height: 50px;

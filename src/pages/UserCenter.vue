@@ -1,19 +1,10 @@
 <template>
     <div>
+        <SendEmail />
         <Head />
         <div class="fund">
-            <div class="line">
-                <div class="fixed_home">
-                    <div class="fixed_content">
-                        <div class="fixed_dot"></div>
-                        <div class="fixed_font">首</div>
-                        <div class="fixed_font" style="margin-top: 13px;">页</div>
-                        <div class="fixed_home_img">
-                            <img src="./../assets/images/fixed_home.png" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <FixedLeft msg="用户中心"></FixedLeft>
+            <div class="line"></div>
             <div class="banner">
                 <div class="banner_content">
                 
@@ -43,7 +34,6 @@
                                 <div class="content red_color">{{item.build_before}}</div>
                                 <div class="content red_color">{{item.build_before}}</div>
                                 <div class="content">中风险</div>
-
                                 <!-- <div class="content"><span class="blur">3%</span></div>
                                 <div class="content"><span class="blur">3%</span></div>
                                 <div class="content"><span class="blur">3%</span></div>
@@ -79,6 +69,9 @@
     import AppoinmentForm from "./../components/AppoinmentForm"
     import Head from './../components/Head.vue';
     import Footer from './../components/Footer';
+    import SendEmail from './../components/SendEmail';
+    import FixedLeft from './../components/FixedLeft';
+
     export default {
         data() {
             return {
@@ -120,6 +113,8 @@
             AppoinmentForm,
             Head,
             Footer,
+            SendEmail,
+            FixedLeft
         },
         created(){
             // if (this.showOpacity()) {

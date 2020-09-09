@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed_right">
+    <div class="fixed_right" ref="sendEmail">
         <div>
             <el-popover
                 placement="left"
@@ -8,7 +8,6 @@
                 enterable="true"
                 visible-arrow=false
                 popper-class="test"
-                close-delay=300000
             >
                 <div class="email_box">
                     <div class="top">
@@ -30,7 +29,6 @@
             </el-popover>
         </div>
         <div>
-                <!-- close-delay="345555" -->
             <el-popover
                 placement="top-start"
                 width="150"
@@ -44,16 +42,14 @@
                 <div class="bar_code" slot="reference"></div>
             </el-popover>
         </div>
-       
         <div class="back_top" @click="backTop" ></div>
-
     </div>
 </template>
 <script>
 export default {
-    
     data() {
         return {
+            startHeight: document.documentElement.scrollTop || document.body.scrollTop,
             activeIndex: 0,
             formInline: {
                 email: '',
@@ -71,6 +67,23 @@ export default {
             },
             
         };
+    },
+    mounted(){
+        window.addEventListener('scroll',()=>{
+            let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
+            if (scrollHeight > this.startHeight) {
+                this.$refs.sendEmail.style.display = "none"
+                // $('.navigation').addClass('hide');
+            } else {
+                // $('.navigation').remove('hide');
+                this.$refs.sendEmail.style.display = "block";
+            }
+            if (scrollHeight < this.startHeight){
+                // $('.navigation').removeClass('hide');
+                this.$refs.sendEmail.style.display = "block";
+            }
+            this.startHeight = scrollHeight;
+        })
     },
     methods:{
         backTop(){
@@ -106,7 +119,7 @@ export default {
         width: 47px;
         position: fixed;
         right: 10%;
-        top: 356px;
+        top: 456px;
         z-index: 10;
         .email, .bar_code, .back_top{
             width: 100%;
@@ -144,7 +157,7 @@ export default {
     }
     .email_box{
         width: 323px;
-        height: 271px;
+        // height: 271px;
         background: #C00000;
         border-radius: 5px;
         padding: 14px 14px;
@@ -160,7 +173,7 @@ export default {
         }
         .form_content{
             width: 100%;
-            height: 159px;
+            // height: 159px;
             background: #FFFFFF;
             padding: 15px;
             box-sizing: border-box;

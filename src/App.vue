@@ -51,44 +51,8 @@ export default {
     border-left: 1px solid #FF0000;
     height: 100%;
     z-index: 2;
-    .fixed_home{
-      position: fixed;
-      top: 256px;
-      left: 15%;
-      background: #C00000;
-      width: 48px;
-      height: 126px;
-      transform: translateX(-100%);
-      color: #ffffff;
-      font-size: 15px;
-      font-family: Source Han Serif CN;
-      font-weight: 800;
-      padding: 15px 0;
-      box-sizing: border-box;
-      .fixed_content{
-          display: flex;
-          justify-content: space-between;
-          flex-direction: column;
-          align-items: center;
-          height: 100%;
-      }
-      .fixed_dot{
-          width: 4px;
-          height: 4px;
-          background: #ffffff;
-          border-radius: 50%;
-      }
-      .fixed_font{
-          width: 14px;
-      }
-      .fixed_home_img{
-          width: 30px;
-          img{
-              width: 100%;
-          }
-      }
-    }
   }
+  
   .table_content{
     // box-shadow: 0 0 15px rgba(0,0,0,.05);
     box-shadow: 4px 5px 23px 9px rgba(76, 76, 76, 0.29);
@@ -111,7 +75,7 @@ export default {
     padding: 0 30px;
     .title{
         width: 12.5%;
-        height: 38px;
+        // height: 38px;
         line-height: 38px;
         font-size: 12px;
         font-family: Source Han Serif CN;
@@ -127,7 +91,7 @@ export default {
       border-bottom: 1px dotted #D6D6D6;
       .content{
           width: 12.5%;
-          height: 50px;
+          // height: 50px;
           line-height: 50px;
           font-size: 12px;
           font-family: Source Han Serif CN;

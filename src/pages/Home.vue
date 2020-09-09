@@ -4,17 +4,11 @@
     <div class="home">
          <SendEmail />
         <div class="line">
-            <div class="fixed_home">
-                <div class="fixed_content">
-                    <div class="fixed_dot"></div>
-                    <div class="fixed_font">首</div>
-                    <div class="fixed_font" style="margin-top: 13px;">页</div>
-                    <div class="fixed_home_img">
-                        <img src="./../assets/images/fixed_home.png" />
-                    </div>
-                </div>
-            </div>
         </div>
+        <FixedLeft 
+            msg = "首页"
+        >
+        </FixedLeft>
         <div class="video_box">
             <!-- <video class="video" src="http://cdn.jian24.com/1548381208553958.mp4" preload="none" controls="controls" height="100%" >
             </video> -->
@@ -30,7 +24,7 @@
                 <div class="column_title"> 
                     <div class="title">基金名称</div>
                     <div class="title">基金代码</div>
-                    <div class="title">净值日期</div>
+                    <div class="title" style="width: 160px;">净值日期</div>
                     <div class="title">单位净值</div>
                     <div class="title">累计净值</div>
                     <div class="title">涨跌幅</div>
@@ -40,16 +34,16 @@
                 <div class="table_list" style="cursor: pointer;" @click="handleTableClick">
                     <div class="column_content" v-for="(item) in tableData" :key="item.ID">
                         <div class="content">{{item.wond_name}}</div>
-                        <div class="content"><span :class="showOpacity() ?'': 'blur'">{{item.code}}</span></div>
-                        <div class="content">
-                            <span v-if="showOpacity()" >{{formateTime(item.update_by)}}</span>
+                        <div class="content"><span :class="showUser ?'': 'blur'">{{item.code}}</span></div>
+                        <div class="content" style="width: 160px;">
+                            <span v-if="showUser" >{{ item.update_by | formateTime}}</span>
                             <span v-else  class="blur">{{(item.update_by)}}</span>
                         </div>
-                        <div class="content"><span :class="showOpacity() ?'': 'blur'">{{item.net_worth}}</span></div>
-                        <div class="content"><span :class="showOpacity() ?'': 'blur'">{{item.unit_worth}}</span></div>
-                        <div class="content red_color"><span :class="showOpacity() ?'': 'blur'">{{item.build_before}}</span></div>
-                        <div class="content red_color"><span :class="showOpacity() ?'': 'blur'">{{item.build_before}}</span></div>
-                        <div class="content"><span :class="showOpacity() ?'': 'blur'">中风险</span></div>
+                        <div class="content"><span :class="showUser?'': 'blur'">{{item.net_worth}}</span></div>
+                        <div class="content"><span :class="showUser ?'': 'blur'">{{item.unit_worth}}</span></div>
+                        <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
+                        <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
+                        <div class="content"><span :class="showUser ?'': 'blur'">中风险</span></div>
                     </div>
                 </div>
             </div>
@@ -133,16 +127,19 @@ import font_logo from "./../assets/images/font_logo.png";
 import Head from './../components/Head.vue';
 import Footer from './../components/Footer';
 import SendEmail from './../components/SendEmail';
+import FixedLeft from './../components/FixedLeft';
 
     export default {
         name: 'Home',
         components: {
             Head,
             Footer,
-            SendEmail
+            SendEmail,
+            FixedLeft
         },
         data() {
             return {
+                showUser: false,
                 tableData: [
                     {
                         build_before: "52", 
@@ -151,11 +148,11 @@ import SendEmail from './../components/SendEmail';
                         last_year: "552", 
                         net_worth: "552", 
                         now_year: "111",
-                        create_by: "xxx",
+                        create_by: "2020-09-08",
                         six_mouth: "222",
                         three_muoth: "222",
                         unit_worth: "222",
-                        update_by: "xxx",
+                        update_by: "2020-09-08",
                         wond_name: "诺游一号"
                     },
                     {
@@ -165,11 +162,11 @@ import SendEmail from './../components/SendEmail';
                         last_year: "552", 
                         net_worth: "552", 
                         now_year: "111",
-                        create_by: "xxx",
+                        create_by: "2020-09-08",
                         six_mouth: "222",
                         three_muoth: "222",
                         unit_worth: "222",
-                        update_by: "xxx",
+                        update_by: "2020-09-08",
                         wond_name: "诺游一号"
                     },
                     {
@@ -179,11 +176,11 @@ import SendEmail from './../components/SendEmail';
                         last_year: "552", 
                         net_worth: "552", 
                         now_year: "111",
-                        create_by: "xxx",
+                        create_by: "2020-09-08",
                         six_mouth: "222",
                         three_muoth: "222",
                         unit_worth: "222",
-                        update_by: "xxx",
+                        update_by: "2020-09-08",
                         wond_name: "诺游一号"
                     },
                     {
@@ -193,60 +190,48 @@ import SendEmail from './../components/SendEmail';
                         last_year: "552", 
                         net_worth: "552", 
                         now_year: "111",
-                        create_by: "xxx",
+                        create_by: "2020-09-08",
                         six_mouth: "222",
                         three_muoth: "222",
                         unit_worth: "222",
-                        update_by: "xxx",
+                        update_by: "2020-09-08",
                         wond_name: "诺游一号"
                     }
                 ]
             }
         },
         created(){
-            if (this.showOpacity()) {
-                
+            if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
                 this.$Axios.get('/api/v1/netWorth/list',{}).then((data)=>{
                     if (data.data.code == 200) {
-                        this.tableData = data.data.data.list
+                        this.tableData = data.data.data.list;
+                        this.showUser = true;
+                    } else {
+                        this.showUser = false;
                     }
-                    // this.tableData = [
-                    //     {
-                    //         build_before: "52", code: 23444, ID: 3, last_year: "552", net_worth: "552", now_year: "111",
-                    //         create_by: "2020-08-17T17:03:31+08:00",
-                    //         six_mouth: "222",
-                    //         three_muoth: "222",
-                    //         unit_worth: "222",
-                    //         update_by: "2020-09-08T14:55:24+08:00",
-                    //         wond_name: "诺游一号"
-                    //     }
-                    // ]
                 }).catch(function (error) {
                     console.log(error);
                 });
             }
-            
         },
         mounted(){
             window.addEventListener('scroll',()=>{
                 let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
                 console.log(scrollHeight)
-                // if (scrollHeight > 1300 && scrollHeight < 2500) {
-                if (scrollHeight > 1705 && scrollHeight < 2700) {
+            
+                if (scrollHeight > 1705 && scrollHeight < 2700 && this.$refs.companyRight) {
                     this.$refs.companyRight.style.display = "block";
-                    // this.$refs.companyRight.style.transform = "scale(1)";
                 } else {
                     this.$refs.companyRight.style.display = "none";
-                    // this.$refs.companyRight.style.transform = "scale(0.0001)";
                 }
 
-                if (scrollHeight > 1014 &&  scrollHeight < 2080) {
+                if (scrollHeight > 1014 &&  scrollHeight < 2080 && this.$refs.logo_img) {
                     this.handleTestMask("topImg", "foucs_top");
                     this.$refs.logo_img.setAttribute("src", logo);
                 } else {
                     this.handleRemove("topImg", "foucs_top");
                 }
-                if ( scrollHeight> 2080 && scrollHeight < 2354) {
+                if ( scrollHeight> 2080 && scrollHeight < 2354 && this.$refs.logo_img) {
                     this.handleTestMask("leftImg", "foucs_left")
                     if (this.$refs.logo_img) {
                         this.$refs.logo_img.setAttribute("src", font_logo)
@@ -255,8 +240,7 @@ import SendEmail from './../components/SendEmail';
                 else {
                     this.handleRemove("leftImg", "foucs_left");
                 }
-                if ( scrollHeight > 2354) {
-                // if ( scrollHeight> 2050 && scrollHeight < 2970) {
+                if ( scrollHeight > 2354 && this.$refs.logo_img) {
                     this.handleTestMask("rightImg", "foucs_right");
                     this.$refs.logo_img.setAttribute("src", logo);
                 } 
@@ -276,8 +260,10 @@ import SendEmail from './../components/SendEmail';
             },
             showOpacity(){
                 if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
+                    this.showUser = true;
                     return true
                 } else {
+                    this.showUser = false;
                     return false;
                 }
             },
@@ -293,29 +279,6 @@ import SendEmail from './../components/SendEmail';
                         this.$router.push({path:'/login'});
                     },1000)
                 }
-            },
-            formateTime(dateString){
-                var arr = dateString.split("T");
-                var d=arr[0];
-
-                var darr = d.split('-');
-                var t=arr[1];
-                var tarr = t.split('.000');
-                var marr = tarr[0].split(':');
-                darr.map(item=>{
-                    if (item < 10) {
-                        item += "0";
-                    }
-                })
-                if (parseInt(marr[2]) < 10) {
-                    marr[2] = "0" + parseInt(marr[2]);
-                } else {
-                    marr[2] = + parseInt(marr[2]);
-                }
-                // var timeStamp = parseInt(darr[0])+"-"+parseInt(darr[1])+"-"+parseInt(darr[2])+" "+parseInt(marr[0])+":"+parseInt(marr[1])+":"+parseInt(marr[2]);
-                var timeStamp = darr[0] +"-"+ darr[1] +"-"+ darr[2]+" "+ marr[0] +":"+ marr[1]+ ":" + marr[2];
-                    
-                return timeStamp
             },
             handleRemove(obj, className){
                 if (this.$refs[obj]) {

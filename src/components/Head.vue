@@ -11,17 +11,16 @@
                 <div v-if="showUser">
                     <el-popover
                         placement="top-start"
-                        width="140"
                         trigger="hover"
                         enterable="true"
                         popper-class="user_popper"
-                        close-delay=300000
                     >
                         <div class="user_box">
-                            <div class="item">{{username}}</div>
-                            <div class="item">{{mobile}}</div>
-                            <div class="item">{{email}}</div>
-                            <div class="item" style="border-bottom:unset; cursor:pointer;" @click="LogOut">退出</div>
+                            <div class="item">用户名：{{username}}</div>
+                            <div class="item">手机号：{{mobile}}</div>
+                            <div class="item">邮箱：{{email}}</div>
+                            <div class="item" style="cursor:pointer;text-align: center;" @click="changePwd">修改密码</div>
+                            <div class="item" style="border-bottom:unset; cursor:pointer;text-align: center;" @click="LogOut">退出</div>
                         </div>
                         <div class="header_item" slot="reference" style="cursor:pointer;">
                             <img src="./../assets/images/user.png" alt="">
@@ -57,7 +56,6 @@ export default {
     created(){
     //   console.log(this.$i18n.locale)
         this.showOpacity()
-        console.log("///////////")
     },
     methods:{
         handleLanguage(language){
@@ -66,7 +64,6 @@ export default {
         },
         showOpacity(){
             if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
-                console.log('1111111111')
                 this.showUser = true;
                 this.username = localStorage.getItem("username");
                 this.email = localStorage.getItem("email");
@@ -74,10 +71,13 @@ export default {
                 return true;
 
             } else {
-                console.log('222222222')
                 this.showUser = false;
                 return false;
             }
+        },
+        changePwd(){
+            this.$router.push({path:'/forgetPwd'});
+
         },
         LogOut(){
             localStorage.removeItem("username");
@@ -94,20 +94,25 @@ export default {
     }
 }
 </script>
-<style scoped lang="less">
+<style lang="less">
     .user_popper{
-        border: 10px solid red;
         padding: 0;
+        min-width: unset;
+        top: 67px!important;
+        border: unset;
+        .popper__arrow{
+            display: none;
+        }
         .user_box{
             width: 146px;
             box-sizing: border-box;
             background: #EFEFEF;
             border: 3px solid rgba(76, 76, 76, 1);
             box-shadow: 3px 5px 22px 9px rgba(76, 76, 76, 0.06);
+            border-radius: 4px;
             .item{
                 height: 30px;
                 line-height: 30px;
-                text-align: center;
                 border-bottom: 1px solid lightslategrey;
                 width: 100%;
                 font-size: 12px;
@@ -116,7 +121,9 @@ export default {
                 color: #333333;
             }
         }
+
     }
+        
     .header{
         width: 100%;
         height: 80px;

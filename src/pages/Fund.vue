@@ -3,18 +3,8 @@
         <Head />
         <div class="fund">
             <SendEmail />
-            <div class="line">
-                <div class="fixed_home">
-                    <div class="fixed_content">
-                        <div class="fixed_dot"></div>
-                        <div class="fixed_font">首</div>
-                        <div class="fixed_font" style="margin-top: 13px;">页</div>
-                        <div class="fixed_home_img">
-                            <img src="./../assets/images/fixed_home.png" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <FixedLeft msg="基金产品"></FixedLeft>
+            <div class="line"></div>
             <div class="banner">
                 <div class="banner_content">
                     <span class="">介绍 </span>
@@ -71,16 +61,19 @@
                             <div class="title">成立以来</div>
                             <div class="title">风险等级</div>
                         </div>
-                        <div class="table_list">
-                            <div class="column_content" v-for="(item, index) in 6" :key="index">
-                                <div class="content">基金名称</div>
-                                <div class="content"><span class="blur">3%</span></div>
-                                <div class="content"><span class="blur">3%</span></div>
-                                <div class="content"><span class="blur">3%</span></div>
-                                <div class="content"><span class="blur">3%</span></div>
-                                <div class="content red_color"><span class="blur">涨跌幅</span></div>
-                                <div class="content red_color"><span class="blur">成立以来</span></div>
-                                <div class="content"><span class="blur">风险等级</span></div>
+                        <div class="table_list" style="cursor: pointer;" @click="handleTableClick">
+                            <div class="column_content" v-for="(item) in tableData" :key="item.ID">
+                                <div class="content">{{item.wond_name}}</div>
+                                <div class="content"><span :class="showUser ?'': 'blur'">{{item.code}}</span></div>
+                                <div class="content" style="width: 160px;">
+                                    <span v-if="showUser" >{{item.update_by | formateTime}}</span>
+                                    <span v-else  class="blur">{{(item.update_by)}}</span>
+                                </div>
+                                <div class="content"><span :class="showUser?'': 'blur'">{{item.net_worth}}</span></div>
+                                <div class="content"><span :class="showUser ?'': 'blur'">{{item.unit_worth}}</span></div>
+                                <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
+                                <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
+                                <div class="content"><span :class="showUser ?'': 'blur'">中风险</span></div>
                             </div>
                         </div>
                     </div>
@@ -132,10 +125,71 @@
     import Footer from './../components/Footer';
     import Head from './../components/Head.vue';
     import SendEmail from './../components/SendEmail';
+    import FixedLeft from './../components/FixedLeft';
+
     export default {
         data() {
             return {
                 fundDetail:{},
+                showUser: false,
+                tableData: [
+                    {
+                        build_before: "52", 
+                        code: 23444, 
+                        ID: 3, 
+                        last_year: "552", 
+                        net_worth: "552", 
+                        now_year: "111",
+                        create_by: "2020-09-08",
+                        six_mouth: "222",
+                        three_muoth: "222",
+                        unit_worth: "222",
+                        update_by: "2020-09-08",
+                        wond_name: "诺游一号"
+                    },
+                    {
+                        build_before: "52", 
+                        code: 23444, 
+                        ID: 4, 
+                        last_year: "552", 
+                        net_worth: "552", 
+                        now_year: "111",
+                        create_by: "2020-09-08",
+                        six_mouth: "222",
+                        three_muoth: "222",
+                        unit_worth: "222",
+                        update_by: "2020-09-08",
+                        wond_name: "诺游一号"
+                    },
+                    {
+                        build_before: "52", 
+                        code: 23444, 
+                        ID: 5, 
+                        last_year: "552", 
+                        net_worth: "552", 
+                        now_year: "111",
+                        create_by: "2020-09-08",
+                        six_mouth: "222",
+                        three_muoth: "222",
+                        unit_worth: "222",
+                        update_by: "2020-09-08",
+                        wond_name: "诺游一号"
+                    },
+                    {
+                        build_before: "52", 
+                        code: 23444, 
+                        ID: 6, 
+                        last_year: "552", 
+                        net_worth: "552", 
+                        now_year: "111",
+                        create_by: "2020-09-08",
+                        six_mouth: "222",
+                        three_muoth: "222",
+                        unit_worth: "222",
+                        update_by: "2020-09-08",
+                        wond_name: "诺游一号"
+                    }
+                ],
                 fundList:[
                     {
                         name: "诺游A",
@@ -172,7 +226,8 @@
             AppoinmentForm,
             Footer,
             Head,
-            SendEmail
+            SendEmail,
+            FixedLeft,
         },
         methods:{
             handleFundClick(activeIndex){
@@ -180,28 +235,47 @@
                 this.fundDetail = this.fundList.find((item,index)=>{
                     return activeIndex == index;
                 })
-                console.log(this.fundDetail)
+            },
+            showOpacity(){
+                if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
+                    this.showUser = true;
+                    return true
+                } else {
+                    this.showUser = false;
+                    return false;
+                }
+            },
+            handleTableClick(){
+                if (this.showOpacity()) {
+                    this.$router.push({path:'/userCenter'});
+                }else{
+                    this.$message({
+                        message: "请先登录",
+                        type: 'error',
+                    });
+                    setTimeout(()=>{
+                        this.$router.push({path:'/login'});
+                    },1000)
+                }
             },
         },
-       
+        mounted(){
+           if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
+                this.$Axios.get('/api/v1/netWorth/list',{}).then((data)=>{
+                    if (data.data.code == 200) {
+                        this.tableData = data.data.data.list;
+                        this.showUser = true;
+                    } else {
+                        this.showUser = false;
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+       },
         created(){
             this.handleFundClick(0);
-            this.$Axios.post('api/admin/v1/sysUser',{
-                deptId: 10,
-                email: "123@qq.com",
-                nickName: "test2",
-                password: "123456",
-                phone: "17856376472",
-                postId: 1,
-                remark: "test2",
-                sex: "1",
-                status: "1",
-                username: "test2",
-            }).then(function(res){
-                console.log(res)
-            }).catch(function (error) {
-                console.log(error);
-            });
+            
         }
     }
 </script>

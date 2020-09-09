@@ -3,18 +3,11 @@
         <Head />
         <div class="fund">
             <SendEmail />
-            <div class="line">
-                <div class="fixed_home">
-                    <div class="fixed_content">
-                        <div class="fixed_dot"></div>
-                        <div class="fixed_font">首</div>
-                        <div class="fixed_font" style="margin-top: 13px;">页</div>
-                        <div class="fixed_home_img">
-                            <img src="./../assets/images/fixed_home.png" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="line"></div>
+            <FixedLeft 
+                msg = "关于诺游"
+            >
+            </FixedLeft>
             <div class="banner">
                 <div class="banner_content">
                     <div class="fund_name">诺游投资</div>
@@ -90,11 +83,14 @@
     import SendEmail from './../components/SendEmail';
     import Head from './../components/Head.vue';
     import Footer from './../components/Footer';
+    import FixedLeft from './../components/FixedLeft';
+
     export default {
         components:{
             SendEmail,
             Head,
             Footer,
+            FixedLeft
         },
         data() {
             return {
