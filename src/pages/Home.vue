@@ -271,13 +271,13 @@ import FixedLeft from './../components/FixedLeft';
                 if (this.showOpacity()) {
                     this.$router.push({path:'/userCenter'});
                 }else{
-                    this.$message({
-                        message: "请先登录",
-                        type: 'error',
-                    });
-                    setTimeout(()=>{
+                    // this.$message({
+                    //     message: "请先登录",
+                    //     type: 'error',
+                    // });
+                    // setTimeout(()=>{
                         this.$router.push({path:'/login'});
-                    },1000)
+                    // },1000)
                 }
             },
             handleRemove(obj, className){

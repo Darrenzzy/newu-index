@@ -119,7 +119,7 @@ export default {
         width: 47px;
         position: fixed;
         right: 10%;
-        top: 556px;
+        top: 60%;
         z-index: 10;
         .email, .bar_code, .back_top{
             width: 100%;

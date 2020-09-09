@@ -41,6 +41,7 @@ export default {
     .law{
         width: 70%;
         height: 700px;
+        padding-top: 20px;
         margin: 0 auto;
         .logo{
             width: 53px;
@@ -79,7 +80,9 @@ export default {
         }
         .button{
             display: flex;
-            width: 500px;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
             margin: 50px auto 0;
             .button_style{
                 width: 87px;

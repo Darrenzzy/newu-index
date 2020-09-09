@@ -108,10 +108,10 @@
                         this.$Axios.get('/api/v1/sendCode',{
                             params: { 'mobile': this.formInline.mobile }
                         }).then(()=>{
-                            this.$confirm('验证码已发送至登记手机号上，请查收。', {
-                                confirmButtonText: '确定',
-                                center: true,
-                            });
+                            // this.$confirm('验证码已发送至登记手机号上，请查收。', {
+                            //     confirmButtonText: '确定',
+                            //     center: true,
+                            // });
                         }).catch(function (error) {
                             console.log(error);
                         });

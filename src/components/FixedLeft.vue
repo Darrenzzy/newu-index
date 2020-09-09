@@ -39,6 +39,7 @@ export default {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
+        z-index: 10;
         .fixed_dot{
             width: 4px;
             height: 4px;
