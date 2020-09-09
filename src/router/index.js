@@ -16,6 +16,7 @@ import UserCenter from '../pages/UserCenter'
 import Law from '../pages/Law'
 import UpdatePwd from '../pages/UpdatePwd'
 import ForgetPwd from '../pages/ForgetPwd'
+import Right from '../pages/Right'
 
 
 
@@ -31,7 +32,7 @@ export default new VueRouter({
         { path: '/law', component: Law },
         { path: '/updatePwd', component: UpdatePwd },
         { path: '/forgetPwd', component: ForgetPwd },
-
+        { path: '/right', component: Right },
 
 
         { path: '/fund', component: Fund},

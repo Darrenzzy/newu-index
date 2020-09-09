@@ -9,7 +9,7 @@
             >
             </FixedLeft>
             <div class="banner">
-                <div class="banner_content">
+                <!-- <div class="banner_content">
                     <div class="fund_name">诺游投资</div>
                     <p class="fund_desc">
                         诺游投资坚守价值与成长相结合的投资模式，专注于挖掘企业 内生增长价值和成长性
@@ -17,20 +17,20 @@
                     <p class="fund_desc" style="margin-top: 30px;">
                         同时兼顾收益率曲线的稳定性与资产配置的流动性、灵活性， 努力为投资者创造持续稳定的业绩回报。
                     </p>
-                </div>
+                </div> -->
             </div>
             <div class="company_introduce">
-                <div class="title">公司介绍</div>
+                <div class="title">诺游投资</div>
                 <p class="desc">
-                    上海诺游投资管理有限公司成立于2016年4月。2017年6月5日经中国证券投资基金业协会登记备案， 取得私募投资基金管理人资格，登记编号为P1062983。
+                    诺游投资坚守价值与成长相结合的投资模式，专注于挖掘企业内生增长价值和成长性，同时 兼顾收益率曲线的稳定性与资产配置的流动性、灵活性，努力为投资者创造持续稳定的业绩 回报。
                 </p>
                 <p class="desc" style="margin-top: 20px;">
-                    经过多年积累，诺游投资已拥有一支既富理论造诣又经市场锤炼的投研团队，核心投研人员超过10人。
+                    上海诺游投资管理有限公司成立于2016年4月。2017年6月5日经中国证券投资基金业协会 登记备案，取得私募投资基金管理人资格，登记编号为P1062983。
+                </p>
+                <p class="desc" style="margin-top: 20px;">
+                    经过多年积累，诺游投资已拥有一支既富理论造诣又经市场锤炼的投研团队，核心投研人员 超过10人。
                 </p>
             </div>
-            <div class="company_bg"></div>
-
-
 
             <div class="explain">
                 <div class="left">
@@ -122,6 +122,7 @@
 <style scoped lang="less">
     .fund{
        position: relative;
+       padding-bottom: 332px;
     }
     .banner{
         height: 443px;
@@ -167,34 +168,27 @@
     }
     .company_introduce{
         width: 100%;
-        height: 385px;
         width: 60%;
         margin-left: 20%;
         padding-top: 83px;
+        padding-bottom: 120px;
         box-sizing: border-box;
         .title{
-            margin-bottom: 80px;
-            font-size: 45px;
+            margin-bottom: 65px;
+            font-size: 36px;
             font-family: Source Han Serif CN;
-            font-weight: 600;
+            font-weight: 800;
             color: #333333;
-            line-height: 36px;
             text-align: center;
         }
         .desc{
             width: 100%;
-            font-size: 18px;
+            font-size: 20px;
             font-family: Source Han Serif CN;
             font-weight: 500;
-            color: #000000;
-            line-height: 27px;
+            color: #333333;
+            line-height: 36px;
         }
-    }
-    .company_bg{
-        width: 100%;
-        height: 338px;
-        background: url("./../assets/images/company_bg.png") no-repeat;
-        background-size: cover;
     }
     .explain{
         display: flex;
@@ -230,7 +224,7 @@
             }
         }
         .right{
-            background: #C80200;
+            background: #ffffff;
             box-sizing: border-box;
             padding-left: 3%;
             .right_content{
@@ -247,16 +241,15 @@
             font-size: 27px;
             font-family: Source Han Serif CN;
             font-weight: 800;
-            color: #FFFFFF;
+            color: #363630;
             text-align: center;
         }
         .font_p{
             font-size: 18px;
             font-family: Source Han Serif CN;
             font-weight: 400;
-            color: #FFFFFF;
+            color: #363630;
             line-height: 27px;
-            // width: 100%;
         }
         .back_white{
             background: #ffffff;

@@ -8,6 +8,7 @@
                 enterable="true"
                 visible-arrow=false
                 popper-class="test"
+                close-delay=4000000
             >
                 <div class="email_box">
                     <div class="top">
@@ -16,10 +17,14 @@
                     <div class="form_content">
                         <el-form  :model="formInline" :rules="rules"  ref="form" class="demo-form-inline" :label-position="labelPosition">
                             <div class="eamil_input">
-                                <el-input v-model="formInline.email" placeholder="请填写邮箱"></el-input>
+                                <el-form-item  prop="email">
+                                    <el-input v-model="formInline.email" placeholder="请填写邮箱"></el-input>
+                                </el-form-item>
                             </div>
                             <div class="eamil_input">
-                                <el-input type="textarea" :rows="1" v-model="formInline.content" placeholder="请填写内容...."></el-input>
+                                <el-form-item prop="content">
+                                    <el-input type="textarea" :rows="2" v-model="formInline.content" placeholder="请填写内容...."></el-input>
+                                </el-form-item>
                             </div>
                             <div class="email_button" @click="onSubmit('form')">发送</div>
                         </el-form> 
@@ -48,6 +53,18 @@
 <script>
 export default {
     data() {
+        var validateEmail = (rule, value, callback) => {
+            if (!value) {
+                return callback(new Error('邮箱不能为空'));
+            }
+            setTimeout(() => {
+                if ( /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(value) ) {
+                    callback();
+                } else {
+                    callback(new Error('邮箱格式不对'));
+                }
+            }, 1000);
+        }
         return {
             startHeight: document.documentElement.scrollTop || document.body.scrollTop,
             activeIndex: 0,
@@ -58,11 +75,10 @@ export default {
             labelPosition: "top",
             rules: {
                 email: [
-                    { required: true, message: '请输入活动名称', trigger: 'blur' },
-                    { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                    { validator: validateEmail, trigger: 'blur' }
                 ],
                 content: [
-                    { required: true, message: '请选择活动区域', trigger: 'change' }
+                    { required: true, message: '内容不能为空', trigger: 'change' }
                 ],
             },
             
@@ -98,10 +114,18 @@ export default {
         },
         onSubmit(formName) {
             this.$refs[formName].validate((valid) => {
-            console.log(valid)
             if (valid) {
-                console.log(this.formInline)
-                alert('success!');
+                this.$Axios.post('/api/v1/contacts',{
+                       ...this.formInline
+                }).then((data)=>{
+                    if (data.data.code == 200) {
+                        this.$message({
+                            message: '发送成功',
+                            type: 'success'
+                        });
+                    }
+                })
+                
             } else {
                 console.log('error submit!!');
                 return false;
@@ -139,9 +163,7 @@ export default {
         .back_top{
             background: url("./../assets/images/back_top.png");
             background-size: cover;
-
         }
-        
     }
     .test{
         border: unset;
@@ -192,11 +214,14 @@ export default {
                 color: #FFFFFF;
                 font-size: 15px;
                 font-weight: 800;
-
+                cursor: pointer;
+            }
+            /deep/.el-form-item{
+                margin-bottom: unset;
             }
             /deep/.el-input__inner{
-                height: 28px;
-                line-height: 28px;
+                height: 30px;
+                line-height: 30px;
             }
         }
     }
