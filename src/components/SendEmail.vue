@@ -69,21 +69,21 @@ export default {
         };
     },
     mounted(){
-        window.addEventListener('scroll',()=>{
-            let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
-            if (scrollHeight > this.startHeight) {
-                this.$refs.sendEmail.style.display = "none"
-                // $('.navigation').addClass('hide');
-            } else {
-                // $('.navigation').remove('hide');
-                this.$refs.sendEmail.style.display = "block";
-            }
-            if (scrollHeight < this.startHeight){
-                // $('.navigation').removeClass('hide');
-                this.$refs.sendEmail.style.display = "block";
-            }
-            this.startHeight = scrollHeight;
-        })
+        // window.addEventListener('scroll',()=>{
+        //     let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
+        //     if (scrollHeight > this.startHeight) {
+        //         this.$refs.sendEmail.style.display = "none"
+        //         // $('.navigation').addClass('hide');
+        //     } else {
+        //         // $('.navigation').remove('hide');
+        //         this.$refs.sendEmail.style.display = "block";
+        //     }
+        //     if (scrollHeight < this.startHeight){
+        //         // $('.navigation').removeClass('hide');
+        //         this.$refs.sendEmail.style.display = "block";
+        //     }
+        //     this.startHeight = scrollHeight;
+        // })
     },
     methods:{
         backTop(){
@@ -119,7 +119,7 @@ export default {
         width: 47px;
         position: fixed;
         right: 10%;
-        top: 456px;
+        top: 556px;
         z-index: 10;
         .email, .bar_code, .back_top{
             width: 100%;

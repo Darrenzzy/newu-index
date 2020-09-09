@@ -26,7 +26,7 @@
                             <div class="fund_detail_desc">
                                 {{this.fundDetail.desc}}
                             </div>
-                            <div class="more">了解更多》</div>
+                            <div class="more" @click="handleTableClick">了解更多》</div>
 
                         </div>
                         <div class="tab">

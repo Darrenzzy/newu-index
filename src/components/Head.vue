@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="header_box">
-            <div class="header_left">
+            <div class="header_left" @click="toLogin">
                 <img src="./../assets/images/logo.png" />
             </div>
             <div class="header_right">
@@ -61,6 +61,9 @@ export default {
         handleLanguage(language){
             localStorage.setItem("locale",language)
             this.$i18n.locale = language;
+        },
+        toLogin(){
+            this.$router.push({path:'/'});
         },
         showOpacity(){
             if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
@@ -145,6 +148,7 @@ export default {
     .header_left{
         width: 50px;
         height: 50px;
+        cursor: pointer;
     }
     .header_left img{
         width: 100%;
