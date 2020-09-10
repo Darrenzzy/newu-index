@@ -219,19 +219,24 @@ import FixedLeft from './../components/FixedLeft';
                 let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
                 console.log(scrollHeight)
             
-                if (scrollHeight > 1705 && scrollHeight < 2700 && this.$refs.companyRight) {
+                // if (scrollHeight > 1705 && scrollHeight < 2700 && this.$refs.companyRight) {
+                //     this.$refs.companyRight.style.display = "block";
+                // } else {
+                //     this.$refs.companyRight.style.display = "none";
+                // }
+                if (scrollHeight > 1705 && this.$refs.companyRight) {
                     this.$refs.companyRight.style.display = "block";
                 } else {
                     this.$refs.companyRight.style.display = "none";
                 }
 
-                if (scrollHeight > 1014 &&  scrollHeight < 2080 && this.$refs.logo_img) {
+                if (scrollHeight > 1014 &&  scrollHeight < 2060 && this.$refs.logo_img) {
                     this.handleTestMask("topImg", "foucs_top");
                     this.$refs.logo_img.setAttribute("src", logo);
                 } else {
                     this.handleRemove("topImg", "foucs_top");
                 }
-                if ( scrollHeight> 2080 && scrollHeight < 2354 && this.$refs.logo_img) {
+                if ( scrollHeight >= 2060 && scrollHeight < 2340 && this.$refs.logo_img) {
                     this.handleTestMask("leftImg", "foucs_left")
                     if (this.$refs.logo_img) {
                         this.$refs.logo_img.setAttribute("src", font_logo)
@@ -240,7 +245,7 @@ import FixedLeft from './../components/FixedLeft';
                 else {
                     this.handleRemove("leftImg", "foucs_left");
                 }
-                if ( scrollHeight > 2354 && this.$refs.logo_img) {
+                if ( scrollHeight >= 2340 && this.$refs.logo_img) {
                     this.handleTestMask("rightImg", "foucs_right");
                     this.$refs.logo_img.setAttribute("src", logo);
                 } 
@@ -408,7 +413,6 @@ import FixedLeft from './../components/FixedLeft';
                 width: 20%;
                 right: 20%;
             }
-        
         }
         @media screen and (max-width:770px) {
             .company_right{
@@ -425,7 +429,7 @@ import FixedLeft from './../components/FixedLeft';
         .company_right{
             // position: absolute;
             position: fixed;
-            top: 294px;
+            top: 200px;
             // top: 20px;
             margin-top: 30px;
             display: none;
@@ -458,26 +462,26 @@ import FixedLeft from './../components/FixedLeft';
             }
             .is_show{
                 .right_img{
-                    border: 1px solid rgba(188, 304, 40, .8);
+                    border: 1px solid rgba(30,12,63, .85);
                     // box-shadow: 0 0 15px rgba(188, 304, 40, .5);
                     img{
-                        border: 1px solid rgba(232, 34, 45, .7);
+                        border: 1px solid rgba(30,12,63, .45);
                         // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     }
                 }
                 .left_img{
-                    border: 1px solid rgba(232, 34, 47, .8);
+                    border: 1px solid rgba(235,26,49, .85);
                     // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     img{
-                        border: 1px solid rgba(232, 34, 45, .7);
+                        border: 1px solid rgba(235,26,49, .45);
                         // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     }
                 }
                 .top_img{
-                    border: 1px solid rgba(32, 334, 89, .8);
+                    border: 1px solid rgba(239,162,135, .85);
                     // box-shadow: 0 0 15px rgba(32, 334, 45, .5);
                     img{
-                        border: 1px solid rgba(232, 34, 45, .7);
+                        border: 1px solid rgba(239,162,135, .45);
                         // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     }
                 }

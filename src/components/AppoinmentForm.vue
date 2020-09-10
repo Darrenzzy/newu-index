@@ -11,8 +11,8 @@
             <el-form  :model="formInline" :rules="rules"  ref="form" class="demo-form-inline" :label-position="labelPosition">
                 <div class="appointment_content">
                     <div class="input_box">
-                        <el-form-item label="姓名:" prop="user">
-                            <el-input v-model="formInline.user" placeholder=""></el-input>
+                        <el-form-item label="姓名:" prop="name">
+                            <el-input v-model="formInline.name" placeholder=""></el-input>
                         </el-form-item>
                     </div>
                     <div class="input_box">
@@ -23,8 +23,8 @@
                     <div class="input_box">
                         <el-form-item label="性别:" prop="sex">
                             <el-radio-group v-model="formInline.sex">
-                            <el-radio label="0">先生</el-radio>
-                            <el-radio label="1">女士</el-radio>
+                            <el-radio label="1">先生</el-radio>
+                            <el-radio label="2">女士</el-radio>
                             </el-radio-group>
                         </el-form-item>
                     </div>
@@ -41,24 +41,25 @@
                         </el-form-item>
                     </div>
                     <div class="input_box">
-                            <el-form-item label="投资身份" prop="aaaaa">
-                            <el-radio-group v-model="formInline.aaaaa">
-                            <el-radio label="0">个人</el-radio>
-                            <el-radio label="1">机构</el-radio>
+                        <el-form-item label="投资身份" prop="class">
+                            <el-radio-group v-model="formInline.class">
+                            <el-radio label=1>个人</el-radio>
+                            <el-radio label=2>机构</el-radio>
                             </el-radio-group>
                         </el-form-item>
                     </div>
                     
                     <div class="input_box">
-                        <el-form-item label="验证码:" prop="code">
-                            <el-input v-model="formInline.code" placeholder="">电话</el-input>
-                        </el-form-item>
-                    </div>
-                    <div class="input_box">
                         <div class="button_box">
                             <div class="button" @click="onSubmit('form')">提交预约</div>
                         </div>
                     </div>
+                    <div class="input_box">
+                        <!-- <el-form-item label="验证码:" prop="code">
+                            <el-input v-model="formInline.code" placeholder="">电话</el-input>
+                        </el-form-item> -->
+                    </div>
+                   
 
                     <div class="input_box">
                         
@@ -137,10 +138,10 @@ export default {
                 "澳门特别行政区"
             ],
             formInline: {
-                user: '',
+                name: '',
                 region: '',
                 sex: "",
-                aaaaa: "",
+                class: "",
                 city: "",
                 email: "",
                 mobile: "",
@@ -148,7 +149,7 @@ export default {
             },
             labelPosition: "top",
             rules: {
-                user: [
+                name: [
                     { required: true, message: '姓名不能为空', trigger: 'blur' },
                 ],
                 mobile: [
@@ -171,10 +172,24 @@ export default {
     methods:{
         onSubmit(formName) {
             this.$refs[formName].validate((valid) => {
-            console.log(valid)
             if (valid) {
-                console.log(this.formInline)
-                alert('success!');
+                this.$Axios.post('/api/v1/appointment/',{
+                    ...this.formInline
+                }).then((res)=>{
+                    if (res.data.code == 200) {
+                        this.$message({
+                            message: '预约成功',
+                            type: 'success'
+                        });
+                    } else {
+                        this.$message({
+                            message: res.data.msg,
+                            type: '预约失败',
+                        });
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
             } else {
                 console.log('error submit!!');
                 return false;
@@ -301,7 +316,7 @@ export default {
                         border-radius: 4px;
                         cursor: pointer;
                         font-size: 14px;
-                        background: #C80200;
+                        background: #F13A1C;
                         color: #ffffff;
                     }
                 }

@@ -38,7 +38,7 @@
         padding-bottom: 65px;
         background: #ffffff;
         margin: auto;
-        border: 15px solid rgba(200, 2, 0, 0.7);
+        border: 15px solid rgba(192, 0, 0, 1);
     }
     .logo_content{
         width: 65px;

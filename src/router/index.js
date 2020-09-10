@@ -18,6 +18,11 @@ import UpdatePwd from '../pages/UpdatePwd'
 import ForgetPwd from '../pages/ForgetPwd'
 import Right from '../pages/Right'
 
+import Risk from '../pages/Risk'
+import Responseblity from '../pages/Responseblity'
+
+
+
 
 
 
@@ -33,6 +38,9 @@ export default new VueRouter({
         { path: '/updatePwd', component: UpdatePwd },
         { path: '/forgetPwd', component: ForgetPwd },
         { path: '/right', component: Right },
+
+        { path: '/risk', component: Risk },
+        { path: '/responseblity', component: Responseblity },
 
 
         { path: '/fund', component: Fund},
