@@ -104,13 +104,13 @@
                             localStorage.setItem("username", res.data.data.username);
                             localStorage.setItem("email", res.data.data.email);
                             localStorage.setItem("mobile", res.data.data.mobile);
-                            this.$message({
-                                message: '登录成功',
-                                type: 'success'
-                            });
-                            setTimeout(()=>{
+                            // this.$message({
+                            //     message: '登录成功',
+                            //     type: 'success'
+                            // });
+                            // setTimeout(()=>{
                                 this.$router.push({path:'/userCenter'});
-                            },1000)
+                            // },1000)
                         } else {
                             this.$message({
                                 message: res.data.msg,

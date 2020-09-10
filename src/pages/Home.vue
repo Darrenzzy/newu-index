@@ -76,7 +76,7 @@
                             <img src="./../assets/images/fengkong.png"/>
                         </div>
                     </div>
-                    <div class="logo">
+                    <div class="logo" ref="logo_box">
                         <img src="./../assets/images/logo.png" ref="logo_img"/>
                     </div>
                     <!-- <div class="circle_font">
@@ -86,34 +86,36 @@
                     </div> -->
                     <img src="./../assets/images/circle.png"/>
                 </div>
-                <div class="company_left">
-                    <h4 class="company_left_h4" @click="handleTestMask('foucs_right')">·价值投资</h4>
-                    <p class="company_left_p" style="margin-bottom: 30px;">
-                            基本面研究为首要依据，诺游投研团队具
-                        有平均10年以上高级版行业研究从业经历
-                    </p>
-                    <p class="company_left_p">
-                        诺游以投研团队水平的优势，多次捕捉到
-                        公司业绩拐点，抢先发现低估企业，享受
-                        戴维斯双击带来的增值红利
-                    </p>
-                </div>
-                <div class="company_left">
-                    <h4 class="company_left_h4">·资产分配灵活性</h4>
-                    <p class="company_left_p">
-                        诺游相信趋势与交易的力量，把握进行资
-                        产配资调整的机会，让收益能够最大化
-                    </p>
-                </div>
-              
-                <div class="company_left">
-                    <h4 class="company_left_h4">·仓位管控</h4>
-                    <p class="company_left_p">
-                        诺游执行严格的风控措施，风控团队监控日内交易数据，依据风险分析模型做出仓位管控主
-                    </p>
-                    <p class="company_left_p">
-                        动择时来控制产品的回撤风险，力求产品净值曲线的平滑
-                    </p>
+                <div class="company_left_box">
+                    <div class="company_left">
+                        <h4 class="company_left_h4" @click="handleTestMask('foucs_right')">·价值投资</h4>
+                        <p class="company_left_p" style="margin-bottom: 30px;">
+                                基本面研究为首要依据，诺游投研团队具
+                            有平均10年以上高级版行业研究从业经历
+                        </p>
+                        <p class="company_left_p">
+                            诺游以投研团队水平的优势，多次捕捉到
+                            公司业绩拐点，抢先发现低估企业，享受
+                            戴维斯双击带来的增值红利
+                        </p>
+                    </div>
+                    <div class="company_left">
+                        <h4 class="company_left_h4">·资产分配灵活性</h4>
+                        <p class="company_left_p">
+                            诺游相信趋势与交易的力量，把握进行资
+                            产配资调整的机会，让收益能够最大化
+                        </p>
+                    </div>
+                
+                    <div class="company_left">
+                        <h4 class="company_left_h4">·仓位管控</h4>
+                        <p class="company_left_p">
+                            诺游执行严格的风控措施，风控团队监控日内交易数据，依据风险分析模型做出仓位管控主
+                        </p>
+                        <p class="company_left_p">
+                            动择时来控制产品的回撤风险，力求产品净值曲线的平滑
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -124,6 +126,7 @@
 <script>
 import logo from "./../assets/images/logo.png";
 import font_logo from "./../assets/images/font_logo.png";
+import font_circle from "./../assets/images/font_circle.png";
 import Head from './../components/Head.vue';
 import Footer from './../components/Footer';
 import SendEmail from './../components/SendEmail';
@@ -247,10 +250,14 @@ import FixedLeft from './../components/FixedLeft';
                 }
                 if ( scrollHeight >= 2340 && this.$refs.logo_img) {
                     this.handleTestMask("rightImg", "foucs_right");
-                    this.$refs.logo_img.setAttribute("src", logo);
+
+                    this.$refs.logo_img.setAttribute("src", font_circle);
+                    this.$refs.logo_box.classList.add("font_circle")
+
                 } 
                 else {
                     this.handleRemove("rightImg", "foucs_right")
+                    this.handleRemove("logo_box", "font_circle")
                 }
             })
         },
@@ -276,13 +283,8 @@ import FixedLeft from './../components/FixedLeft';
                 if (this.showOpacity()) {
                     this.$router.push({path:'/userCenter'});
                 }else{
-                    // this.$message({
-                    //     message: "请先登录",
-                    //     type: 'error',
-                    // });
-                    // setTimeout(()=>{
-                        this.$router.push({path:'/login'});
-                    // },1000)
+                    let routeData = this.$router.resolve({ path: '/login'});
+                    window.open(routeData.href, '_blank');
                 }
             },
             handleRemove(obj, className){
@@ -386,30 +388,33 @@ import FixedLeft from './../components/FixedLeft';
             margin-right: 100px;
             position: relative;
         }
-        .company_left{
-            width: 35%;
-            margin-bottom: 130px;
-            .company_left_h4{
-                font-size: 36px;
-                font-family: Source Han Serif CN;
-                font-weight: 800;
-                color: #666666;
-                margin-top: 0;
-                margin-bottom: 40px;
-            }
-            .company_left_p{
-                width: 100%;
-                font-size: 18px;
-                font-family: Source Han Serif CN;
-                font-weight: 800;
-                color: #666666;
-                line-height: 27px;
-                opacity: 0.65;
+        .company_left_box{
+            overflow: scroll;
+            // height: 400px;
+            .company_left{
+                width: 35%;
+                margin-bottom: 130px;
+                .company_left_h4{
+                    font-size: 36px;
+                    font-family: Source Han Serif CN;
+                    font-weight: 800;
+                    color: #666666;
+                    margin-top: 0;
+                    margin-bottom: 40px;
+                }
+                .company_left_p{
+                    width: 100%;
+                    font-size: 18px;
+                    font-family: Source Han Serif CN;
+                    font-weight: 800;
+                    color: #666666;
+                    line-height: 27px;
+                    opacity: 0.65;
+                }
             }
         }
         @media screen and (min-width:769px) {
             .company_right{
-                // width: 26%;
                 width: 20%;
                 right: 20%;
             }
@@ -418,11 +423,9 @@ import FixedLeft from './../components/FixedLeft';
             .company_right{
                 width: 20%;
                 right: 20%;
-                // right: 10%;
             }
         
         }
-        
         // @media screen and (max-width: 768px) and (min-width:481px) {
         
         // }
@@ -432,6 +435,7 @@ import FixedLeft from './../components/FixedLeft';
             top: 200px;
             // top: 20px;
             margin-top: 30px;
+            // display: block;
             display: none;
             // transform: scale(0.0001);
             transition: transform 1s ease;
@@ -492,7 +496,7 @@ import FixedLeft from './../components/FixedLeft';
                 left: 50%;
                 top: 50%;
                 transform: translate(-50%, -50%) scale(1.3);
-                transition: transform 1s ease ;
+                // transition: all 1s ease ;
                 img{
                     max-height: 100%;
                     max-width: 100%;
@@ -500,6 +504,10 @@ import FixedLeft from './../components/FixedLeft';
                     min-height: 100%;
                     object-fit: cover;
                 }
+            }
+            .font_circle{
+                width: 110%;
+                transform: translate(-50%, -90%) scale(1.3);
             }
             .circle_font{
                 position: absolute;

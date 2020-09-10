@@ -8,7 +8,7 @@
                 msg = "关于诺游"
             >
             </FixedLeft>
-            <div class="banner">
+            <div class="banner" >
                 <!-- <div class="banner_content">
                     <div class="fund_name">诺游投资</div>
                     <p class="fund_desc">
@@ -19,7 +19,7 @@
                     </p>
                 </div> -->
             </div>
-            <div class="company_introduce">
+            <div class="company_introduce" id="companyIntroduce">
                 <div class="title">诺游投资</div>
                 <p class="desc">
                     诺游投资坚守价值与成长相结合的投资模式，专注于挖掘企业内生增长价值和成长性，同时 兼顾收益率曲线的稳定性与资产配置的流动性、灵活性，努力为投资者创造持续稳定的业绩 回报。
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="right">
+                <div class="right" id="companyExplain">
                     <div class="right_content">
                         <div class="font_title">司名释义</div>
                         <p class="font_p">诺代表，和客户之间的承诺与信任。</p>
@@ -50,7 +50,7 @@
                     
                 </div>
             </div>
-            <div class="explain">
+            <div class="explain" id="logoExplain">
                 <div class="left back_white" style="order:1;">
                     <div class="left_content">
                         <div class="font_title">标识释义</div>
@@ -223,7 +223,7 @@
                 width: 100%;
             }
         }
-        .right{
+        .right{ 
             background: #ffffff;
             box-sizing: border-box;
             padding-left: 3%;

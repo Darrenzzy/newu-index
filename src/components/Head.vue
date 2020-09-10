@@ -19,8 +19,8 @@
                             <div class="item">用户名：{{username}}</div>
                             <div class="item">手机号：{{mobile}}</div>
                             <div class="item">邮箱：{{email}}</div>
-                            <div class="item" style="cursor:pointer;text-align: center;" @click="changePwd">修改密码</div>
-                            <div class="item" style="border-bottom:unset; cursor:pointer;text-align: center;" @click="LogOut">退出</div>
+                            <div class="item" style="cursor:pointer;text-align: center; padding-left: 0px;" @click="changePwd">修改密码</div>
+                            <div class="item" style="border-bottom:unset; cursor:pointer;text-align: center;padding-left: 0px;" @click="LogOut">退出</div>
                         </div>
                         <div class="header_item" slot="reference" style="cursor:pointer;">
                             <img src="./../assets/images/user.png" alt="">
@@ -86,12 +86,15 @@ export default {
             localStorage.removeItem("username");
             localStorage.removeItem("email");
             localStorage.removeItem("mobile");
-            this.$router.push({path:'/login'});
+            // this.$router.push({path:'/login'});
+            let routeData = this.$router.resolve({ path: '/login'});
+            window.open(routeData.href, '_blank');
             this.showUser = false;
-            this.$message({
-                message: '退出成功',
-                type: 'success'
-            });
+
+            // this.$message({
+            //     message: '退出成功',
+            //     type: 'success'
+            // });
         }
 
     }
@@ -109,19 +112,19 @@ export default {
         .user_box{
             width: 146px;
             box-sizing: border-box;
-            background: #EFEFEF;
-            border: 3px solid rgba(76, 76, 76, 1);
+            background: #ffffff;
+            border: 3px solid rgba(239, 239, 239, 1);
             box-shadow: 3px 5px 22px 9px rgba(76, 76, 76, 0.06);
             border-radius: 4px;
             .item{
                 height: 30px;
                 line-height: 30px;
-                border-bottom: 1px solid lightslategrey;
+                border-bottom: 1px solid rgba(239, 239, 239, 1);
                 width: 100%;
                 font-size: 12px;
                 font-family: Source Han Serif CN;
-                font-weight: 800;
-                color: #333333;
+                color: #343434;
+                padding-left: 10px;
             }
         }
 

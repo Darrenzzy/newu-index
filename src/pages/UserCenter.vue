@@ -7,10 +7,9 @@
             <div class="line"></div>
             <div class="banner">
                 <div class="banner_content">
-                
                 </div>
             </div>
-            <div class="table">
+            <div class="table" id="userCenterFund">
                 <div class="table_box">
                     <div class="table_content">
                         <div class="table_title">诺游基金</div>
@@ -49,7 +48,7 @@
             <div class="search">
                 <div class="left">
                 </div>
-                <div class="right">
+                <div class="right"  id="vipSearch">
                     <div class="right_content">
                         <div class="search_title">尊户查询</div>
                         <div class="search_link">

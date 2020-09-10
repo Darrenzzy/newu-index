@@ -16,7 +16,7 @@
                     </p>
                 </div>
             </div>
-            <div class="introduce">
+            <div class="introduce" id="fundIntroduce">
                 <h3 class="fund_public_title">产品介绍</h3>
                 <div class="introduce_content">
                     <div class="introduce_left"></div>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div class="net">
+            <div class="net" id="fundNet">
                 <h3 class="fund_public_title">产品净值</h3>
                 <div class="net_content">
                     <div class="table_content">
@@ -80,7 +80,7 @@
                 </div>
 
             </div>
-            <div class="process">
+            <div class="process" id="fundProcess">
                 <h3 class="fund_public_title">认购流程</h3>
                 <div class="process_content">
                     <p class="process_p">
@@ -114,7 +114,7 @@
                 </div>
 
             </div>
-            <AppoinmentForm />
+            <AppoinmentForm id="appointment"/>
             <!-- <img src="./../assets/images/banner.png"/> -->
         </div>
         <Footer />
@@ -256,6 +256,8 @@
                     // setTimeout(()=>{
                         this.$router.push({path:'/login'});
                     // },1000)
+                    let routeData = this.$router.resolve({ path: '/login'});
+                    window.open(routeData.href, '_blank');
                 }
             },
         },

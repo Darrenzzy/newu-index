@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="top">
         <Head />
         <div class="right">
             <div class="line"></div>
@@ -310,6 +310,9 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+    .right{
+        position: relative;
+    }
     .banner{
         background: url('./../assets/images/right_banner.png') no-repeat;
         width: 100%;
