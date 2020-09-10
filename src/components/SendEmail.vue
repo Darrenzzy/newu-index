@@ -57,7 +57,7 @@ export default {
                 return callback(new Error('邮箱不能为空'));
             }
             setTimeout(() => {
-                if ( /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(value) ) {
+                if ( /^[A-Za-z0-9\u4e00-\u9fa5^_]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(value) ) {
                     callback();
                 } else {
                     callback(new Error('邮箱格式不对'));
@@ -84,21 +84,27 @@ export default {
         };
     },
     mounted(){
-        // window.addEventListener('scroll',()=>{
-        //     let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
-        //     if (scrollHeight > this.startHeight) {
-        //         this.$refs.sendEmail.style.display = "none"
-        //         // $('.navigation').addClass('hide');
-        //     } else {
-        //         // $('.navigation').remove('hide');
-        //         this.$refs.sendEmail.style.display = "block";
-        //     }
-        //     if (scrollHeight < this.startHeight){
-        //         // $('.navigation').removeClass('hide');
-        //         this.$refs.sendEmail.style.display = "block";
-        //     }
-        //     this.startHeight = scrollHeight;
-        // })
+        window.addEventListener('scroll',()=>{
+            let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
+
+            if (scrollHeight > 1000) {
+                this.$refs.sendEmail.style.opacity = 1;
+            } else{
+                this.$refs.sendEmail.style.opacity = 0;
+            }
+            // if (scrollHeight > this.startHeight) {
+            //     this.$refs.sendEmail.style.display = "none"
+            //     // $('.navigation').addClass('hide');
+            // } else {
+            //     // $('.navigation').remove('hide');
+            //     this.$refs.sendEmail.style.display = "block";
+            // }
+            // if (scrollHeight < this.startHeight){
+            //     // $('.navigation').removeClass('hide');
+            //     this.$refs.sendEmail.style.display = "block";
+            // }
+            // this.startHeight = scrollHeight;
+        })
     },
     methods:{
         backTop(){
@@ -144,6 +150,7 @@ export default {
         right: 10%;
         top: 60%;
         z-index: 10;
+        transition: opacity 1s ease;
         .email, .bar_code, .back_top{
             width: 100%;
             height: 45px;

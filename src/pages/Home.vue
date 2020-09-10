@@ -16,7 +16,6 @@
                 <img src="./../assets/images/play.png" />
                 <a href="#">观看视频</a>
             </div>
-            
         </div>
         <div class="table_box">
             <div class="table_content">
@@ -227,11 +226,11 @@ import FixedLeft from './../components/FixedLeft';
                 // } else {
                 //     this.$refs.companyRight.style.display = "none";
                 // }
-                if (scrollHeight > 1705 && this.$refs.companyRight) {
+                if (scrollHeight > 1705 && scrollHeight < 2600 && this.$refs.companyRight) {
                     this.$refs.companyRight.style.display = "block";
                 } else {
                     this.$refs.companyRight.style.display = "none";
-                }
+            }
 
                 if (scrollHeight > 1014 &&  scrollHeight < 2060 && this.$refs.logo_img) {
                     this.handleTestMask("topImg", "foucs_top");

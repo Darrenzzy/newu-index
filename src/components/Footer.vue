@@ -46,7 +46,7 @@
         </div>
         <div class="address">
             <div class="top">
-                <span class="item">联系我们</span>
+                <span class="item"><a href="/contactUs">联系我们</a></span>
                 <span class="boder_style"></span>
                 <span class="item"><a href="/responseblity#top">免责声明</a></span>
                 <span class="boder_style"></span>

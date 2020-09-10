@@ -34,7 +34,7 @@
                         </el-form-item>
                     </div>
                     <div class="input_box">
-                        <el-form-item label="城市:">
+                        <el-form-item label="城市:" prop="city">
                             <el-select v-model="formInline.city" placeholder="">
                             <el-option :label="item" :value="item" v-for="(item, index) in selectData" :key="index"></el-option>
                             </el-select>
@@ -43,8 +43,8 @@
                     <div class="input_box">
                         <el-form-item label="投资身份" prop="class">
                             <el-radio-group v-model="formInline.class">
-                            <el-radio label=1>个人</el-radio>
-                            <el-radio label=2>机构</el-radio>
+                            <el-radio label="1">个人</el-radio>
+                            <el-radio label="2">机构</el-radio>
                             </el-radio-group>
                         </el-form-item>
                     </div>
@@ -92,7 +92,7 @@ export default {
                 return callback(new Error('邮箱不能为空'));
             }
             setTimeout(() => {
-                if ( /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(value) ) {
+                if ( /^[A-Za-z0-9\u4e00-\u9fa5^_]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(value) ) {
                     callback();
                 } else {
                     callback(new Error('邮箱格式不对'));
@@ -139,13 +139,11 @@ export default {
             ],
             formInline: {
                 name: '',
-                region: '',
-                sex: "",
-                class: "",
+                sex: "1",
+                class: "1",
                 city: "",
                 email: "",
                 mobile: "",
-                code: ""
             },
             labelPosition: "top",
             rules: {
@@ -172,6 +170,7 @@ export default {
     methods:{
         onSubmit(formName) {
             this.$refs[formName].validate((valid) => {
+                this.formInline.class = parseInt(this.formInline.class)
             if (valid) {
                 this.$Axios.post('/api/v1/appointment/',{
                     ...this.formInline
@@ -181,6 +180,7 @@ export default {
                             message: '预约成功',
                             type: 'success'
                         });
+                        this.resetForm("form")
                     } else {
                         this.$message({
                             message: res.data.msg,

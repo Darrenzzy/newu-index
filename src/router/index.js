@@ -20,6 +20,7 @@ import Right from '../pages/Right'
 
 import Risk from '../pages/Risk'
 import Responseblity from '../pages/Responseblity'
+import ContactUs from '../pages/ContactUs'
 
 
 
@@ -38,6 +39,7 @@ export default new VueRouter({
         { path: '/updatePwd', component: UpdatePwd },
         { path: '/forgetPwd', component: ForgetPwd },
         { path: '/right', component: Right },
+        { path: '/contactUs', component: ContactUs },
 
         { path: '/risk', component: Risk },
         { path: '/responseblity', component: Responseblity },

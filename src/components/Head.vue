@@ -14,13 +14,14 @@
                         trigger="hover"
                         enterable="true"
                         popper-class="user_popper"
+                        close-delay=300000
                     >
                         <div class="user_box">
                             <div class="item">用户名：{{username}}</div>
                             <div class="item">手机号：{{mobile}}</div>
                             <div class="item">邮箱：{{email}}</div>
-                            <div class="item" style="cursor:pointer;text-align: center; padding-left: 0px;" @click="changePwd">修改密码</div>
-                            <div class="item" style="border-bottom:unset; cursor:pointer;text-align: center;padding-left: 0px;" @click="LogOut">退出</div>
+                            <div class="item" style="cursor:pointer;text-align: center;" @click="changePwd">修改密码</div>
+                            <div class="item" style="border-bottom:unset; cursor:pointer;text-align: center;" @click="LogOut">退出</div>
                         </div>
                         <div class="header_item" slot="reference" style="cursor:pointer;">
                             <img src="./../assets/images/user.png" alt="">
@@ -120,11 +121,11 @@ export default {
                 height: 30px;
                 line-height: 30px;
                 border-bottom: 1px solid rgba(239, 239, 239, 1);
-                width: 100%;
                 font-size: 12px;
+                padding: 0 10px;
                 font-family: Source Han Serif CN;
                 color: #343434;
-                padding-left: 10px;
+                overflow: hidden;
             }
         }
 
