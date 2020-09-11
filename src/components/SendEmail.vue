@@ -150,6 +150,7 @@ export default {
         right: 10%;
         top: 60%;
         z-index: 10;
+        opacity: 0;
         transition: opacity 1s ease;
         .email, .bar_code, .back_top{
             width: 100%;

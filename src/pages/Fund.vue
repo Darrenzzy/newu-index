@@ -383,6 +383,11 @@
                 color: #2A2A2A;
                 line-height: 25px;
                 margin-top: 20px;
+                overflow:hidden; 
+                text-overflow:ellipsis; 
+                display:-webkit-box; /* autoprefixer: off */ 
+                -webkit-box-orient:vertical; /* autoprefixer: on */ 
+                -webkit-line-clamp:6;
             }
             .more{
                 color: #ffffff;

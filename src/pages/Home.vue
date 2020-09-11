@@ -226,7 +226,7 @@ import FixedLeft from './../components/FixedLeft';
                 // } else {
                 //     this.$refs.companyRight.style.display = "none";
                 // }
-                if (scrollHeight > 1705 && scrollHeight < 2600 && this.$refs.companyRight) {
+                if (scrollHeight > 1705 && scrollHeight < 2500 && this.$refs.companyRight) {
                     this.$refs.companyRight.style.display = "block";
                 } else {
                     this.$refs.companyRight.style.display = "none";

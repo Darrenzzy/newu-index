@@ -153,6 +153,7 @@ export default {
         width: 50px;
         height: 50px;
         cursor: pointer;
+        margin-left: 10px;
     }
     .header_left img{
         width: 100%;
