@@ -165,12 +165,13 @@ export default {
     }
     .header_item{
         color: black;
-        height: 40px;
-        line-height: 40px;
+        // height: 40px;
+        // line-height: 40px;
         margin-left: 60px;
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center;
         img{
             width: 18px;
         }
@@ -183,9 +184,10 @@ export default {
             &::after{
                 content: "aa";
                 position: absolute;
-                bottom: 8px;
+                top: -15px;
                 background-size: 26px;
                 width: 26px;
+                height: 20px;
                 color: transparent;
                 left: calc(50% - 13px);
                 background-repeat: no-repeat;

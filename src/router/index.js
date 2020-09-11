@@ -25,29 +25,35 @@ import ContactUs from '../pages/ContactUs'
 
 
 
-
-
-
 export default new VueRouter({
     mode: "history",
     routes:[
-        { path: '/', component: Home},
+        { path: '/', component: Home, name: "home"},
         { path: '/test', component: Test },
         { path: '/zkp', component: Zkp },
-        { path: '/userCenter', component: UserCenter },
+        { 
+            path: '/userCenter', 
+            component: UserCenter,
+            meta: {
+                requireAuth: true,  
+            },
+        },
         { path: '/law', component: Law },
         { path: '/updatePwd', component: UpdatePwd },
         { path: '/forgetPwd', component: ForgetPwd },
         { path: '/right', component: Right },
         { path: '/contactUs', component: ContactUs },
-
         { path: '/risk', component: Risk },
         { path: '/responseblity', component: Responseblity },
 
 
         { path: '/fund', component: Fund},
         { path: '/about_nuoyou', component: AboutNuoyou },
-        { path: '/login', component: Login },
+        { 
+            path: '/login', 
+            component: Login,
+            name: "login"
+        },
         { path: '/register', component: Register },
 
         { path: '*', redirect: "/"}

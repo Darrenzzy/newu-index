@@ -24,7 +24,7 @@ export default {
 <style lang="less" scoped>
     .fixed_home{
         position: fixed;
-        top: 256px;
+        top: 156px;
         left: 15%;
         background: #C00000;
         width: 48px;

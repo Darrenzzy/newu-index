@@ -7,6 +7,9 @@ import less from 'less'
 import './plugins/element.js';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+// import store from "./store"
+
+
 
 Vue.use(ElementUI);
 
@@ -39,14 +42,38 @@ Vue.filter('formateTime', function (dateString) {
   }
 })
 
-
 Vue.use(less);
 Vue.config.productionTip = false
 Vue.prototype.$Axios = Axios;
 
 
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth) { 
+      if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile") ) {  
+        next();
+      }
+      else {
+          next({
+            path: '/login',  
+            query: {redirect: to.path}  
+          })
+      }
+  }
+  else {
+    next();
+  }
+  if (to.name === 'login') {
+    if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
+      router.push({name: 'home'});
+    }
+  }
+ 
+})
+
+
 new Vue({
   render: h => h(App),
   router,
+  // store,
   i18n
 }).$mount('#app')

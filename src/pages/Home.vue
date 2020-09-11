@@ -130,6 +130,7 @@ import Head from './../components/Head.vue';
 import Footer from './../components/Footer';
 import SendEmail from './../components/SendEmail';
 import FixedLeft from './../components/FixedLeft';
+// import mapGetters from "vuex"
 
     export default {
         name: 'Home',
@@ -201,6 +202,11 @@ import FixedLeft from './../components/FixedLeft';
                     }
                 ]
             }
+        },
+        computed(){
+            // ...mapGetters([
+            //     'getCount'
+            // ])
         },
         created(){
             if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
@@ -388,7 +394,6 @@ import FixedLeft from './../components/FixedLeft';
             position: relative;
         }
         .company_left_box{
-            overflow: scroll;
             // height: 400px;
             .company_left{
                 width: 35%;

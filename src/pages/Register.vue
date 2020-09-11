@@ -173,7 +173,6 @@
                        ...this.formInline
                     }).then((res)=>{
                         if (res.data.code == 200) {
-                            console.log(res)
                             this.$message({
                                 message: '注册成功',
                                 type: 'success'
