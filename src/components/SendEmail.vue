@@ -86,11 +86,12 @@ export default {
     mounted(){
         window.addEventListener('scroll',()=>{
             let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
-
             if (scrollHeight > 1000) {
                 this.$refs.sendEmail.style.opacity = 1;
+                this.$refs.sendEmail.style.display = "block";
             } else{
                 this.$refs.sendEmail.style.opacity = 0;
+                this.$refs.sendEmail.style.display = "none";
             }
             // if (scrollHeight > this.startHeight) {
             //     this.$refs.sendEmail.style.display = "none"
@@ -151,6 +152,7 @@ export default {
         top: 60%;
         z-index: 10;
         opacity: 0;
+        display: none;
         transition: opacity 1s ease;
         .email, .bar_code, .back_top{
             width: 100%;

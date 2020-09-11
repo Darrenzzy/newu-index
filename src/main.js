@@ -7,7 +7,7 @@ import less from 'less'
 import './plugins/element.js';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-// import store from "./store"
+import store from "./store"
 
 
 
@@ -74,6 +74,6 @@ router.beforeEach((to, from, next) => {
 new Vue({
   render: h => h(App),
   router,
-  // store,
+  store,
   i18n
 }).$mount('#app')

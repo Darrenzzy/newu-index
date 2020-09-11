@@ -130,7 +130,7 @@ import Head from './../components/Head.vue';
 import Footer from './../components/Footer';
 import SendEmail from './../components/SendEmail';
 import FixedLeft from './../components/FixedLeft';
-// import mapGetters from "vuex"
+import {mapGetters} from "vuex"
 
     export default {
         name: 'Home',
@@ -203,12 +203,11 @@ import FixedLeft from './../components/FixedLeft';
                 ]
             }
         },
-        computed(){
-            // ...mapGetters([
-            //     'getCount'
-            // ])
-        },
+        computed: mapGetters({
+            'getCount':  'getCount'
+        }),
         created(){
+            console.log(this.getCount)
             if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
                 this.$Axios.get('/api/v1/netWorth/list',{}).then((data)=>{
                     if (data.data.code == 200) {
@@ -257,7 +256,9 @@ import FixedLeft from './../components/FixedLeft';
                     this.handleTestMask("rightImg", "foucs_right");
 
                     this.$refs.logo_img.setAttribute("src", font_circle);
-                    this.$refs.logo_box.classList.add("font_circle")
+                    setTimeout(()=>{
+                        this.$refs.logo_box.classList.add("font_circle")
+                    },10)
 
                 } 
                 else {
