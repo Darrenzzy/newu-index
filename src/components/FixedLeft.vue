@@ -53,7 +53,7 @@ export default {
             flex-direction: column;
             align-items: center;
             margin-top: 5px;
-            height: 80%;
+            height: 70%;
             .fixed_font{
                 width: 14px;
                 height: 14px;
