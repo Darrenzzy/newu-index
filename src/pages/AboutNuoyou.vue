@@ -148,7 +148,7 @@
         .fund_name{
             width: 323px;
             height: 50px;
-            font-size: 51px;
+            font-size: 38px;
             font-family: Source Han Serif CN;
             font-weight: 800;
             color: #C80200;
@@ -174,8 +174,8 @@
         padding-bottom: 120px;
         box-sizing: border-box;
         .title{
-            margin-bottom: 65px;
-            font-size: 36px;
+            margin-bottom: 60px;
+            font-size: 34px;
             font-family: Source Han Serif CN;
             font-weight: 800;
             color: #333333;
@@ -183,7 +183,7 @@
         }
         .desc{
             width: 100%;
-            font-size: 20px;
+            font-size: 18px;
             font-family: Source Han Serif CN;
             font-weight: 500;
             color: #333333;

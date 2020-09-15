@@ -51,29 +51,33 @@
                 <div class="net_content">
                     <div class="table_content">
                         <div class="table_title">诺游基金</div>
-                        <div class="column_title"> 
+                       <div class="column_title"> 
                             <div class="title">基金名称</div>
-                            <div class="title">基金代码</div>
-                            <div class="title">净值日期</div>
+                            <div class="title" style="width: 160px;">净值日期</div>
                             <div class="title">单位净值</div>
                             <div class="title">累计净值</div>
-                            <div class="title">涨跌幅</div>
-                            <div class="title">成立以来</div>
-                            <div class="title">风险等级</div>
+                            <div class="title">成立以来(%)</div>
+                            <div class="title">今年以来(%)</div>
+                            <div class="title">近一年(%)</div>
+                            <div class="title">近两年(%)</div>
+                            <div class="title">近三年(%)</div>
+
                         </div>
                         <div class="table_list" style="cursor: pointer;" @click="handleTableClick">
                             <div class="column_content" v-for="(item) in tableData" :key="item.ID">
                                 <div class="content">{{item.wond_name}}</div>
-                                <div class="content"><span :class="showUser ?'': 'blur'">{{item.code}}</span></div>
                                 <div class="content" style="width: 160px;">
-                                    <span v-if="showUser" >{{item.update_by | formateTime}}</span>
-                                    <span v-else  class="blur">{{(item.update_by)}}</span>
+                                    <span v-if="showUser" >{{ item.date_worth | formateTime}}</span>
+                                    <span v-else  class="blur">{{(item.date_worth)}}</span>
                                 </div>
-                                <div class="content"><span :class="showUser?'': 'blur'">{{item.net_worth}}</span></div>
                                 <div class="content"><span :class="showUser ?'': 'blur'">{{item.unit_worth}}</span></div>
-                                <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
-                                <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
-                                <div class="content"><span :class="showUser ?'': 'blur'">中风险</span></div>
+                            
+                                <div class="content"><span :class="showUser?'': 'blur'">{{item.net_worth}}</span></div>
+                                <div class="content"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
+                                <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.now_year}}</span></div>
+                                <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.last_year}}</span></div>
+                                <div class="content"><span :class="showUser ?'': 'blur'">{{item.three_muoth}}</span></div>
+                                <div class="content"><span :class="showUser ?'': 'blur'">{{item.six_mouth}}</span></div>
                             </div>
                         </div>
                     </div>
@@ -134,60 +138,19 @@
                 showUser: false,
                 tableData: [
                     {
-                        build_before: "52", 
-                        code: 23444, 
+                        build_before: "***", 
+                        code: "***", 
                         ID: 3, 
-                        last_year: "552", 
-                        net_worth: "552", 
-                        now_year: "111",
-                        create_by: "2020-09-08",
-                        six_mouth: "222",
-                        three_muoth: "222",
-                        unit_worth: "222",
-                        update_by: "2020-09-08",
-                        wond_name: "诺游一号"
-                    },
-                    {
-                        build_before: "52", 
-                        code: 23444, 
-                        ID: 4, 
-                        last_year: "552", 
-                        net_worth: "552", 
-                        now_year: "111",
-                        create_by: "2020-09-08",
-                        six_mouth: "222",
-                        three_muoth: "222",
-                        unit_worth: "222",
-                        update_by: "2020-09-08",
-                        wond_name: "诺游一号"
-                    },
-                    {
-                        build_before: "52", 
-                        code: 23444, 
-                        ID: 5, 
-                        last_year: "552", 
-                        net_worth: "552", 
-                        now_year: "111",
-                        create_by: "2020-09-08",
-                        six_mouth: "222",
-                        three_muoth: "222",
-                        unit_worth: "222",
-                        update_by: "2020-09-08",
-                        wond_name: "诺游一号"
-                    },
-                    {
-                        build_before: "52", 
-                        code: 23444, 
-                        ID: 6, 
-                        last_year: "552", 
-                        net_worth: "552", 
-                        now_year: "111",
-                        create_by: "2020-09-08",
-                        six_mouth: "222",
-                        three_muoth: "222",
-                        unit_worth: "222",
-                        update_by: "2020-09-08",
-                        wond_name: "诺游一号"
+                        date_worth:"1999-09-08",
+                        last_year: "***", 
+                        net_worth: "***", 
+                        now_year: "***",
+                        create_by: "1999-09-08",
+                        six_mouth: "***",
+                        three_muoth: "***",
+                        unit_worth: "***",
+                        update_by: "1999-09-08",
+                        wond_name: "诺游基金"
                     }
                 ],
                 fundList:[
@@ -311,7 +274,7 @@
         .fund_name{
             width: 323px;
             height: 50px;
-            font-size: 51px;
+            font-size: 38px;
             font-family: Source Han Serif CN;
             font-weight: 800;
             color: #C80200;

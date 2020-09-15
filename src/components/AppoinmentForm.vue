@@ -1,7 +1,7 @@
 <template>
     <div class="appointment">
         <div class="appointment_left">
-            <p class="title">专户预约</p>
+            <p class="title">购买预约</p>
             <p class="desc_one">专业人士提供个性化资产管理建议</p>
             <p class="desc_two">
                 尊敬的投资者，基金专户仅面向合格投资者，您需提交合格投资者相关证明材料，感谢您的关注。
@@ -48,18 +48,16 @@
                             </el-radio-group>
                         </el-form-item>
                     </div>
-                    
+                    <div class="input_box">
+                        <el-form-item label="基金名称:" prop="content">
+                            <el-input v-model="formInline.content" placeholder=""></el-input>
+                        </el-form-item>
+                    </div>
                     <div class="input_box">
                         <div class="button_box">
                             <div class="button" @click="onSubmit('form')">提交预约</div>
                         </div>
                     </div>
-                    <div class="input_box">
-                        <!-- <el-form-item label="验证码:" prop="code">
-                            <el-input v-model="formInline.code" placeholder="">电话</el-input>
-                        </el-form-item> -->
-                    </div>
-                   
 
                     <div class="input_box">
                         
@@ -158,7 +156,10 @@ export default {
                 ],
                 code: [
                     { required: true, message: '验证码不能为空', trigger: 'blur' },
-                ]
+                ],
+                content: [
+                    { required: true, message: '基金名称不能为空', trigger: 'blur' },
+                ],
             }
         };
     },

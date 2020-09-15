@@ -15,24 +15,27 @@
                         <div class="table_title">诺游基金</div>
                         <div class="column_title"> 
                             <div class="title">基金名称</div>
-                            <div class="title" >基金代码</div>
-                            <div class="title" >净值日期</div>
+                            <div class="title" style="width: 160px;">净值日期</div>
                             <div class="title">单位净值</div>
                             <div class="title">累计净值</div>
-                            <div class="title">涨跌幅</div>
-                            <div class="title">成立以来</div>
-                            <div class="title">风险等级</div>
+                            <div class="title">成立以来(%)</div>
+                            <div class="title">今年以来(%)</div>
+                            <div class="title">近一年(%)</div>
+                            <div class="title">近两年(%)</div>
+                            <div class="title">近三年(%)</div>
                         </div>
                         <div class="table_list">
                             <div class="column_content" v-for="(item) in tableData" :key="item.ID">
                                 <div class="content">{{item.wond_name}}</div>
-                                <div class="content" >{{item.code}}</div>
-                                <div class="content" >{{formateTime(item.update_by)}}</div>
+                                <div class="content" style="width: 160px;">{{item.date_worth | formateTime}}</div>
+                                <div class="content" >{{item.unit_worth}}</div>
                                 <div class="content">{{item.net_worth}}</div>
-                                <div class="content">{{item.unit_worth}}</div>
-                                <div class="content red_color">{{item.build_before}}</div>
-                                <div class="content red_color">{{item.build_before}}</div>
-                                <div class="content">中风险</div>
+                                <div class="content">{{item.build_before}}</div>
+                                <div class="content red_color">{{item.now_year}}</div>
+                                <div class="content red_color">{{item.last_year}}</div>
+
+                                <div class="content red_color">{{item.three_muoth}}</div>
+                                <div class="content red_color">{{item.six_mouth}}</div>
                                 <!-- <div class="content"><span class="blur">3%</span></div>
                                 <div class="content"><span class="blur">3%</span></div>
                                 <div class="content"><span class="blur">3%</span></div>

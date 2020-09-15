@@ -22,27 +22,31 @@
                 <div class="table_title">诺游基金</div>
                 <div class="column_title"> 
                     <div class="title">基金名称</div>
-                    <div class="title">基金代码</div>
                     <div class="title" style="width: 160px;">净值日期</div>
                     <div class="title">单位净值</div>
                     <div class="title">累计净值</div>
-                    <div class="title">涨跌幅</div>
-                    <div class="title">成立以来</div>
-                    <div class="title">风险等级</div>
+                    <div class="title">成立以来(%)</div>
+                    <div class="title">今年以来(%)</div>
+                    <div class="title">近一年(%)</div>
+                    <div class="title">近两年(%)</div>
+                    <div class="title">近三年(%)</div>
                 </div>
                 <div class="table_list" style="cursor: pointer;" @click="handleTableClick">
                     <div class="column_content" v-for="(item) in tableData" :key="item.ID">
                         <div class="content">{{item.wond_name}}</div>
-                        <div class="content"><span :class="showUser ?'': 'blur'">{{item.code}}</span></div>
                         <div class="content" style="width: 160px;">
-                            <span v-if="showUser" >{{ item.update_by | formateTime}}</span>
-                            <span v-else  class="blur">{{(item.update_by)}}</span>
+                            <span v-if="showUser" >{{ item.date_worth | formateTime}}</span>
+                            <span v-else  class="blur">{{(item.date_worth)}}</span>
                         </div>
-                        <div class="content"><span :class="showUser?'': 'blur'">{{item.net_worth}}</span></div>
                         <div class="content"><span :class="showUser ?'': 'blur'">{{item.unit_worth}}</span></div>
-                        <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
-                        <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
-                        <div class="content"><span :class="showUser ?'': 'blur'">中风险</span></div>
+                       
+                        <div class="content"><span :class="showUser?'': 'blur'">{{item.net_worth}}</span></div>
+                        <div class="content"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
+                        <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.now_year}}</span></div>
+                        <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.last_year}}</span></div>
+                        <div class="content"><span :class="showUser ?'': 'blur'">{{item.three_muoth}}</span></div>
+                        <div class="content"><span :class="showUser ?'': 'blur'">{{item.six_mouth}}</span></div>
+
                     </div>
                 </div>
             </div>
@@ -75,15 +79,15 @@
                             <img src="./../assets/images/fengkong.png"/>
                         </div>
                     </div>
-                    <div class="logo" ref="logo_box">
+                    <!-- <div class="logo" ref="logo_box">
                         <img src="./../assets/images/logo.png" ref="logo_img"/>
-                    </div>
+                    </div> -->
                     <!-- <div class="circle_font">
                         <div><span>成立</span><p>2016</p> </div>
                         <div><span>成立</span><p>2016</p> </div>
                         <div><span>成立</span><p>2016</p> </div>
                     </div> -->
-                    <img src="./../assets/images/circle.png"/>
+                    <img ref="circle" src="./../assets/images/circle.png"/>
                 </div>
                 <div class="company_left_box">
                     <div class="company_left">
@@ -123,9 +127,14 @@
     </div>
 </template>
 <script>
-import logo from "./../assets/images/logo.png";
-import font_logo from "./../assets/images/font_logo.png";
-import font_circle from "./../assets/images/font_circle.png";
+// import logo from "./../assets/images/logo.png";
+// import font_logo from "./../assets/images/font_logo.png";
+// import font_circle from "./../assets/images/font_circle.png";
+
+import circle_one from "./../assets/images/circle_one.png";
+import circle_two from "./../assets/images/circle_two.png";
+import circle_three from "./../assets/images/circle_three.png";
+
 import Head from './../components/Head.vue';
 import Footer from './../components/Footer';
 import SendEmail from './../components/SendEmail';
@@ -145,69 +154,27 @@ import {mapGetters} from "vuex"
                 showUser: false,
                 tableData: [
                     {
-                        build_before: "52", 
-                        code: 23444, 
+                        build_before: "***", 
+                        code: "***", 
                         ID: 3, 
-                        last_year: "552", 
-                        net_worth: "552", 
-                        now_year: "111",
+                        date_worth:"2020-09-08",
+                        last_year: "***", 
+                        net_worth: "***", 
+                        now_year: "***",
                         create_by: "2020-09-08",
-                        six_mouth: "222",
-                        three_muoth: "222",
-                        unit_worth: "222",
+                        six_mouth: "***",
+                        three_muoth: "***",
+                        unit_worth: "***",
                         update_by: "2020-09-08",
-                        wond_name: "诺游一号"
-                    },
-                    {
-                        build_before: "52", 
-                        code: 23444, 
-                        ID: 4, 
-                        last_year: "552", 
-                        net_worth: "552", 
-                        now_year: "111",
-                        create_by: "2020-09-08",
-                        six_mouth: "222",
-                        three_muoth: "222",
-                        unit_worth: "222",
-                        update_by: "2020-09-08",
-                        wond_name: "诺游一号"
-                    },
-                    {
-                        build_before: "52", 
-                        code: 23444, 
-                        ID: 5, 
-                        last_year: "552", 
-                        net_worth: "552", 
-                        now_year: "111",
-                        create_by: "2020-09-08",
-                        six_mouth: "222",
-                        three_muoth: "222",
-                        unit_worth: "222",
-                        update_by: "2020-09-08",
-                        wond_name: "诺游一号"
-                    },
-                    {
-                        build_before: "52", 
-                        code: 23444, 
-                        ID: 6, 
-                        last_year: "552", 
-                        net_worth: "552", 
-                        now_year: "111",
-                        create_by: "2020-09-08",
-                        six_mouth: "222",
-                        three_muoth: "222",
-                        unit_worth: "222",
-                        update_by: "2020-09-08",
-                        wond_name: "诺游一号"
+                        wond_name: "诺游基金"
                     }
-                ]
+                ]       
             }
         },
         computed: mapGetters({
             'getCount':  'getCount'
         }),
         created(){
-            console.log(this.getCount)
             if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
                 this.$Axios.get('/api/v1/netWorth/list',{}).then((data)=>{
                     if (data.data.code == 200) {
@@ -231,39 +198,38 @@ import {mapGetters} from "vuex"
                 // } else {
                 //     this.$refs.companyRight.style.display = "none";
                 // }
-                if (scrollHeight > 1705 && scrollHeight < 2500 && this.$refs.companyRight) {
-                    this.$refs.companyRight.style.display = "block";
+                if (scrollHeight > 1600 && scrollHeight < 2450 && this.$refs.companyRight) {
+                    // this.$refs.companyRight.style.display = "block";
+                    this.$refs.companyRight.style.opacity = "1";
                 } else {
-                    this.$refs.companyRight.style.display = "none";
-            }
+                    // this.$refs.companyRight.style.display = "none";
+                    this.$refs.companyRight.style.opacity = "0";
+                }
 
-                if (scrollHeight > 1014 &&  scrollHeight < 2060 && this.$refs.logo_img) {
+                if (scrollHeight > 1600 &&  scrollHeight < 1920 && this.$refs.circle) {
                     this.handleTestMask("topImg", "foucs_top");
-                    this.$refs.logo_img.setAttribute("src", logo);
+                    this.$refs.circle.setAttribute("src", circle_one);
                 } else {
                     this.handleRemove("topImg", "foucs_top");
                 }
-                if ( scrollHeight >= 2060 && scrollHeight < 2340 && this.$refs.logo_img) {
+                if ( scrollHeight >= 1920 && scrollHeight < 2190 && this.$refs.circle) {
                     this.handleTestMask("leftImg", "foucs_left")
-                    if (this.$refs.logo_img) {
-                        this.$refs.logo_img.setAttribute("src", font_logo)
-                    }
+                    this.$refs.circle.setAttribute("src", circle_two)
                 } 
                 else {
                     this.handleRemove("leftImg", "foucs_left");
                 }
-                if ( scrollHeight >= 2340 && this.$refs.logo_img) {
+                if ( scrollHeight >= 2190 && this.$refs.circle) {
                     this.handleTestMask("rightImg", "foucs_right");
-
-                    this.$refs.logo_img.setAttribute("src", font_circle);
-                    setTimeout(()=>{
-                        this.$refs.logo_box.classList.add("font_circle")
-                    },10)
+                    this.$refs.circle.setAttribute("src", circle_three);
+                    // setTimeout(()=>{
+                    //     this.$refs.logo_box.classList.add("font_circle")
+                    // },10)
 
                 } 
                 else {
                     this.handleRemove("rightImg", "foucs_right")
-                    this.handleRemove("logo_box", "font_circle")
+                    // this.handleRemove("logo_box", "font_circle")
                 }
             })
         },
@@ -359,7 +325,7 @@ import {mapGetters} from "vuex"
             height: 100%;
             .pic_title{
                 width: 443px;
-                font-size: 51px;
+                font-size: 38px;
                 font-family: Source Han Serif CN;
                 font-weight: 800;
                 color: #EFEFED;
@@ -381,12 +347,12 @@ import {mapGetters} from "vuex"
         padding-bottom: 360px;
         .company_title{
             height: 44px;
-            font-size: 45px;
+            font-size: 36px;
             font-family: Source Han Serif CN;
             font-weight: 800;
             color: #333333;
             line-height: 36px;
-            margin-bottom: 146px;
+            margin-bottom: 100px;
             margin-left: 20%;
         }
         .company_content{
@@ -398,14 +364,14 @@ import {mapGetters} from "vuex"
             // height: 400px;
             .company_left{
                 width: 35%;
-                margin-bottom: 130px;
+                margin-bottom: 120px;
                 .company_left_h4{
-                    font-size: 36px;
+                    font-size: 30px;
                     font-family: Source Han Serif CN;
                     font-weight: 800;
                     color: #666666;
                     margin-top: 0;
-                    margin-bottom: 40px;
+                    margin-bottom: 30px;
                 }
                 .company_left_p{
                     width: 100%;
@@ -437,11 +403,11 @@ import {mapGetters} from "vuex"
         .company_right{
             // position: absolute;
             position: fixed;
+            opacity: 0;
             top: 200px;
-            // top: 20px;
             margin-top: 30px;
             // display: block;
-            display: none;
+            // display: none;
             // transform: scale(0.0001);
             transition: transform 1s ease;
             .js_show{
