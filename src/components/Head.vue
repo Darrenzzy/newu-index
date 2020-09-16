@@ -113,11 +113,6 @@ export default {
         this.showOpacity()
     },
     methods:{
-        // toUserCenter(){
-        //     this.$router.push({
-        //         path: "userCenter"
-        //     })
-        // },
         showTabs() {
             this.isShow = !this.isShow
             this.showPop = true
@@ -159,11 +154,6 @@ export default {
             let routeData = this.$router.resolve({ path: '/login'});
             window.open(routeData.href, '_blank');
             this.showUser = false;
-
-            // this.$message({
-            //     message: '退出成功',
-            //     type: 'success'
-            // });
         }
 
     }

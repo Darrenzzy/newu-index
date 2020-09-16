@@ -127,9 +127,6 @@
     </div>
 </template>
 <script>
-// import logo from "./../assets/images/logo.png";
-// import font_logo from "./../assets/images/font_logo.png";
-// import font_circle from "./../assets/images/font_circle.png";
 
 import circle_one from "./../assets/images/circle_one.png";
 import circle_two from "./../assets/images/circle_two.png";
@@ -189,15 +186,12 @@ import {mapGetters} from "vuex"
             }
         },
         mounted(){
-            window.addEventListener('scroll',()=>{
+            window.addEventListener("scroll", this.viewCircle);
+        },
+        methods:{
+            viewCircle(){
                 let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
                 console.log(scrollHeight)
-            
-                // if (scrollHeight > 1705 && scrollHeight < 2700 && this.$refs.companyRight) {
-                //     this.$refs.companyRight.style.display = "block";
-                // } else {
-                //     this.$refs.companyRight.style.display = "none";
-                // }
                 if (scrollHeight > 1600 && scrollHeight < 2450 && this.$refs.companyRight) {
                     // this.$refs.companyRight.style.display = "block";
                     this.$refs.companyRight.style.opacity = "1";
@@ -222,18 +216,11 @@ import {mapGetters} from "vuex"
                 if ( scrollHeight >= 2190 && this.$refs.circle) {
                     this.handleTestMask("rightImg", "foucs_right");
                     this.$refs.circle.setAttribute("src", circle_three);
-                    // setTimeout(()=>{
-                    //     this.$refs.logo_box.classList.add("font_circle")
-                    // },10)
-
                 } 
                 else {
                     this.handleRemove("rightImg", "foucs_right")
-                    // this.handleRemove("logo_box", "font_circle")
                 }
-            })
-        },
-        methods:{
+            },
             handleTestMask(obj, className){
                 if (this.$refs[obj]) {
                     if (!this.$refs[obj].classList.contains("is_show")) {
