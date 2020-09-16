@@ -86,12 +86,14 @@ export default {
     mounted(){
         window.addEventListener('scroll',()=>{
             let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
-            if (scrollHeight > 1000) {
-                this.$refs.sendEmail.style.opacity = 1;
-                this.$refs.sendEmail.style.display = "block";
-            } else{
-                this.$refs.sendEmail.style.opacity = 0;
-                this.$refs.sendEmail.style.display = "none";
+            if(this.$refs.sendEmail){
+                if (scrollHeight > 1000) {
+                    this.$refs.sendEmail.style.opacity = 1;
+                    this.$refs.sendEmail.style.display = "block";
+                } else{
+                    this.$refs.sendEmail.style.opacity = 0;
+                    this.$refs.sendEmail.style.display = "none";
+                }
             }
             // if (scrollHeight > this.startHeight) {
             //     this.$refs.sendEmail.style.display = "none"

@@ -201,9 +201,6 @@ export default {
     },
   
     methods:{
-        test(){
-            
-        },
         onSubmit(formName) {
             this.$refs[formName].validate((valid) => {
                 this.formInline.class = parseInt(this.formInline.class)

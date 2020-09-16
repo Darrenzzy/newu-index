@@ -46,8 +46,9 @@
                             <div class="item" style="cursor:pointer;text-align: center;" @click="changePwd">修改密码</div>
                             <div class="item" style="border-bottom:unset; cursor:pointer;text-align: center;" @click="LogOut">退出</div>
                         </div>
-                        <div class="header_item" slot="reference" style="cursor:pointer;">
-                            <img src="./../assets/images/user.png" alt="">
+                        <div class="" slot="reference" style="cursor:pointer;">
+                            <!-- <img src="./../assets/images/user.png" alt=""> -->
+                            <router-link to="/userCenter"> <div class="header_item"> 用户中心 </div> </router-link>
                         </div> 
                     </el-popover>
                 </div>
@@ -112,6 +113,11 @@ export default {
         this.showOpacity()
     },
     methods:{
+        // toUserCenter(){
+        //     this.$router.push({
+        //         path: "userCenter"
+        //     })
+        // },
         showTabs() {
             this.isShow = !this.isShow
             this.showPop = true
