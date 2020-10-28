@@ -63,32 +63,6 @@
         <div class="company">
             <div class="company_title">中长期达成稳定资产增长</div>
             <div class="company_content">
-                <div class="company_right" ref="companyRight">
-                    <div class="js_show top" ref="topImg">
-                        <div class="small_img top_img">
-                            <img src="./../assets/images/touzi.png"/>
-                        </div>
-                    </div>
-                     <div class="js_show left" ref="leftImg">
-                        <div class="small_img left_img">
-                            <img src="./../assets/images/shichang.png"/>
-                        </div>
-                    </div>
-                    <div class="js_show right" ref="rightImg">
-                         <div class="small_img right_img">
-                            <img src="./../assets/images/fengkong.png"/>
-                        </div>
-                    </div>
-                    <!-- <div class="logo" ref="logo_box">
-                        <img src="./../assets/images/logo.png" ref="logo_img"/>
-                    </div> -->
-                    <!-- <div class="circle_font">
-                        <div><span>成立</span><p>2016</p> </div>
-                        <div><span>成立</span><p>2016</p> </div>
-                        <div><span>成立</span><p>2016</p> </div>
-                    </div> -->
-                    <img ref="circle" src="./../assets/images/circle.png"/>
-                </div>
                 <div class="company_left_box">
                     <div class="company_left">
                         <h4 class="company_left_h4" @click="handleTestMask('foucs_right')">·价值投资</h4>
@@ -119,6 +93,24 @@
                             动择时来控制产品的回撤风险，力求产品净值曲线的平滑
                         </p>
                     </div>
+                </div>
+                <div class="company_right" ref="companyRight">
+                    <div class="js_show top foucs_top" ref="topImg">
+                        <div class="small_img top_img">
+                            <img src="./../assets/images/touzi.png"/>
+                        </div>
+                    </div>
+                     <div class="js_show left" ref="leftImg">
+                        <div class="small_img left_img">
+                            <img src="./../assets/images/shichang.png"/>
+                        </div>
+                    </div>
+                    <div class="js_show right" ref="rightImg">
+                         <div class="small_img right_img">
+                            <img src="./../assets/images/fengkong.png"/>
+                        </div>
+                    </div>
+                    <img ref="circle" src="./../assets/images/circle_one.png"/>
                 </div>
             </div>
         </div>
@@ -192,32 +184,22 @@ import {mapGetters} from "vuex"
             viewCircle(){
                 let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
                 console.log(scrollHeight)
-                if (scrollHeight > 1600 && scrollHeight < 2450 && this.$refs.companyRight) {
-                    // this.$refs.companyRight.style.display = "block";
-                    this.$refs.companyRight.style.opacity = "1";
-                } else {
-                    // this.$refs.companyRight.style.display = "none";
-                    this.$refs.companyRight.style.opacity = "0";
-                }
-
-                if (scrollHeight > 1600 &&  scrollHeight < 1920 && this.$refs.circle) {
+                if (scrollHeight < 1870 && this.$refs.circle) {
                     this.handleTestMask("topImg", "foucs_top");
                     this.$refs.circle.setAttribute("src", circle_one);
                 } else {
                     this.handleRemove("topImg", "foucs_top");
                 }
-                if ( scrollHeight >= 1920 && scrollHeight < 2190 && this.$refs.circle) {
+                if ( scrollHeight >= 1870 && scrollHeight < 2090 && this.$refs.circle) {
                     this.handleTestMask("leftImg", "foucs_left")
                     this.$refs.circle.setAttribute("src", circle_two)
-                } 
-                else {
+                } else {
                     this.handleRemove("leftImg", "foucs_left");
                 }
-                if ( scrollHeight >= 2190 && this.$refs.circle) {
+                if ( scrollHeight >= 2090 && this.$refs.circle) {
                     this.handleTestMask("rightImg", "foucs_right");
                     this.$refs.circle.setAttribute("src", circle_three);
-                } 
-                else {
+                } else {
                     this.handleRemove("rightImg", "foucs_right")
                 }
             },
@@ -344,13 +326,15 @@ import {mapGetters} from "vuex"
         }
         .company_content{
             margin-left: 20%;
-            margin-right: 100px;
+            width: 60%;
             position: relative;
+            justify-content: space-between;
+            display: flex;
         }
         .company_left_box{
-            // height: 400px;
+            width: 60%;
             .company_left{
-                width: 35%;
+                width: 80%;
                 margin-bottom: 120px;
                 .company_left_h4{
                     font-size: 30px;
@@ -362,6 +346,7 @@ import {mapGetters} from "vuex"
                 }
                 .company_left_p{
                     width: 100%;
+                    max-width: 502px;
                     font-size: 18px;
                     font-family: Source Han Serif CN;
                     font-weight: 800;
@@ -369,34 +354,23 @@ import {mapGetters} from "vuex"
                     line-height: 27px;
                     opacity: 0.65;
                 }
+                &:last-child{
+                    margin-bottom: 160px;
+                }
             }
+           
         }
-        @media screen and (min-width:769px) {
-            .company_right{
-                width: 20%;
-                right: 20%;
-            }
-        }
-        @media screen and (max-width:770px) {
-            .company_right{
-                width: 20%;
-                right: 20%;
-            }
+       
         
-        }
-        // @media screen and (max-width: 768px) and (min-width:481px) {
-        
-        // }
         .company_right{
-            // position: absolute;
-            position: fixed;
-            opacity: 0;
+            position: sticky;
+            opacity: 1;
+            width: 40%;
+            max-width: 334px;
+            right: 20%;
             top: 200px;
             margin-top: 30px;
-            // display: block;
-            // display: none;
-            // transform: scale(0.0001);
-            transition: transform 1s ease;
+            height: 20%;
             .js_show{
                 position: absolute;
                 width: 26%;
@@ -425,71 +399,28 @@ import {mapGetters} from "vuex"
             .is_show{
                 .right_img{
                     border: 1px solid rgba(30,12,63, .85);
-                    // box-shadow: 0 0 15px rgba(188, 304, 40, .5);
                     img{
                         border: 1px solid rgba(30,12,63, .45);
-                        // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     }
                 }
                 .left_img{
                     border: 1px solid rgba(235,26,49, .85);
-                    // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     img{
                         border: 1px solid rgba(235,26,49, .45);
-                        // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     }
                 }
                 .top_img{
                     border: 1px solid rgba(239,162,135, .85);
-                    // box-shadow: 0 0 15px rgba(32, 334, 45, .5);
                     img{
                         border: 1px solid rgba(239,162,135, .45);
-                        // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     }
                 }
             }
-            .logo{
-                position: absolute;
-                width: 23%;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%) scale(1.3);
-                // transition: all 1s ease ;
-                img{
-                    max-height: 100%;
-                    max-width: 100%;
-                    min-width: 100%;
-                    min-height: 100%;
-                    object-fit: cover;
-                }
-            }
+            
             .font_circle{
                 width: 110%;
                 transform: translate(-50%, -90%) scale(1.3);
             }
-            .circle_font{
-                position: absolute;
-                width: 100%;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%) scale(1.3);
-                transition: transform 1s ease ;
-                display: flex;
-                justify-content: space-between;
-                div{
-                    p{
-                        color: #E8222D;
-                        font-size: 36px;
-                        font-weight: 800;
-                    }
-                    span{
-                        color: #333333;
-                        font-size: 12px;
-                        font-family: Source Han Serif CN;
-                    }
-                }   
-            }
-           
             .top{
                 left: 50%;
                 transition: transform 1s ease ;
@@ -517,20 +448,28 @@ import {mapGetters} from "vuex"
             }
             .foucs_right{
                 transform: translateX(20%) scale(1.6);
-                // border: 1px solid red;
-                // img{
-                //     border: 1px solid red;
-                // }
             }
             img{
-                max-height: 100%;
-                max-width: 100%;
-                min-width: 100%;
-                min-height: 100%;
+                max-height: 99%;
+                min-height: 99%;
+                max-width: 99%;
+                min-width: 99%;
                 object-fit: cover;
             }
                 
         }
-
+        // @media screen and (min-width:769px) {
+        //     .company_right{
+        //         width: 25%;
+        //         right: 20%;
+        //     }
+        // }
+        // @media screen and (max-width:769px) {
+        //     .company_right{
+        //         width: 25%;
+        //         right: 20%;
+        //         min-width: 25%;
+        //     }
+        // }
     }
 </style>
