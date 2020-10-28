@@ -191,7 +191,6 @@ import {mapGetters} from "vuex"
         methods:{
             viewCircle(){
                 let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
-                console.log(scrollHeight)
                 if (scrollHeight > 1600 && scrollHeight < 2450 && this.$refs.companyRight) {
                     // this.$refs.companyRight.style.display = "block";
                     this.$refs.companyRight.style.opacity = "1";
