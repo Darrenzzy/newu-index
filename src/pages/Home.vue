@@ -178,9 +178,22 @@ import {mapGetters} from "vuex"
             }
         },
         mounted(){
-            window.addEventListener("scroll", this.viewCircle);
+            window.addEventListener("scroll", this.scrollDebounce(this.viewCircle));
         },
         methods:{
+            scrollDebounce(fn){
+                let timer = null;
+                return ()=>{
+                    if (timer) {
+                        clearTimeout(timer)
+                        timer = null;
+                    }
+                    timer = setTimeout(()=>{
+                        fn();
+                    },300) 
+                }
+            },
+            
             viewCircle(){
                 let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
                 console.log(scrollHeight)
