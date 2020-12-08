@@ -22,13 +22,10 @@
             <div class="company_introduce" id="companyIntroduce">
                 <div class="title">诺游投资</div>
                 <p class="desc">
-                    诺游投资坚守价值与成长相结合的投资模式，专注于挖掘企业内生增长价值和成长性，同时 兼顾收益率曲线的稳定性与资产配置的流动性、灵活性，努力为投资者创造持续稳定的业绩 回报。
+                    上海诺游投资管理有限公司成立于2016年4月。2017年6月5日经中国证券投资基金业协会登 记备案，取得私募投资基金管理人资格，登记编号为P1062983。
                 </p>
                 <p class="desc" style="margin-top: 20px;">
-                    上海诺游投资管理有限公司成立于2016年4月。2017年6月5日经中国证券投资基金业协会 登记备案，取得私募投资基金管理人资格，登记编号为P1062983。
-                </p>
-                <p class="desc" style="margin-top: 20px;">
-                    经过多年积累，诺游投资已拥有一支既富理论造诣又经市场锤炼的投研团队，核心投研人员 超过10人。
+                    诺游投资的创始团队均来自于原泽熙投资的交易团队， 联合创始人王小静女士曾任泽熙投资 战略发展部总监。经过多年积累， 诺游投资已拥有一支既富理论造诣又经市场锤炼的投研团 队，核心投研人员超过10人。 诺游投资坚守价值与成长相结合的投资模式， 专注于挖掘企业 内生增长价值和成长性， 同时兼顾收益率曲线的稳定性与资产配置的流动性、灵活性， 努力 为投资者创造持续稳定的业绩回报。
                 </p>
             </div>
 
@@ -72,8 +69,13 @@
                     </div>
                 </div>
             </div>
-            
-        
+            <div class="structer">
+                <div class="title">风控架构</div>
+                <div class="structer_img">
+                    <img src="./../assets/images/jiagou.png"/>
+                </div>
+            </div>
+
             <!-- <img src="./../assets/images/banner.png"/> -->
         </div>
         <Footer />
@@ -122,7 +124,6 @@
 <style scoped lang="less">
     .fund{
        position: relative;
-       padding-bottom: 332px;
     }
     .banner{
         height: 443px;
@@ -198,7 +199,7 @@
         .left,.right{
             width: 50%;
             // height: 100%;
-            height: 375px;
+            min-height: 375px;
         }
         .left{
             background: #EAEAEA;
@@ -258,6 +259,31 @@
             }
             .font_title{
                 margin: 44px 0 30px;
+            }
+        }
+    }
+    .structer{
+        background: #FAFAFA;
+        padding: 96px 0 152px;
+        margin-top: 66px;
+        .title{
+            text-align: center;
+            margin-bottom: 76px;
+            font-size: 36px;
+            font-family: Source Han Serif CN;
+            font-weight: 800;
+            color: #333333;
+        }
+        .structer_img{
+            margin: 0 auto;
+            text-align: center;
+            img{
+                max-width: 731px;
+                min-height: 50%;
+                min-width: 50%;
+                // max-width: 40%;
+                // max-height: 40%;
+                object-fit: cover;
             }
         }
     }

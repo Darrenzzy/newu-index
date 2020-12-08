@@ -53,10 +53,21 @@
         </div>
         <div class="pic">
            <div class="pic_content">
-                <h1 class="pic_title">价值与成长相结合</h1>
+                <h1 class="pic_title">一<span class="pic_red">诺</span>千金 <span class="pic_red">游</span>刃有余</h1>
                 <p class="pic_p">
-                    坚守价值与成长相结合的投资模式，专注于挖掘企业内生增长价值和成长性；
-                    同时兼顾收益率曲线的稳定性与资产配置的流动性、灵活性， 为投资者创造持续稳定的（高于指数增长？/且高于同类产品？）的业绩回报。
+                    守信守诺是为人和做事的第一准则。
+                </p>
+                <p class="pic_p">
+                    投资不难也不易。
+                </p>
+                 <p class="pic_p">
+                    价值与成长同等重要。
+                </p>
+                 <p class="pic_p">
+                    市场存在低风险和高收益的机会。股价会上下波动，但最终会回归公司的内生价值。
+                </p>
+                 <p class="pic_p">
+                    流动性和灵活性非常关键。
                 </p>
            </div>
         </div>
@@ -65,37 +76,63 @@
             <div class="company_content">
                 <div class="company_left_box">
                     <div class="company_left">
-                        <h4 class="company_left_h4" @click="handleTestMask('foucs_right')">·价值投资</h4>
+                        <h4 class="company_left_h4" @click="handleTestMask('foucs_right')">·与优秀企业共同成长</h4>
                         <p class="company_left_p" style="margin-bottom: 30px;">
-                                基本面研究为首要依据，诺游投研团队具
-                            有平均10年以上高级版行业研究从业经历
-                        </p>
-                        <p class="company_left_p">
-                            诺游以投研团队水平的优势，多次捕捉到
-                            公司业绩拐点，抢先发现低估企业，享受
-                            戴维斯双击带来的增值红利
+                            价值投资最重要的是寻找优秀的企业，是买
+                            公司而并非单纯的买股票。好的公司可能会
+                            在一个阶段不被发现或不被认可，但最终会
+                            得到市场的公平定价，回归价值。所以，公司
+                            是否是好的行业，好的赛道， 是否有很深的
+                            护城河，管理层是否品德优良、能力超群，这
+                            些都是重要的衡量维度。
                         </p>
                     </div>
                     <div class="company_left">
-                        <h4 class="company_left_h4">·资产分配灵活性</h4>
+                        <h4 class="company_left_h4">·感受周期</h4>
                         <p class="company_left_p">
-                            诺游相信趋势与交易的力量，把握进行资
-                            产配资调整的机会，让收益能够最大化
+                            经济周期是永远存在的，复苏，繁荣，滞涨，
+                            衰退。。。更替周而复始。经济有周期，行业
+                            有周期，公司也有周期。每个周期的大小不
+                            同、长短不一。我们要用心去感受周期，并
+                            与之共舞。
                         </p>
                     </div>
                 
                     <div class="company_left">
-                        <h4 class="company_left_h4">·仓位管控</h4>
+                        <h4 class="company_left_h4">·真的逻辑</h4>
                         <p class="company_left_p">
-                            诺游执行严格的风控措施，风控团队监控日内交易数据，依据风险分析模型做出仓位管控主
+                            世上往往有些事是似是而非，有些事是似非
+                            而是。在投资中要不断寻找和验证逻辑的正
+                            确性，并区分是长逻辑还是短逻辑。 去伪存
+                            真，方可立于不败之地。
                         </p>
+                        
+                    </div>
+                    <div class="company_left">
+                        <h4 class="company_left_h4">·跟随市场，不要预测市场</h4>
                         <p class="company_left_p">
-                            动择时来控制产品的回撤风险，力求产品净值曲线的平滑
+                            资本市场是一个复杂的非稳定的系统。对市
+                            场怀有敬畏之心，切记市场永远是对的。 不
+                            要过度主观与自信，更不要夸夸其谈， 以防
+                            误入歧途。要跟随市场的节奏与脉动， 认可，
+                            跟随，并享受市场的变化与波动。
                         </p>
+                        
+                    </div>
+                    <div class="company_left">
+                        <h4 class="company_left_h4">·交易的本质</h4>
+                        <p class="company_left_p">
+                            交易本质上是一场游戏。与其他游戏一样，对
+                            技巧和智慧有要求。  运气在短期内会起到作
+                            用，然而从长远考虑， 只有交易技巧才能决定
+                            业绩。
+                        </p>
+                        
                     </div>
                 </div>
                 <div class="company_right" ref="companyRight">
                     <div class="js_show top foucs_top" ref="topImg">
+                        <div class="top_font">投资逻辑</div>
                         <div class="small_img top_img">
                             <img src="./../assets/images/touzi.png"/>
                         </div>
@@ -104,11 +141,14 @@
                         <div class="small_img left_img">
                             <img src="./../assets/images/shichang.png"/>
                         </div>
+                        <div class="left_font">市场特点</div>
                     </div>
                     <div class="js_show right" ref="rightImg">
                          <div class="small_img right_img">
                             <img src="./../assets/images/fengkong.png"/>
                         </div>
+                        <div class="right_font">风控措施</div>
+
                     </div>
                     <img ref="circle" src="./../assets/images/circle_one.png"/>
                 </div>
@@ -203,13 +243,14 @@ import {mapGetters} from "vuex"
                 } else {
                     this.handleRemove("topImg", "foucs_top");
                 }
-                if ( scrollHeight >= 1870 && scrollHeight < 2090 && this.$refs.circle) {
+                // 2090
+                if ( scrollHeight >= 1870 && scrollHeight < 2150 && this.$refs.circle) {
                     this.handleTestMask("leftImg", "foucs_left")
                     this.$refs.circle.setAttribute("src", circle_two)
                 } else {
                     this.handleRemove("leftImg", "foucs_left");
                 }
-                if ( scrollHeight >= 2090 && this.$refs.circle) {
+                if ( scrollHeight >= 2150 && this.$refs.circle) {
                     this.handleTestMask("rightImg", "foucs_right");
                     this.$refs.circle.setAttribute("src", circle_three);
                 } else {
@@ -292,7 +333,6 @@ import {mapGetters} from "vuex"
         width: 70%;
         margin: 0 auto;
         padding: 100px 0;
-        
     } 
     .pic{
         width: 100%;
@@ -306,22 +346,28 @@ import {mapGetters} from "vuex"
             overflow: hidden;
             height: 100%;
             .pic_title{
-                width: 443px;
                 font-size: 38px;
                 font-family: Source Han Serif CN;
                 font-weight: 800;
                 color: #EFEFED;
-                margin-top: 170px;
+                margin-top: 100px;
+                .pic_red{
+                    color: #C80200;
+                    font-size: 75px;
+                    &:last-child{
+                        margin-left: 15px;
+                    }
+                }
             }
             .pic_p{
                 font-size: 14px;
-                width: 443px;
                 font-family: Source Han Serif CN;
                 font-weight: 500;
                 color: #EFEFED;
                 line-height: 23px;
+                line-height: 30px;
+                opacity: .9;
             }
-
         }
     }
     .company{
@@ -371,10 +417,7 @@ import {mapGetters} from "vuex"
                     margin-bottom: 160px;
                 }
             }
-           
         }
-       
-        
         .company_right{
             position: sticky;
             opacity: 1;
@@ -396,7 +439,6 @@ import {mapGetters} from "vuex"
                     position: relative;
                     transition: transform 1s ease ;
                     line-height: .8;
-
                     img{
                         max-height: 100%;
                         max-width: 100%;
@@ -438,6 +480,16 @@ import {mapGetters} from "vuex"
                 left: 50%;
                 transition: transform 1s ease ;
                 transform: translate(-50%, -50%) scale(1.3);
+                .top_font{
+                    color: #EEA282;
+                    font-size: 14px;
+                    text-align: center;
+                    width: 200%;
+                    position: absolute;
+                    top: -20px;
+                    transform: translateX(-50%);
+                    // position: absolute;
+                }
             }
             .foucs_top{
                 transform: translate(-50%, -50%) scale(1.6);
@@ -449,6 +501,15 @@ import {mapGetters} from "vuex"
                 bottom: 15%;
                 transition: transform 1s ease ;
                 transform: translateX(-20%) scale(1.3);
+                .left_font{
+                    color: #E8222D;
+                    font-size: 14px;
+                    text-align: center;
+                    position: absolute;
+                    transform: translateX(-50%);
+                    left: 50%;
+                    width: 200%;
+                }
             }
             .foucs_left{
                 transform: translateX(-20%) scale(1.6);
@@ -458,6 +519,15 @@ import {mapGetters} from "vuex"
                 right: 0;
                 transition: transform 1s ease ;
                 transform: translateX(20%) scale(1.3);
+                .right_font{
+                    color: #200A3E;
+                    font-size: 14px;
+                    text-align: center;
+                    position: absolute;
+                    transform: translateX(-50%);
+                    left: 50%;
+                    width: 200%;
+                }
             }
             .foucs_right{
                 transform: translateX(20%) scale(1.6);

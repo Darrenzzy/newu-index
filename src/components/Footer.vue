@@ -14,7 +14,8 @@
                 
             </div>
             <div class="menu_box">
-                <div class="menu_title">理念</div>
+                <div class="menu_title">首页</div>
+                <div class="menu"><a href="">诺游投资视频</a></div>
                 <div class="menu"><a href="">价值投资</a></div>
                 <div class="menu"><a href="">资产分配灵活性</a></div>
                 <div class="menu"><a href="">仓位管控</a></div>

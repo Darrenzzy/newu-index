@@ -16,38 +16,52 @@
                     </p>
                 </div>
             </div>
-            <div class="introduce" id="fundIntroduce">
-                <h3 class="fund_public_title">产品介绍</h3>
-                <div class="introduce_content">
-                    <div class="introduce_left"></div>
-                    <div class="fund_name_list">
-                        <div class="fund_detail">
-                            <div class="fund_detail_title">{{this.fundDetail.name}}</div>
-                            <div class="fund_detail_desc">
-                                {{this.fundDetail.desc}}
-                            </div>
-                            <div class="more" @click="handleTableClick">了解更多》</div>
-
+            <div class="introduce">
+                <div class="introduce_left">
+                    <img src="./../assets/images/fund_icon.png" />
+                    <div class="fund_left_font">诺游基金</div>
+                    <div class="more" @click="handleTableClick">了解更多-></div>
+                </div>
+                <div class="introduce_right">
+                    <div class="item" v-for="item in tableData" :key="item.ID">
+                        <div class="position_absolute" v-show="item.is_limit">
+                            <img src="./../assets/images/fund_limit.png" />
                         </div>
-                        <div class="tab">
-                            <div 
-                                v-for="(item,index) in fundList" 
-                                :key="index" :class="activeIndex == index?'tab_list focus_tab_list': 'tab_list' " 
-                                @click="handleFundClick(index)"
-                            >
-                                {{item.name}}
+                        <div class="item_top">
+                            <div>
+                                <div class="fund_tite">诺游1号</div>
+                                <div class="fund_code">(000100)</div>
+                            </div> 
+                            <div>
+                                <div class="fund_percent">78.89%</div>
+                                <div class="fund_create">近一年成立</div>
                             </div>
-                            <!-- <div class="tab_list">诺游B</div>
-                            <div class="tab_list">诺游C</div>
-                            <div class="tab_list">诺游D</div> -->
+                        </div>
+                        <div class="item_middle"> 
+                            <div class="fund_desc">
+                                着重挖掘高成长公司配置，捕捉市场热点题材，灵活多变的投资策略。
+                            </div>
+                        </div>
+                        <!-- <div class="item_bottom"> 
+                            <div>
+                                <div class="fund_info"> 产品开放日: 每月15日</div>
+                                <div class="fund_info"> 管理费: 5%</div>
+                                <div class="fund_info"> 业绩报酬: 20%</div>
+                                <div class="fund_info"> 最低认购金: 100万元</div>
+                            </div>
+                            <div class="fund_person">基金经理 <span>王小静</span></div>
+                        </div> -->
 
-
+                        <div class="item_bottom_center"> 
+                            <div class="fund_person">基金经理 <span>王小静</span></div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="risk_message">
+                注：基金投资有风险，请投资者关注基金产品的风险等级，选择与您风险承受力相匹配的产品
+            </div>
             <div class="net" id="fundNet">
-                <h3 class="fund_public_title">产品净值</h3>
                 <div class="net_content">
                     <div class="table_content">
                         <div class="table_title">诺游基金</div>
@@ -61,10 +75,9 @@
                             <div class="title">近一年(%)</div>
                             <div class="title">近两年(%)</div>
                             <div class="title">近三年(%)</div>
-
                         </div>
                         <div class="table_list" style="cursor: pointer;" @click="handleTableClick">
-                            <div class="column_content" v-for="(item) in tableData" :key="item.ID">
+                            <div class="column_content" v-for="(item) in listData" :key="item.ID">
                                 <div class="content">{{item.wond_name}}</div>
                                 <div class="content" style="width: 160px;">
                                     <span v-if="showUser" >{{ item.date_worth | formateTime}}</span>
@@ -81,6 +94,40 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+            </div>
+            <div class="login">
+                <div class="login_head">网上交易登录</div>
+                <div class="login_form">
+                    <el-form  :model="formInline" :rules="rules"  ref="form" label-width="50px" class="demo-form-inline" :label-position="labelPosition">
+                        <div class="login_form_content">
+                            <div class="input_box">
+                                <el-form-item label="手机号:" prop="user">
+                                    <el-input v-model="formInline.mobile" placeholder=""></el-input>
+                                </el-form-item>
+                            </div>
+                            <div class="input_box">
+                                <el-form-item label="密码:">
+                                    <el-input type="password" v-model="formInline.password" placeholder=""></el-input>
+                                    <div class="link_style"  @click="forgetPassword">
+                                        <div class="login_icon">
+                                            <img src="./../assets/images/login_icon.png" />
+                                        </div>
+                                        <span>忘记密码</span>
+                                    </div>
+                                </el-form-item>
+                            </div>
+                            <div class="input_box">
+                                <el-form-item label="" prop="">
+                                     <div class="button_box">
+                                        <div class="button" @click="onSubmit('form')">登录</div>
+                                    </div>
+                                </el-form-item>
+                            </div>
+                           
+                        </div>
+                    </el-form> 
                 </div>
 
             </div>
@@ -133,6 +180,18 @@
 
     export default {
         data() {
+            var validateMobile = (rule, value, callback) => {
+                if (!value) {
+                    return callback(new Error('手机号不能为空'));
+                }
+                setTimeout(() => {
+                    if ( /^1(3|4|5|6|7|8|9)\d{9}$/.test(value) ) {
+                        callback();
+                    } else {
+                        callback(new Error('手机号码格式不对'));
+                    }
+                }, 900);
+            };
             return {
                 fundDetail:{},
                 showUser: false,
@@ -183,6 +242,20 @@
                                 者创造持续稳定的（高于指数增长？/且高于同类产品？）的业绩回报。`
                     },
                 ],
+                formInline: {
+                    mobile: "",
+                    password: "",
+                },
+                labelPosition: "left",
+                rules: {
+                    mobile: [
+                        { validator: validateMobile, trigger: 'change' }
+                    ],
+                    password: [
+                        { required: true, message: '密码不能为空', trigger: 'change' }
+                    ],
+                },
+                listData:[]
             };
         },
         components:{
@@ -198,6 +271,41 @@
                 this.fundDetail = this.fundList.find((item,index)=>{
                     return activeIndex == index;
                 })
+            },
+            forgetPassword(){
+                this.$router.push({path:'/forgetPwd'});
+            },
+            onSubmit(formName) {
+                this.$refs[formName].validate((valid) => {
+                if (valid) {
+                     this.$Axios.post('/api/v1/member/login',{
+                       ...this.formInline
+                    }).then((res)=>{
+                        if (res.data.code == 200) {
+                            localStorage.setItem("username", res.data.data.username);
+                            localStorage.setItem("email", res.data.data.email);
+                            localStorage.setItem("mobile", res.data.data.mobile);
+                            // this.$message({
+                            //     message: '登录成功',
+                            //     type: 'success'
+                            // });
+                            // setTimeout(()=>{
+                                this.$router.push({path:'/userCenter'});
+                            // },1000)
+                        } else {
+                            this.$message({
+                                message: res.data.msg,
+                                type: 'error',
+                            });
+                        }
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+                });
             },
             showOpacity(){
                 if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
@@ -225,22 +333,23 @@
             },
         },
         mounted(){
-           if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
-                this.$Axios.get('/api/v1/netWorth/list',{}).then((data)=>{
-                    if (data.data.code == 200) {
-                        this.tableData = data.data.data.list;
+            this.$Axios.get('/api/v1/netWorth/list',{}).then((data)=>{
+                if (data.data.code == 200) {
+                    this.tableData = data.data.data.list;
+                    this.listData = data.data.data.list.slice(0, 4)
+                    console.log(this.listData.length)
+                    if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
                         this.showUser = true;
-                    } else {
-                        this.showUser = false;
                     }
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            }
-       },
+                } else {
+                    this.showUser = false;
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
         created(){
             this.handleFundClick(0);
-            
         }
     }
 </script>
@@ -301,100 +410,263 @@
         padding: 0;
     }
     .introduce{
-        padding: 76px 0;
-    }
-    .introduce_content{
-        margin-top: 50px;
-        width: 70%;
         display: flex;
         justify-content: space-between;
-        margin-left: 15%;
+        min-height: 400px;
+        width: 70%;
+        margin: 0 auto;
         .introduce_left{
-            background: url("./../assets/images/fund_left.png") no-repeat;
-            background-size: cover;
-            // width: 306px;
-            width: 35%;
-            height: 336px;
-        }
-        .fund_name_list{
+            background: #C62C2C;
+            width: 25%;
+            text-align: center;
+            padding: 46px 0 96px;
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            width: 63%;
-        }
-        .fund_detail{
-            background: url("./../assets/images/fund_right.png") no-repeat;
-            background-size: cover;
-            // width: 440px;
-            width: calc(100% - 200px);
-            height: 336px;
-            padding: 48px 28px 50px;
-            box-sizing: border-box;
-            overflow: hidden;
-            position: relative;
-            .fund_detail_title{
-                font-size: 25px;
-                font-family: Source Han Serif CN;
-                font-weight: 800;
-                color: #414141;
-               
+            align-items: center;
+            img{
+                width: 29px;
             }
-            .fund_detail_desc{
-                width: 100%;
-                font-size: 12px;
+            .fund_left_font{
+                font-size: 41px;
                 font-family: Source Han Serif CN;
-                font-weight: 500;
-                color: #2A2A2A;
-                line-height: 25px;
-                margin-top: 20px;
-                overflow:hidden; 
-                text-overflow:ellipsis; 
-                display:-webkit-box; /* autoprefixer: off */ 
-                -webkit-box-orient:vertical; /* autoprefixer: on */ 
-                -webkit-line-clamp:6;
+                font-weight: bold;
+                color: #FFFEFE;
+                letter-spacing: 10px;
+                width: 120px;
+                margin: 0 auto;
             }
             .more{
-                color: #ffffff;
-                background: #C80200;
-                cursor: pointer;
-                width: 87px;
-                height: 30px;
-                line-height: 30px;
-                text-align: center;
+                padding: 5px 15px;
+                background: white;
+                color: #B52E2E;
                 font-size: 12px;
-                position: absolute;
-                right: 28px;
-                bottom: 40px;
-
-            }
-        }
-        .tab{
-            width: 179px;
-            .tab_list{
-                width: 100%;
-                height: 53px;
-                line-height: 53px;
-                border-bottom: 1px solid #DFDFDF;
-                font-size: 17px;
-                font-family: Source Han Serif CN;
-                font-weight: 500;
-                color: #666666;
-                background: #F3F3F3;
-                text-align: center;
                 cursor: pointer;
-            }
-            .focus_tab_list{
-                background: #C80200;
-                color: #ffffff;
+                display: inline-block;
             }
         }
+        .introduce_right{
+            flex: 1;
+            background: #F1F1F1;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 6px 20px;
+            .item{
+                width: 25%;
+                margin: 0 6px;
+                background: #ffffff;
+                -moz-box-sizing: border-box;
+                position: relative;
+                .position_absolute{
+                    position: absolute;
+                    top: 5px;
+                    right: 10px;
+                    width: 27px;
+                    img{
+                        min-width: 100%;
+                        min-height: 100%;
+                        -o-object-fit: cover;
+                        object-fit: cover;
+                        object-fit: cover;
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+                .item_top{
+                    padding: 30px 10px 9px;
+                    min-height: 158px;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-direction: column;
+                    border-bottom: 1px dashed #E0CBCB;
+                    margin: 0 10px 10px;
+                    .fund_tite{
+                        font-size: 18px;
+                        font-family: Source Han Serif CN;
+                        font-weight: 800;
+                        color: #414141;
+                        text-align: center;
+                    }
+                    .fund_code{
+                        width: 80px;
+                        height: 20px;
+                        line-height: 20px;
+                        background: #FFEEEB;
+                        text-align: center;
+                        color: #B52E2E;
+                        font-size: 12px;
+                        margin: 0 auto;
+                        margin-top: 8px;
+                    }
+                    .fund_percent{
+                        font-size: 21px;
+                        font-family: Source Han Serif CN;
+                        font-weight: 800;
+                        color: #B52E2D;
+                        text-align: center;
+
+                    }
+                    .fund_create{
+                        font-size: 11px;
+                        font-family: Source Han Serif CN;
+                        font-weight: 400;
+                        color: #000000;
+                        text-align: center;
+                    }
+                }
+                .item_middle{
+                    background: #FAFAFA;
+                    .fund_desc{
+                        font-size: 11px;
+                        font-family: Source Han Serif CN;
+                        border-bottom: 1px dashed #E0CBCB;
+                        font-weight: 600;
+                        margin: 0 10px;
+                        padding: 10px 0px;
+                        color: #999999;
+                    }
+
+                }
+                .item_bottom, .item_bottom_center{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    padding: 5px 0 10px 10px;
+                    color: #999999; 
+                    min-height: 80px;
+                    .fund_info{
+                        font-size: 9px;
+                        line-height: 15px;
+                        font-family: Source Han Serif CN;
+                        font-weight: 600;
+                    }
+                }
+                .item_bottom_center{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .fund_person{
+                    font-weight: 600;
+                    margin-top: 10px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    .risk_message{
+        font-size: 12px;
+        font-family: Source Han Serif CN;
+        font-weight: 600;
+        color: #666666;
+        margin-left: 15%;
+        margin-top: 43px;
     }
     .net{
         .net_content{
-            padding: 50px 0 76px;
+            padding: 10px 0 76px;
             width: 70%;
             margin-left: 15%;
         }
     }
+    .login{
+        width: 444px;
+        height: 291px;
+        margin-bottom: 44px;
+        background: #F6F6F6;
+        border-radius: 6px 6px 0px 0px;
+        font-size: 14px;
+        font-family: Source Han Serif CN;
+        font-weight: 800;
+        color: #FFFFFF;
+        margin-left: 15%;
+        .login_head{
+            padding-left: 10px;
+            box-sizing: border-box;
+            width: 100%;
+            height: 28px;
+            line-height: 28px;
+            background: #C80200;
+            border-radius: 6px 6px 0px 0px;
+        }
+        .login_form{
+            padding: 40px 0 72px;
+            .login_form_content{
+                width: 350px;
+                margin: 0 auto;
+                .input_box{
+                    .link_style{
+                        margin-left: 5px;
+                        display: inline-block;
+                        font-size: 12px;
+                        font-family: Source Han Serif CN;
+                        font-weight: 800;
+                        color: #666666;
+                        vertical-align: bottom;
+                        display: inline-table;
+                        .login_icon{
+                            width: 19px;
+                            display: table-cell;
+                            vertical-align: bottom;
+                            img{
+                                width:100%;
+                            }
+                        }
+                        span{
+                            display: inline-block;
+                            height: 30px;
+                            line-height: 38px;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+                input:-internal-autofill-selected{
+                    background-color: white;
+                }
+                /deep/.el-form-item__label{
+                    font-size: 12px;
+                    font-family: Source Han Serif CN;
+                    font-weight: 800;
+                    color: #333333;
+                    padding: 0;
+                }
+                /deep/.el-input{
+                    width: 200px;
+                    height: 30px;
+                    background: #F6F6F6!important;
+                }
+                /deep/.el-input__inner{
+                    background-color: #F6F6F6!important;
+                    height: 30px;
+                    line-height: 30px;
+                    border: none;
+                    border: 1px solid #E0A944;
+                }
+                /deep/.el-form-item__content{
+                    line-height: unset;
+                }
+                /deep/.el-form-item{
+                    margin-bottom: 0;
+                }
+                .button_box{
+                    width: 50px;
+                    height: 30px;
+                    line-height: 30px;
+                    text-align: center;
+                    background: #C80200;
+                    color: #ffffff;
+                    font-size: 12px;
+                    margin-top: 20px;
+                    cursor: pointer;
+                    margin-bottom: 45px;
+              
+
+                }
+                
+            }
+        }
+    }
+  
     .process{
         .process_content{
             width: 60%;
