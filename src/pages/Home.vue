@@ -168,15 +168,14 @@ import Head from './../components/Head.vue';
 import Footer from './../components/Footer';
 import SendEmail from './../components/SendEmail';
 import FixedLeft from './../components/FixedLeft';
-import {mapGetters} from "vuex"
-
+import {mapGetters} from "vuex";
     export default {
         name: 'Home',
         components: {
             Head,
             Footer,
             SendEmail,
-            FixedLeft
+            FixedLeft,
         },
         data() {
             return {
@@ -487,6 +486,7 @@ import {mapGetters} from "vuex"
                     width: 200%;
                     position: absolute;
                     top: -20px;
+                    left: 50%;
                     transform: translateX(-50%);
                     // position: absolute;
                 }

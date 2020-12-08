@@ -22,35 +22,36 @@
                             <!-- <span class="link_style" @click="changePassword">修改密码</span> -->
                         </div>
                         <div class="button_box">
-                            <div class="button" @click="onSubmit('form')">登录</div>
+                            <div class="button" @click="showModal">登录</div>
                         </div>
                     </div>
                 </el-form> 
             </div>
         </PublicBg>
+        <el-dialog
+            title=""
+            :visible.sync="dialogVisible"
+            width="70%">
+            <Law 
+                @onSubmit="onSubmit"
+                @closeModal="closeModal"
+            />
+        </el-dialog>
     </div>
 </template>
 <script>
     import PublicBg from './../components/PublicBg'
+    import Law from './Law'
+
     export default {
         components:{
             PublicBg,
+            Law
         },
         data() {
-            var validateMobile = (rule, value, callback) => {
-                if (!value) {
-                    return callback(new Error('手机号不能为空'));
-                }
-                setTimeout(() => {
-                    if ( /^1(3|4|5|6|7|8|9)\d{9}$/.test(value) ) {
-                        callback();
-                    } else {
-                        callback(new Error('手机号码格式不对'));
-                    }
-                }, 900);
-            };
             return {
                 activeIndex: 0,
+                dialogVisible: false,
                 formInline: {
                     mobile: "",
                     password: "",
@@ -58,7 +59,7 @@
                 labelPosition: "top",
                 rules: {
                     mobile: [
-                        { validator: validateMobile, trigger: 'change' }
+                        { required: true, message: '手机号不能为空', trigger: 'change' }
                     ],
                     password: [
                         { required: true, message: '密码不能为空', trigger: 'change' }
@@ -66,24 +67,6 @@
                 }
             };
         },
-        // created(){
-        //     this.$Axios.post('api/admin/v1/sysUser',{
-        //         deptId: 10,
-        //         email: "123@qq.com",
-        //         nickName: "test2",
-        //         password: "123456",
-        //         phone: "17856376472",
-        //         postId: 1,
-        //         remark: "test2",
-        //         sex: "1",
-        //         status: "1",
-        //         username: "test2",
-        //     }).then(function(res){
-        //         console.log(res)
-        //     }).catch(function (error) {
-        //         console.log(error);
-        //     });
-        // },
         methods:{
             toRegister(){
                 this.$router.push({path:'/law'});
@@ -94,39 +77,38 @@
             changePassword(){
                 this.$router.push({path:'/updatePwd'});
             },
-            onSubmit(formName) {
-                this.$refs[formName].validate((valid) => {
-                if (valid) {
-                     this.$Axios.post('/api/v1/member/login',{
-                       ...this.formInline
-                    }).then((res)=>{
-                        if (res.data.code == 200) {
-                            localStorage.setItem("username", res.data.data.username);
-                            localStorage.setItem("email", res.data.data.email);
-                            localStorage.setItem("mobile", res.data.data.mobile);
-                            // this.$message({
-                            //     message: '登录成功',
-                            //     type: 'success'
-                            // });
-                            // setTimeout(()=>{
-                                this.$router.push({path:'/userCenter'});
-                            // },1000)
-                        } else {
-                            this.$message({
-                                message: res.data.msg,
-                                type: 'error',
-                            });
-                        }
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
-                } else {
-                    console.log('error submit!!');
-                    return false;
-                }
+            showModal() {
+                this.dialogVisible = true;
+            },
+            closeModal(){
+                this.dialogVisible = false;
+            },
+            onSubmit(){
+                this.closeModal();
+                this.$Axios.post('/api/v1/member/login',{
+                    ...this.formInline
+                }).then((res)=>{
+                    if (res.data.code == 200) {
+                        localStorage.setItem("username", res.data.data.username);
+                        localStorage.setItem("email", res.data.data.email);
+                        localStorage.setItem("mobile", res.data.data.mobile);
+                        // this.$message({
+                        //     message: '登录成功',
+                        //     type: 'success'
+                        // });
+                        // setTimeout(()=>{
+                            this.$router.push({path:'/userCenter'});
+                        // },1000)
+                    } else {
+                        this.$message({
+                            message: res.data.msg,
+                            type: 'error',
+                        });
+                    }
+                }).catch(function (error) {
+                    console.log(error);
                 });
             },
-            
             resetForm(formName) {
                 this.$refs[formName].resetFields();
             }

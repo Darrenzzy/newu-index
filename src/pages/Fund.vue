@@ -121,15 +121,22 @@
                             <div class="input_box">
                                 <el-form-item label="" prop="">
                                      <div class="button_box">
-                                        <div class="button" @click="onSubmit('form')">登录</div>
+                                        <div class="button" @click="showModal">登录</div>
                                     </div>
                                 </el-form-item>
                             </div>
-                           
                         </div>
-                    </el-form> 
+                    </el-form>
                 </div>
-
+                <el-dialog
+                    title=""
+                    :visible.sync="dialogVisible"
+                    width="70%">
+                    <Law 
+                        @onSubmit="onSubmit"
+                        @closeModal="closeModal"
+                    />
+                </el-dialog>
             </div>
             <div class="process" id="fundProcess">
                 <h3 class="fund_public_title">认购流程</h3>
@@ -141,7 +148,7 @@
                         2.委托人汇款：委托人在产品规定的有效时间范围内，将认购资金及认购费用，通过银行汇款到该信托产品指定的托管银行帐户；
                     </p>
                     <p class="process_p">
-                        3.委托人取得合同：在认购产品成立后，或日常开放日认购后，在合同规定的N个（一般为10个）工作日内，委托人将取得由信托公司签署并盖章的有效合同。 备注： 若委托人为自然人，需提供以下资料： （1）委托人的身份证明文件（身份证或护照）复印件一式两份； （2）委托人的信托利益分配账户（户名需与身份证为同一人）复印件一式两份（该账户应与合同上填写的信托利益分配账户为同一账户）； （3）委托人的信托资金划入认购账户的银行汇款凭证复印件一式一份，并在汇款备注中注明：“XX认购重阳XX期”； （4）以上复印件上均需客户本人签字，并注明：“仅供认购重阳XX期信托计划”。
+                        3.委托人取得合同：在认购产品成立后，或日常开放日认购后，在合同规定的N个（一般为10个）工作日内，委托人将取得由信托公司签署并盖章的有效合同。 备注： 若委托人为自然人，需提供以下资料： （1）委托人的身份证明文件（身份证或护照）复印件一式两份； （2）委托人的信托利益分配账户（户名需与身份证为同一人）复印件一式两份（该账户应与合同上填写的信托利益分配账户为同一账户）； （3）委托人的信托资金划入认购账户的银行汇款凭证复印件一式一份，并在汇款备注中注明：“XX认购诺游XX期”； （4）以上复印件上均需客户本人签字，并注明：“仅供认购诺游XX期信托计划”。
                     </p>
                     <p class="process_p" style="margin-top: 30px;">
                         备注
@@ -156,10 +163,10 @@
                         （2）委托人的信托利益分配账户（户名需与身份证为同一人）复印件一式两份（该账户应与合同上填写的信托利益分配账户为同一账户）；
                     </p>
                     <p class="process_p">
-                        （3）委托人的信托资金划入认购账户的银行汇款凭证复印件一式一份，并在汇款备注中注明：“XX认购重阳XX期”； 
+                        （3）委托人的信托资金划入认购账户的银行汇款凭证复印件一式一份，并在汇款备注中注明：“XX认购诺游XX期”； 
                     </p>
                     <p class="process_p">
-                        （4）以上复印件上均需客户本人签字，并注明：“仅供认购重阳XX期信托计划”。
+                        （4）以上复印件上均需客户本人签字，并注明：“仅供认购诺游XX期信托计划”。
                     </p>
 
                 </div>
@@ -177,24 +184,15 @@
     import Head from './../components/Head.vue';
     import SendEmail from './../components/SendEmail';
     import FixedLeft from './../components/FixedLeft';
+    import Law from './Law'
 
     export default {
         data() {
-            var validateMobile = (rule, value, callback) => {
-                if (!value) {
-                    return callback(new Error('手机号不能为空'));
-                }
-                setTimeout(() => {
-                    if ( /^1(3|4|5|6|7|8|9)\d{9}$/.test(value) ) {
-                        callback();
-                    } else {
-                        callback(new Error('手机号码格式不对'));
-                    }
-                }, 900);
-            };
             return {
                 fundDetail:{},
                 showUser: false,
+                dialogVisible: false,
+                
                 tableData: [
                     {
                         build_before: "***", 
@@ -249,7 +247,7 @@
                 labelPosition: "left",
                 rules: {
                     mobile: [
-                        { validator: validateMobile, trigger: 'change' }
+                        { required: true, message: '手机号不能为空', trigger: 'change' }
                     ],
                     password: [
                         { required: true, message: '密码不能为空', trigger: 'change' }
@@ -264,8 +262,15 @@
             Head,
             SendEmail,
             FixedLeft,
+            Law
         },
         methods:{
+            closeModal(){
+                this.dialogVisible = false;
+            },
+            showModal() {
+                this.dialogVisible = true;
+            },
             handleFundClick(activeIndex){
                 this.activeIndex = activeIndex;
                 this.fundDetail = this.fundList.find((item,index)=>{
@@ -275,36 +280,30 @@
             forgetPassword(){
                 this.$router.push({path:'/forgetPwd'});
             },
-            onSubmit(formName) {
-                this.$refs[formName].validate((valid) => {
-                if (valid) {
-                     this.$Axios.post('/api/v1/member/login',{
-                       ...this.formInline
-                    }).then((res)=>{
-                        if (res.data.code == 200) {
-                            localStorage.setItem("username", res.data.data.username);
-                            localStorage.setItem("email", res.data.data.email);
-                            localStorage.setItem("mobile", res.data.data.mobile);
-                            // this.$message({
-                            //     message: '登录成功',
-                            //     type: 'success'
-                            // });
-                            // setTimeout(()=>{
-                                this.$router.push({path:'/userCenter'});
-                            // },1000)
-                        } else {
-                            this.$message({
-                                message: res.data.msg,
-                                type: 'error',
-                            });
-                        }
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
-                } else {
-                    console.log('error submit!!');
-                    return false;
-                }
+            onSubmit() {
+                this.closeModal();
+                this.$Axios.post('/api/v1/member/login',{
+                    ...this.formInline
+                }).then((res)=>{
+                    if (res.data.code == 200) {
+                        localStorage.setItem("username", res.data.data.username);
+                        localStorage.setItem("email", res.data.data.email);
+                        localStorage.setItem("mobile", res.data.data.mobile);
+                        // this.$message({
+                        //     message: '登录成功',
+                        //     type: 'success'
+                        // });
+                        // setTimeout(()=>{
+                            this.$router.push({path:'/userCenter'});
+                        // },1000)
+                    } else {
+                        this.$message({
+                            message: res.data.msg,
+                            type: 'error',
+                        });
+                    }
+                }).catch(function (error) {
+                    console.log(error);
                 });
             },
             showOpacity(){
@@ -337,7 +336,6 @@
                 if (data.data.code == 200) {
                     this.tableData = data.data.data.list;
                     this.listData = data.data.data.list.slice(0, 4)
-                    console.log(this.listData.length)
                     if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
                         this.showUser = true;
                     }

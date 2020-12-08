@@ -16,7 +16,6 @@
                 <p class="law_p">
                     如果确认您或您所代表的机构是合格投资者，并将遵守适用的有关法规请点击“接受”键以继续浏览本公司网站。如您不同意任何有关条款，请直接关闭本网站。
                 </p>
-                
             </div>
         </div>
         <div class="button">
@@ -27,12 +26,20 @@
 </template>
 <script>
 export default {
-    methods:{
+    methods:{       
         toRegister(){
-            this.$router.push({path:'/register'});
+            if (this.$route.path == "/login" || this.$route.path == "/fund") {
+                this.$emit('onSubmit');
+            } else {
+                this.$router.push({path:'/register'});
+            }
         },
         goHistory(){
-            this.$router.go(-1)
+            if (this.$route.path == "/login" || this.$route.path == "/fund") {
+                this.$emit('closeModal');
+            } else{
+                this.$router.go(-1)
+            }
         }
     }
 }

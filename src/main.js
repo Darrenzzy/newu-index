@@ -61,16 +61,15 @@ router.beforeEach((to, from, next) => {
             query: {redirect: to.path}  
           })
       }
-  }
-  else {
+  } else {
     next();
   }
-  if (to.name === 'login') {
-    if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
-      router.push({name: 'home'});
-    }
-  }
- 
+  // if (to.name === 'login' && !to.query.flag) {
+  //   next({
+  //     path: '/law',  
+  //     query: {redirect: to.path, tag: "login"}  
+  //   })
+  // }
 })
 
 
