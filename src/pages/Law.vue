@@ -41,18 +41,21 @@
 export default {
     methods:{       
         toRegister(){
-            if (this.$route.path == "/login" || this.$route.path == "/fund") {
-                this.$emit('onSubmit');
-            } else {
-                this.$router.push({path:'/register'});
-            }
+           this.$router.push({path: "/home"})
         },
         goHistory(){
-            if (this.$route.path == "/login" || this.$route.path == "/fund") {
-                this.$emit('closeModal');
-            } else{
-                this.$router.go(-1)
-            }
+            // if (navigator.userAgent.indexOf("Firefox") != -1 || navigator.userAgent.indexOf("Chrome") !=-1) {
+            //     window.location.href="about:blank";
+            //     window.close();
+            // } else {
+            //     window.opener = null;
+            //     window.open("", "_self");
+            //     window.close();
+            // }
+
+            window.close();
+
+            // window.open("about:blank","_self").close() 
         }
     }
 }
@@ -84,6 +87,8 @@ export default {
             .law_box{
                 border: 1px solid rgba(169, 163, 163, .27);
                 padding: 20px 7px 10px;
+                height: 400px;
+                overflow-y: scroll;
                 .weight_p{
                     font-size: 16px;
                     font-family: Source Han Serif CN;
@@ -98,6 +103,25 @@ export default {
                     color: #333333;
                     line-height: 27px;
                     margin-bottom: 20px;
+                }
+
+                &::-webkit-scrollbar{
+                    width: 5px;
+                    height: 5px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    border-radius: 10px;
+                    background: lightgray;
+                    height: 20px;
+                }
+                &::-webkit-scrollbar-track {
+                    border-radius: 10px;
+                    background: lightgray;
+                    height: 20px;
+                }
+                &::-webkit-scrollbar {
+                    width: 0px;  
+                    height: 1px;
                 }
             }
             .margin_bottom{

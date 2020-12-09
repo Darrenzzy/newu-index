@@ -22,36 +22,23 @@
                             <!-- <span class="link_style" @click="changePassword">修改密码</span> -->
                         </div>
                         <div class="button_box">
-                            <div class="button" @click="showModal">登录</div>
+                            <div class="button" @click="onSubmit">登录</div>
                         </div>
                     </div>
                 </el-form> 
             </div>
         </PublicBg>
-        <el-dialog
-            title=""
-            :visible.sync="dialogVisible"
-            width="70%">
-            <Law 
-                @onSubmit="onSubmit"
-                @closeModal="closeModal"
-            />
-        </el-dialog>
     </div>
 </template>
 <script>
     import PublicBg from './../components/PublicBg'
-    import Law from './Law'
-
     export default {
         components:{
             PublicBg,
-            Law
         },
         data() {
             return {
                 activeIndex: 0,
-                dialogVisible: false,
                 formInline: {
                     mobile: "",
                     password: "",
@@ -69,7 +56,7 @@
         },
         methods:{
             toRegister(){
-                this.$router.push({path:'/law'});
+                this.$router.push({path:'/register'});
             },
             forgetPassword(){
                 this.$router.push({path:'/forgetPwd'});
@@ -77,14 +64,7 @@
             changePassword(){
                 this.$router.push({path:'/updatePwd'});
             },
-            showModal() {
-                this.dialogVisible = true;
-            },
-            closeModal(){
-                this.dialogVisible = false;
-            },
             onSubmit(){
-                this.closeModal();
                 this.$Axios.post('/api/v1/member/login',{
                     ...this.formInline
                 }).then((res)=>{

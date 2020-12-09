@@ -29,7 +29,7 @@
 			</Popup>
 
             <div class="header_right pc">
-                <router-link to="/"><div class="header_item">首页</div></router-link>
+                <router-link to="/home"><div class="header_item">首页</div></router-link>
                 <router-link to="/fund"><div class="header_item">基金产品</div></router-link>
                 <router-link to="/about_nuoyou"> <div class="header_item"> 关于诺游 </div> </router-link>
                 <div v-if="showUser">

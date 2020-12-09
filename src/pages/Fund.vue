@@ -121,22 +121,13 @@
                             <div class="input_box">
                                 <el-form-item label="" prop="">
                                      <div class="button_box">
-                                        <div class="button" @click="showModal">登录</div>
+                                        <div class="button" @click="onSubmit">登录</div>
                                     </div>
                                 </el-form-item>
                             </div>
                         </div>
                     </el-form>
                 </div>
-                <el-dialog
-                    title=""
-                    :visible.sync="dialogVisible"
-                    width="70%">
-                    <Law 
-                        @onSubmit="onSubmit"
-                        @closeModal="closeModal"
-                    />
-                </el-dialog>
             </div>
             <div class="process" id="fundProcess">
                 <h3 class="fund_public_title">认购流程</h3>
@@ -184,15 +175,12 @@
     import Head from './../components/Head.vue';
     import SendEmail from './../components/SendEmail';
     import FixedLeft from './../components/FixedLeft';
-    import Law from './Law'
 
     export default {
         data() {
             return {
                 fundDetail:{},
                 showUser: false,
-                dialogVisible: false,
-                
                 tableData: [
                     {
                         build_before: "***", 
@@ -262,15 +250,8 @@
             Head,
             SendEmail,
             FixedLeft,
-            Law
         },
         methods:{
-            closeModal(){
-                this.dialogVisible = false;
-            },
-            showModal() {
-                this.dialogVisible = true;
-            },
             handleFundClick(activeIndex){
                 this.activeIndex = activeIndex;
                 this.fundDetail = this.fundList.find((item,index)=>{
@@ -281,7 +262,6 @@
                 this.$router.push({path:'/forgetPwd'});
             },
             onSubmit() {
-                this.closeModal();
                 this.$Axios.post('/api/v1/member/login',{
                     ...this.formInline
                 }).then((res)=>{

@@ -30,7 +30,6 @@
                     同时兼顾收益率曲线的稳定性与资产配置的流动性、灵活性，努力为投资者创造持续稳定的业绩回报。
                 </p>
             </div>
-
             <div class="explain">
                 <div class="left">
                     <div class="left_content flex">
