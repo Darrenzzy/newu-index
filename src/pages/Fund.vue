@@ -42,7 +42,7 @@
                                 着重挖掘高成长公司配置，捕捉市场热点题材，灵活多变的投资策略。
                             </div>
                         </div>
-                        <!-- <div class="item_bottom"> 
+                        <div class="item_bottom"> 
                             <div>
                                 <div class="fund_info"> 产品开放日: 每月15日</div>
                                 <div class="fund_info"> 管理费: 5%</div>
@@ -50,11 +50,11 @@
                                 <div class="fund_info"> 最低认购金: 100万元</div>
                             </div>
                             <div class="fund_person">基金经理 <span>王小静</span></div>
-                        </div> -->
-
-                        <div class="item_bottom_center"> 
-                            <div class="fund_person">基金经理 <span>王小静</span></div>
                         </div>
+
+                        <!-- <div class="item_bottom_center"> 
+                            <div class="fund_person">基金经理 <span>王小静</span></div>
+                        </div> -->
                     </div>
                 </div>
             </div>
