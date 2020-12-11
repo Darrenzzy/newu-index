@@ -53,7 +53,7 @@
            <div class="pic_content">
                 <h1 class="pic_title">一<span class="pic_red">诺</span>千金 <span class="pic_red">游</span>刃有余</h1>
                 <p class="pic_p">
-                    守信守诺是为人和做事的第一准则。
+                    重信守诺是为人和做事的第一准则。
                 </p>
                 <p class="pic_p">
                     市场存在低风险和高收益的机会。股价会上下波动，但最终会回归公司的内生价值。
