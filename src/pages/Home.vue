@@ -33,20 +33,18 @@
                 </div>
                 <div class="table_list" style="cursor: pointer;" @click="handleTableClick">
                     <div class="column_content" v-for="(item) in tableData" :key="item.ID">
-                        <div class="content">{{item.wond_name}}</div>
+                        <div class="content">{{item.wond_name}} <span v-show="item.is_limit" style="color: #CD4645"> (限) </span></div>
                         <div class="content" style="width: 160px;">
                             <span v-if="showUser" >{{ item.date_worth | formateTime}}</span>
                             <span v-else  class="blur">{{(item.date_worth)}}</span>
                         </div>
                         <div class="content"><span :class="showUser ?'': 'blur'">{{item.unit_worth}}</span></div>
-                       
                         <div class="content"><span :class="showUser?'': 'blur'">{{item.net_worth}}</span></div>
                         <div class="content"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
                         <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.now_year}}</span></div>
                         <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.last_year}}</span></div>
                         <div class="content"><span :class="showUser ?'': 'blur'">{{item.three_muoth}}</span></div>
                         <div class="content"><span :class="showUser ?'': 'blur'">{{item.six_mouth}}</span></div>
-
                     </div>
                 </div>
             </div>
@@ -58,13 +56,10 @@
                     守信守诺是为人和做事的第一准则。
                 </p>
                 <p class="pic_p">
-                    投资不难也不易。
-                </p>
-                 <p class="pic_p">
-                    价值与成长同等重要。
-                </p>
-                 <p class="pic_p">
                     市场存在低风险和高收益的机会。股价会上下波动，但最终会回归公司的内生价值。
+                </p>
+                 <p class="pic_p">
+                    价值与成长同样性感。
                 </p>
                  <p class="pic_p">
                     流动性和灵活性非常关键。
@@ -82,9 +77,9 @@
                         </p>
                     </div>
                     <div class="company_left">
-                        <h4 class="company_left_h4">·感受周期</h4>
+                        <h4 class="company_left_h4">·周期的力量</h4>
                         <p class="company_left_p">
-                            经济周期是永远存在的，复苏，繁荣，滞涨，衰退。。。更替周而复始。经济有周期，行业有周期，公司也有周期。每个周期的大小不同、长短不一。我们要用心去感受周期，并与之共舞。
+                            经济周期是永远存在的，复苏，繁荣，滞涨，衰退。。。更替周而复始。经济有周期，行业有周期，公司也有周期。每个周期的大小不同、长短不一。我们要用心去感受与体验周期的力量，顺势而行并与之共舞。
                         </p>
                     </div>
                 

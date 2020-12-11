@@ -21,33 +21,33 @@
                     <div class="more" @click="handleTableClick">了解更多-></div>
                 </div>
                 <div class="introduce_right">
-                    <div class="item" v-for="item in tableData" :key="item.ID">
+                    <div class="item" v-for="item in listData" :key="item.ID">
                         <div class="position_absolute" v-show="item.is_limit">
                             <img src="./../assets/images/fund_limit.png" />
                         </div>
                         <div class="item_top">
                             <div>
-                                <div class="fund_tite">诺游1号</div>
-                                <div class="fund_code">(000100)</div>
+                                <div class="fund_tite">{{item.wond_name}}</div>
+                                <div class="fund_code">{{item.code}}</div>
                             </div> 
                             <div>
-                                <div class="fund_percent">78.89%</div>
+                                <div class="fund_percent">{{item.last_year}}</div>
                                 <div class="fund_create">近一年成立</div>
                             </div>
                         </div>
                         <div class="item_middle"> 
                             <div class="fund_desc">
-                                着重挖掘高成长公司配置，捕捉市场热点题材，灵活多变的投资策略。
+                                {{item.intro}}
                             </div>
                         </div>
                         <div class="item_bottom"> 
                             <div>
-                                <div class="fund_info"> 产品开放日: 每月15日</div>
-                                <div class="fund_info"> 管理费: 5%</div>
-                                <div class="fund_info"> 业绩报酬: 20%</div>
-                                <div class="fund_info"> 最低认购金: 100万元</div>
+                                <div class="fund_info"> 产品开放日: {{item.open_day}}</div>
+                                <div class="fund_info"> 管理费: {{item.manage_fee}}</div>
+                                <div class="fund_info"> 业绩报酬: {{item.results_reward}}</div>
+                                <div class="fund_info"> 最低认购金: {{item.min_buy}}</div>
                             </div>
-                            <div class="fund_person">基金经理 <span>王小静</span></div>
+                            <div class="fund_person">基金经理 <span>{{item.manage_name}}</span></div>
                         </div>
 
                         <!-- <div class="item_bottom_center"> 
@@ -75,8 +75,8 @@
                             <div class="title">近三年(%)</div>
                         </div>
                         <div class="table_list" style="cursor: pointer;" @click="handleTableClick">
-                            <div class="column_content" v-for="(item) in listData" :key="item.ID">
-                                <div class="content">{{item.wond_name}}</div>
+                            <div class="column_content" v-for="(item) in tableData" :key="item.ID">
+                                <div class="content">{{item.wond_name}} <span v-show="item.is_limit" style="color: #CD4645"> (限) </span></div>
                                 <div class="content" style="width: 160px;">
                                     <span v-if="showUser" >{{ item.date_worth | formateTime}}</span>
                                     <span v-else  class="blur">{{(item.date_worth)}}</span>
@@ -250,6 +250,7 @@
             FixedLeft,
         },
         methods:{
+            
             handleFundClick(activeIndex){
                 this.activeIndex = activeIndex;
                 this.fundDetail = this.fundList.find((item,index)=>{
@@ -364,7 +365,6 @@
             font-weight: 800;
             color: #C80200;
             margin-top: 24px;
-
         }
         .fund_desc{
             max-width: 456px;
@@ -500,6 +500,12 @@
                         margin: 0 10px;
                         padding: 10px 0px;
                         color: #999999;
+                        height: 50px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        display: -webkit-box;
                     }
 
                 }
