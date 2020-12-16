@@ -114,7 +114,7 @@
                     </div>
                     <div class="js_show green" ref="greenImg">
                         <div class="green_font">周期的力量</div>
-                        <div class="small_img top_img">
+                        <div class="small_img green_img">
                             <img src="./../assets/images/green.png"/>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
                     </div>
                     <div class="js_show yellow" ref="yellowImg">
                         <div class="yellow_font">交易的本质</div>
-                        <div class="small_img top_img">
+                        <div class="small_img yellow_img">
                             <img src="./../assets/images/yellow.png"/>
                         </div>
                     </div>
@@ -217,30 +217,30 @@ import {mapGetters} from "vuex";
             viewCircle(){
                 let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
                 console.log(scrollHeight)
-                if (scrollHeight < 2011) {
+                if (scrollHeight < 2033) {
                     this.handleTestMask("topImg", "foucs_top");
                 } else {
                     this.handleRemove("topImg", "foucs_top");
                 }
 
-                if (scrollHeight >= 2011 && scrollHeight < 2295) {
+                if (scrollHeight >= 2033 && scrollHeight < 2354) {
                     this.handleTestMask("greenImg", "foucs_green");
                 } else {
                     this.handleRemove("greenImg", "foucs_green");
                 }
 
-                if ( scrollHeight >= 2295 && scrollHeight < 2584) {
+                if ( scrollHeight >= 2354 && scrollHeight < 2633) {
                     this.handleTestMask("rightImg", "foucs_right");
                 } else {
                     this.handleRemove("rightImg", "foucs_right")
                 }
 
-                if ( scrollHeight >= 2584 && scrollHeight < 2650 ) {
+                if ( scrollHeight >= 2633 && scrollHeight < 2790 ) {
                     this.handleTestMask("leftImg", "foucs_left")
                 } else {
                     this.handleRemove("leftImg", "foucs_left");
                 }
-                if ( scrollHeight >= 2650) {
+                if ( scrollHeight >= 2790) {
                     this.handleTestMask("yellowImg", "foucs_yellow")
                 } else {
                     this.handleRemove("yellowImg", "foucs_yellow");
@@ -447,13 +447,13 @@ import {mapGetters} from "vuex";
                         border: 1px solid rgba(30,12,63, .45);
                     }
                 }
-                .yellowImg{
+                .yellow_img{
                     border: 1px solid rgba(255,200,92, .85);
                     img{
                         border: 1px solid rgba(255,200, 92, 45);
                     }
                 }
-                .greenImg{
+                .green_img{
                     border: 1px solid rgba(89,136,107, .85);
                     img{
                         border: 1px solid rgba(89,136,107, .45);
