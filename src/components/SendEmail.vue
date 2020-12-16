@@ -41,7 +41,7 @@
                 popper-class="proper_code"
             >
                 <div class="code_box" style="width: 150px; height: 150px; ">
-                    <img src="./../assets/images/email.png" style="width: 100%"/>
+                    <img src="./../assets/images/er_wei_ma.jpg" style="width: 100%"/>
                 </div>
                 <div class="bar_code" slot="reference"></div>
             </el-popover>

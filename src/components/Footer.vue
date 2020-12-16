@@ -16,9 +16,9 @@
             <div class="menu_box">
                 <div class="menu_title">首页</div>
                 <div class="menu"><a href="">诺游投资视频</a></div>
-                <div class="menu"><a href="">价值投资</a></div>
-                <div class="menu"><a href="">资产分配灵活性</a></div>
-                <div class="menu"><a href="">仓位管控</a></div>
+                <div class="menu"><a href="">基金净值</a></div>
+                <div class="menu"><a href="">投资理念</a></div>
+                <div class="menu"><a href="">投资策略</a></div>
             </div>
             <div class="menu_box">
                 <div class="menu_title">基金产品</div>
@@ -51,12 +51,10 @@
                 <span class="boder_style"></span>
                 <span class="item"><a href="/responseblity#top">免责声明</a></span>
                 <span class="boder_style"></span>
-                <span class="item"><a href="/right#top">权益须知</a></span>
-                <span class="boder_style"></span>
+                <!-- <span class="item"><a href="/right#top">权益须知</a></span> -->
                 <span class="item"><a href="/risk#top">风险提示</a></span>
-
             </div>
-            <p>公司地址：上海市浦东新区明月路188弄27号  邮编：XXXXX</p>
+            <p>公司地址：上海市浦东新区明月路188弄27号</p>
         </div>
     </div>
 </template>

@@ -34,7 +34,7 @@
                 <div class="table_list" style="cursor: pointer;" @click="handleTableClick">
                     <div class="column_content" v-for="(item) in tableData" :key="item.ID">
                         <div class="content">{{item.wond_name}} <span v-show="item.is_limit" style="color: #CD4645"> (限) </span></div>
-                        <div class="content" style="width: 160px;">
+                        <div class="content">
                             <span v-if="showUser" >{{ item.date_worth | formateTime}}</span>
                             <span v-else  class="blur">{{(item.date_worth)}}</span>
                         </div>
@@ -71,7 +71,7 @@
             <div class="company_content">
                 <div class="company_left_box">
                     <div class="company_left">
-                        <h4 class="company_left_h4" @click="handleTestMask('foucs_right')">·与优秀企业共同成长</h4>
+                        <h4 class="company_left_h4">·与优秀企业共同成长</h4>
                         <p class="company_left_p" style="margin-bottom: 30px;">
                             价值投资最重要的是寻找优秀的企业，是买公司而并非单纯的买股票。好的公司可能会在一个阶段不被发现或不被认可，但最终会得到市场的公平定价，回归价值。所以，公司是否是好的行业，好的赛道，是否有很深的护城河，管理层是否品德优良、能力超群，这些都是重要的衡量维度。
                         </p>
@@ -107,25 +107,37 @@
                 </div>
                 <div class="company_right" ref="companyRight">
                     <div class="js_show top foucs_top" ref="topImg">
-                        <div class="top_font">投资逻辑</div>
+                        <div class="top_font">与优秀企业共同成长</div>
                         <div class="small_img top_img">
                             <img src="./../assets/images/touzi.png"/>
                         </div>
                     </div>
-                     <div class="js_show left" ref="leftImg">
-                        <div class="small_img left_img">
-                            <img src="./../assets/images/shichang.png"/>
+                    <div class="js_show green" ref="greenImg">
+                        <div class="green_font">周期的力量</div>
+                        <div class="small_img top_img">
+                            <img src="./../assets/images/green.png"/>
                         </div>
-                        <div class="left_font">市场特点</div>
                     </div>
                     <div class="js_show right" ref="rightImg">
                          <div class="small_img right_img">
                             <img src="./../assets/images/fengkong.png"/>
                         </div>
-                        <div class="right_font">风控措施</div>
-
+                        <div class="right_font">真的逻辑</div>
                     </div>
-                    <img ref="circle" src="./../assets/images/circle_one.png"/>
+
+                    <div class="js_show left" ref="leftImg">
+                        <div class="small_img left_img">
+                            <img src="./../assets/images/shichang.png"/>
+                        </div>
+                        <div class="left_font">跟随市场，不要预测市场</div>
+                    </div>
+                    <div class="js_show yellow" ref="yellowImg">
+                        <div class="yellow_font">交易的本质</div>
+                        <div class="small_img top_img">
+                            <img src="./../assets/images/yellow.png"/>
+                        </div>
+                    </div>
+                    <img src="./../assets/images/circle_one.png"/>
                 </div>
             </div>
         </div>
@@ -134,11 +146,6 @@
     </div>
 </template>
 <script>
-
-import circle_one from "./../assets/images/circle_one.png";
-import circle_two from "./../assets/images/circle_two.png";
-import circle_three from "./../assets/images/circle_three.png";
-
 import Head from './../components/Head.vue';
 import Footer from './../components/Footer';
 import SendEmail from './../components/SendEmail';
@@ -207,28 +214,36 @@ import {mapGetters} from "vuex";
                     },300) 
                 }
             },
-            
             viewCircle(){
                 let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
                 console.log(scrollHeight)
-                if (scrollHeight < 1870 && this.$refs.circle) {
+                if (scrollHeight < 2011) {
                     this.handleTestMask("topImg", "foucs_top");
-                    this.$refs.circle.setAttribute("src", circle_one);
                 } else {
                     this.handleRemove("topImg", "foucs_top");
                 }
-                // 2090
-                if ( scrollHeight >= 1870 && scrollHeight < 2150 && this.$refs.circle) {
+
+                if (scrollHeight >= 2011 && scrollHeight < 2295) {
+                    this.handleTestMask("greenImg", "foucs_green");
+                } else {
+                    this.handleRemove("greenImg", "foucs_green");
+                }
+
+                if ( scrollHeight >= 2295 && scrollHeight < 2584) {
+                    this.handleTestMask("rightImg", "foucs_right");
+                } else {
+                    this.handleRemove("rightImg", "foucs_right")
+                }
+
+                if ( scrollHeight >= 2584 && scrollHeight < 2650 ) {
                     this.handleTestMask("leftImg", "foucs_left")
-                    this.$refs.circle.setAttribute("src", circle_two)
                 } else {
                     this.handleRemove("leftImg", "foucs_left");
                 }
-                if ( scrollHeight >= 2150 && this.$refs.circle) {
-                    this.handleTestMask("rightImg", "foucs_right");
-                    this.$refs.circle.setAttribute("src", circle_three);
+                if ( scrollHeight >= 2650) {
+                    this.handleTestMask("yellowImg", "foucs_yellow")
                 } else {
-                    this.handleRemove("rightImg", "foucs_right")
+                    this.handleRemove("yellowImg", "foucs_yellow");
                 }
             },
             handleTestMask(obj, className){
@@ -432,6 +447,18 @@ import {mapGetters} from "vuex";
                         border: 1px solid rgba(30,12,63, .45);
                     }
                 }
+                .yellowImg{
+                    border: 1px solid rgba(255,200,92, .85);
+                    img{
+                        border: 1px solid rgba(255,200, 92, 45);
+                    }
+                }
+                .greenImg{
+                    border: 1px solid rgba(89,136,107, .85);
+                    img{
+                        border: 1px solid rgba(89,136,107, .45);
+                    }
+                }
                 .left_img{
                     border: 1px solid rgba(235,26,49, .85);
                     img{
@@ -445,7 +472,6 @@ import {mapGetters} from "vuex";
                     }
                 }
             }
-            
             .font_circle{
                 width: 110%;
                 transform: translate(-50%, -90%) scale(1.3);
@@ -456,56 +482,56 @@ import {mapGetters} from "vuex";
                 transform: translate(-50%, -50%) scale(1.3);
                 .top_font{
                     color: #EEA282;
-                    font-size: 14px;
-                    text-align: center;
-                    width: 200%;
-                    position: absolute;
                     top: -20px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    // position: absolute;
                 }
+            }
+            .top_font, .left_font,.right_font, .yellow_font, .green_font{
+                font-size: 14px;
+                text-align: center;
+                position: absolute;
+                transform: translateX(-50%);
+                left: 50%;
+                width: 200%;
             }
             .foucs_top{
                 transform: translate(-50%, -50%) scale(1.6);
             }
-            .foucs_left{
-                transform: translateX(-20%) scale(1.6);
-            }
-            .left{
-                bottom: 15%;
+           
+            .left,.right, .green, .yellow{
                 transition: transform 1s ease ;
                 transform: translateX(-20%) scale(1.3);
-                .left_font{
-                    color: #E8222D;
-                    font-size: 14px;
-                    text-align: center;
-                    position: absolute;
-                    transform: translateX(-50%);
-                    left: 50%;
-                    width: 200%;
-                }
             }
-            .foucs_left{
+            .left{
+                bottom: 10%;
+            }
+            .left_font{
+                color: #E8222D;
+            }
+            .yellow{
+                top: 15%;
+                left: -5%;
+            }
+            .green{
+                right: -15%;
+                top: 15%;
+            }
+            .yellow_font{
+                color: #FFC85C;
+                bottom: -20px;
+            }
+            .green_font{
+                color: #59886B;
+                bottom: -20px;
+            }
+            .foucs_left, .foucs_right, .foucs_yellow, .foucs_green{
                 transform: translateX(-20%) scale(1.6);
             }
             .right{
-                bottom: 15%;
-                right: 0;
-                transition: transform 1s ease ;
-                transform: translateX(20%) scale(1.3);
+                right: -10%;
+                bottom: 10%;
                 .right_font{
                     color: #200A3E;
-                    font-size: 14px;
-                    text-align: center;
-                    position: absolute;
-                    transform: translateX(-50%);
-                    left: 50%;
-                    width: 200%;
                 }
-            }
-            .foucs_right{
-                transform: translateX(20%) scale(1.6);
             }
             img{
                 max-height: 99%;
@@ -514,7 +540,6 @@ import {mapGetters} from "vuex";
                 min-width: 99%;
                 object-fit: cover;
             }
-                
         }
         // @media screen and (min-width:769px) {
         //     .company_right{

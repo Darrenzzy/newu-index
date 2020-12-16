@@ -62,6 +62,8 @@ export default {
   .table_title{
     height: 60px;
     line-height: 60px;
+    font-weight: 800;
+    font-size: 23px;
     background: #C80200;
     color: #ffffff;
     text-align: center;
