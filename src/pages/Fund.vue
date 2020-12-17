@@ -7,8 +7,6 @@
             <div class="line"></div>
             <div class="banner">
                 <div class="banner_content">
-                    <span class="">介绍 </span>
-                    <div class="fund_name">诺游基金产品</div>
                     <p class="fund_desc">
                         坚守价值与成长相结合的投资模式，专注于挖掘企业内生增长价值和成长性；同时兼顾收益率曲线的稳定性与资产配置的流动性、灵活性，为投资者创造持续稳定的（高于指数增长？/且高于同类产品？）的业绩回报。
                     </p>
@@ -31,8 +29,8 @@
                                 <div class="fund_code">{{item.code}}</div>
                             </div> 
                             <div>
-                                <div class="fund_percent">{{item.last_year}}</div>
-                                <div class="fund_create">近一年成立</div>
+                                <div class="fund_percent">{{item.last_year}}%</div>
+                                <div class="fund_create">{{item.worth_desc || "成立以来"}}</div>
                             </div>
                         </div>
                         <div class="item_middle"> 
@@ -62,34 +60,41 @@
                 <div class="net_content">
                     <div class="table_content">
                         <div class="table_title">诺游基金</div>
-                       <div class="column_title"> 
-                            <div class="title">基金名称</div>
-                            <div class="title" style="width: 160px;">净值日期</div>
-                            <div class="title">单位净值</div>
-                            <div class="title">累计净值</div>
-                            <div class="title">成立以来(%)</div>
-                            <div class="title">今年以来(%)</div>
-                            <div class="title">近一年(%)</div>
-                            <div class="title">近两年(%)</div>
-                            <div class="title">近三年(%)</div>
-                        </div>
-                        <div class="table_list" style="cursor: pointer;" @click="handleTableClick">
-                            <div class="column_content" v-for="(item) in tableData" :key="item.ID">
-                                <div class="content">{{item.wond_name}} <span v-show="item.is_limit" style="color: #CD4645"> (限) </span></div>
-                                <div class="content" style="width: 160px;">
-                                    <span v-if="showUser" >{{ item.date_worth | formateTime}}</span>
-                                    <span v-else  class="blur">{{(item.date_worth)}}</span>
-                                </div>
-                                <div class="content"><span :class="showUser ?'': 'blur'">{{item.unit_worth}}</span></div>
-                            
-                                <div class="content"><span :class="showUser?'': 'blur'">{{item.net_worth}}</span></div>
-                                <div class="content"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
-                                <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.now_year}}</span></div>
-                                <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.last_year}}</span></div>
-                                <div class="content"><span :class="showUser ?'': 'blur'">{{item.three_muoth}}</span></div>
-                                <div class="content"><span :class="showUser ?'': 'blur'">{{item.six_mouth}}</span></div>
-                            </div>
-                        </div>
+                        <table border="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th class="fund_name">基金名称</th>
+                                    <th>净值日期</th>
+                                    <th>单位净值</th>
+                                    <th>累计净值</th>
+                                    <th>成立以来(%)</th>
+                                    <th>今年以来(%)</th>
+                                    <th>近一年(%)</th>
+                                    <th>近两年(%)</th>
+                                    <th>近三年(%)</th>
+                                </tr>
+                            </thead>
+                            <tbody style="cursor: pointer;" @click="handleTableClick">
+                                <tr v-for="(item) in tableData" :key="item.ID">
+                                    <td>
+                                        <div>{{item.wond_name}} <span v-show="item.is_limit" style="color: #CD4645"> (限) </span></div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <span v-if="showUser" >{{ item.date_worth | formateTime}}</span>
+                                            <span v-else  class="blur">{{(item.date_worth)}}</span>
+                                        </div>
+                                    </td>
+                                    <td> <span :class="showUser ?'': 'blur'">{{item.unit_worth}}</span></td>
+                                    <td> <span :class="showUser?'': 'blur'">{{item.net_worth}}</span></td>
+                                    <td> <span :class="showUser ?'': 'blur'">{{item.build_before}}</span> </td>
+                                    <td> <div class="red_color"><span :class="showUser ?'': 'blur'">{{item.now_year}}</span></div> </td>
+                                    <td> <div class="red_color"><span :class="showUser ?'': 'blur'">{{item.last_year}}</span></div> </td>
+                                    <td> <span :class="showUser ?'': 'blur'">{{item.three_muoth}}</span> </td>
+                                    <td> <span :class="showUser ?'': 'blur'">{{item.six_mouth}}</span> </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -371,35 +376,13 @@
     .banner_content{
         margin-left: 20%;
         margin-top: 88px;
-        span{
-            width: 45px;
-            height: 23px;text-align: center;
-            line-height: 23px;
-            background: #C00000;
-            font-size: 11px;
-            font-family: Source Han Serif CN;
-            font-weight: 800;
-            color: #EFEFED;
-            display: inline-block;
-
-        }
-        .fund_name{
-            width: 323px;
-            height: 50px;
-            font-size: 38px;
-            font-family: Source Han Serif CN;
-            font-weight: 800;
-            color: #C80200;
-            margin-top: 24px;
-        }
         .fund_desc{
-            max-width: 456px;
-            font-size: 14px;
+            font-size: 18px;
             font-family: Source Han Serif CN;
             font-weight: 500;
             color: #2F2F2F;
-            line-height: 23px;
-            margin-top: 52px;
+            line-height: 36px;
+            max-width: 456px;
         }
     }
     .fund_public_title{
@@ -514,6 +497,7 @@
                         font-weight: 400;
                         color: #000000;
                         text-align: center;
+                        margin-top: 5px;
                     }
                 }
                 .item_middle{
@@ -609,8 +593,6 @@
             font-family: Source Han Serif CN;
             font-weight: 800;
             color: #FFFFFF;
-            margin-left: 15%;
-           
             .login_form{
                 padding: 40px 0 72px;
                 .login_form_content{

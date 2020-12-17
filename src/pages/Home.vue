@@ -20,33 +20,41 @@
         <div class="table_box">
             <div class="table_content">
                 <div class="table_title">诺游基金</div>
-                <div class="column_title"> 
-                    <div class="title">基金名称</div>
-                    <div class="title" style="width: 160px;">净值日期</div>
-                    <div class="title">单位净值</div>
-                    <div class="title">累计净值</div>
-                    <div class="title">成立以来(%)</div>
-                    <div class="title">今年以来(%)</div>
-                    <div class="title">近一年(%)</div>
-                    <div class="title">近两年(%)</div>
-                    <div class="title">近三年(%)</div>
-                </div>
-                <div class="table_list" style="cursor: pointer;" @click="handleTableClick">
-                    <div class="column_content" v-for="(item) in tableData" :key="item.ID">
-                        <div class="content">{{item.wond_name}} <span v-show="item.is_limit" style="color: #CD4645"> (限) </span></div>
-                        <div class="content">
-                            <span v-if="showUser" >{{ item.date_worth | formateTime}}</span>
-                            <span v-else  class="blur">{{(item.date_worth)}}</span>
-                        </div>
-                        <div class="content"><span :class="showUser ?'': 'blur'">{{item.unit_worth}}</span></div>
-                        <div class="content"><span :class="showUser?'': 'blur'">{{item.net_worth}}</span></div>
-                        <div class="content"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
-                        <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.now_year}}</span></div>
-                        <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.last_year}}</span></div>
-                        <div class="content"><span :class="showUser ?'': 'blur'">{{item.three_muoth}}</span></div>
-                        <div class="content"><span :class="showUser ?'': 'blur'">{{item.six_mouth}}</span></div>
-                    </div>
-                </div>
+                <table border="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="fund_name">基金名称</th>
+                            <th>净值日期</th>
+                            <th>单位净值</th>
+                            <th>累计净值</th>
+                            <th>成立以来(%)</th>
+                            <th>今年以来(%)</th>
+                            <th>近一年(%)</th>
+                            <th>近两年(%)</th>
+                            <th>近三年(%)</th>
+                        </tr>
+                    </thead>
+                    <tbody style="cursor: pointer;" @click="handleTableClick">
+                        <tr v-for="(item) in tableData" :key="item.ID">
+                            <td>
+                                <div>{{item.wond_name}} <span v-show="item.is_limit" style="color: #CD4645"> (限) </span></div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span v-if="showUser" >{{ item.date_worth | formateTime}}</span>
+                                    <span v-else  class="blur">{{(item.date_worth)}}</span>
+                                </div>
+                            </td>
+                            <td> <span :class="showUser ?'': 'blur'">{{item.unit_worth}}</span></td>
+                            <td> <span :class="showUser?'': 'blur'">{{item.net_worth}}</span></td>
+                            <td> <span :class="showUser ?'': 'blur'">{{item.build_before}}</span> </td>
+                            <td> <div class="red_color"><span :class="showUser ?'': 'blur'">{{item.now_year}}</span></div> </td>
+                            <td> <div class="red_color"><span :class="showUser ?'': 'blur'">{{item.last_year}}</span></div> </td>
+                            <td> <span :class="showUser ?'': 'blur'">{{item.three_muoth}}</span> </td>
+                            <td> <span :class="showUser ?'': 'blur'">{{item.six_mouth}}</span> </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="pic">
@@ -55,7 +63,7 @@
                 <p class="pic_p">
                     重信守诺是为人和做事的第一准则。
                 </p>
-                <p class="pic_p">
+                <p class="pic_p" >
                     市场存在低风险和高收益的机会。股价会上下波动，但最终会回归公司的内生价值。
                 </p>
                  <p class="pic_p">
@@ -70,72 +78,78 @@
             <div class="company_title">中长期达成稳定资产增长</div>
             <div class="company_content">
                 <div class="company_left_box">
-                    <div class="company_left">
+                    <div class="company_left" id="group">
                         <h4 class="company_left_h4">·与优秀企业共同成长</h4>
                         <p class="company_left_p" style="margin-bottom: 30px;">
                             价值投资最重要的是寻找优秀的企业，是买公司而并非单纯的买股票。好的公司可能会在一个阶段不被发现或不被认可，但最终会得到市场的公平定价，回归价值。所以，公司是否是好的行业，好的赛道，是否有很深的护城河，管理层是否品德优良、能力超群，这些都是重要的衡量维度。
                         </p>
                     </div>
-                    <div class="company_left">
+                    <div class="company_left" id="cycle">
                         <h4 class="company_left_h4">·周期的力量</h4>
                         <p class="company_left_p">
                             经济周期是永远存在的，复苏，繁荣，滞涨，衰退。。。更替周而复始。经济有周期，行业有周期，公司也有周期。每个周期的大小不同、长短不一。我们要用心去感受与体验周期的力量，顺势而行并与之共舞。
                         </p>
                     </div>
-                
-                    <div class="company_left">
+                    <div class="company_left" id="logic">
                         <h4 class="company_left_h4">·真的逻辑</h4>
                         <p class="company_left_p">
                             世上往往有些事是似是而非，有些事是似非而是。在投资中要不断寻找和验证逻辑的正确性，并区分是长逻辑还是短逻辑。去伪存真，方可立于不败之地。
                         </p>
-                        
                     </div>
-                    <div class="company_left">
+                    <div class="company_left" id="market">
                         <h4 class="company_left_h4">·跟随市场，不要预测市场</h4>
                         <p class="company_left_p">
                             资本市场是一个复杂的非稳定的系统。对市场怀有敬畏之心，切记市场永远是对的。不要过度主观与自信，更不要夸夸其谈，以防误入歧途。要跟随市场的节奏与脉动，认可，跟随，并享受市场的变化与波动。
                         </p>
-                        
                     </div>
-                    <div class="company_left">
+                    <div class="company_left" id="transaction">
                         <h4 class="company_left_h4">·交易的本质</h4>
                         <p class="company_left_p">
                             交易本质上是一场游戏。与其他游戏一样，对技巧和智慧有要求。运气在短期内会起到作用，然而从长远考虑，只有交易技巧才能决定业绩。
                         </p>
-                        
                     </div>
                 </div>
                 <div class="company_right" ref="companyRight">
                     <div class="js_show top foucs_top" ref="topImg">
-                        <div class="top_font">与优秀企业共同成长</div>
-                        <div class="small_img top_img">
-                            <img src="./../assets/images/touzi.png"/>
-                        </div>
+                        <a href="#group" @click="handleClick('top')">
+                            <div class="top_font">与优秀企业共同成长</div>
+                            <div class="small_img top_img">
+                                <img src="./../assets/images/touzi.png"/>
+                            </div>
+                        </a>
                     </div>
                     <div class="js_show green" ref="greenImg">
-                        <div class="green_font">周期的力量</div>
-                        <div class="small_img green_img">
-                            <img src="./../assets/images/green.png"/>
-                        </div>
+                        <a href="#cycle" @click="handleClick('green')">
+                            <div class="green_font">周期的力量</div>
+                            <div class="small_img green_img">
+                                <img src="./../assets/images/green.png"/>
+                            </div>
+                        </a>
                     </div>
                     <div class="js_show right" ref="rightImg">
-                         <div class="small_img right_img">
-                            <img src="./../assets/images/fengkong.png"/>
-                        </div>
-                        <div class="right_font">真的逻辑</div>
+                        <a href="#logic" @click="handleClick('right')">
+                            <div class="small_img right_img">
+                                <img src="./../assets/images/fengkong.png"/>
+                            </div>
+                            <div class="right_font">真的逻辑</div>
+                        </a>
                     </div>
 
                     <div class="js_show left" ref="leftImg">
-                        <div class="small_img left_img">
-                            <img src="./../assets/images/shichang.png"/>
-                        </div>
-                        <div class="left_font">跟随市场，不要预测市场</div>
+                        <a href="#market" @click="handleClick('left')">
+                            <div class="small_img left_img">
+                                <img src="./../assets/images/shichang.png"/>
+                            </div>
+                            <div class="left_font">跟随市场，不要预测市场</div>
+                        </a>
                     </div>
                     <div class="js_show yellow" ref="yellowImg">
-                        <div class="yellow_font">交易的本质</div>
-                        <div class="small_img yellow_img">
-                            <img src="./../assets/images/yellow.png"/>
-                        </div>
+                        <a href="#transaction" @click="handleClick('yellow')">
+                            <div class="yellow_font">交易的本质</div>
+                            <div class="small_img yellow_img">
+                                <img src="./../assets/images/yellow.png"/>
+                            </div>
+                        </a>
                     </div>
                     <img src="./../assets/images/circle_one.png"/>
                 </div>
@@ -162,6 +176,7 @@ import {mapGetters} from "vuex";
         data() {
             return {
                 showUser: false,
+                obj: "top",
                 tableData: [
                     {
                         build_before: "***", 
@@ -199,60 +214,13 @@ import {mapGetters} from "vuex";
             }
         },
         mounted(){
-            window.addEventListener("scroll", this.scrollDebounce(this.viewCircle));
+            this.handleTestMask("topImg", "foucs_top");
         },
         methods:{
-            scrollDebounce(fn){
-                let timer = null;
-                return ()=>{
-                    if (timer) {
-                        clearTimeout(timer)
-                        timer = null;
-                    }
-                    timer = setTimeout(()=>{
-                        fn();
-                    },300) 
-                }
-            },
-            viewCircle(){
-                let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
-                console.log(scrollHeight)
-                if (scrollHeight < 2033) {
-                    this.handleTestMask("topImg", "foucs_top");
-                } else {
-                    this.handleRemove("topImg", "foucs_top");
-                }
-
-                if (scrollHeight >= 2033 && scrollHeight < 2354) {
-                    this.handleTestMask("greenImg", "foucs_green");
-                } else {
-                    this.handleRemove("greenImg", "foucs_green");
-                }
-
-                if ( scrollHeight >= 2354 && scrollHeight < 2633) {
-                    this.handleTestMask("rightImg", "foucs_right");
-                } else {
-                    this.handleRemove("rightImg", "foucs_right")
-                }
-
-                if ( scrollHeight >= 2633 && scrollHeight < 2790 ) {
-                    this.handleTestMask("leftImg", "foucs_left")
-                } else {
-                    this.handleRemove("leftImg", "foucs_left");
-                }
-                if ( scrollHeight >= 2790) {
-                    this.handleTestMask("yellowImg", "foucs_yellow")
-                } else {
-                    this.handleRemove("yellowImg", "foucs_yellow");
-                }
-            },
-            handleTestMask(obj, className){
-                if (this.$refs[obj]) {
-                    if (!this.$refs[obj].classList.contains("is_show")) {
-                        this.$refs[obj].classList.add(className)
-                        this.$refs[obj].classList.add("is_show")
-                    }
-                }
+            handleClick(activeObj){
+                this.handleTestMask(`${activeObj}Img`, `foucs_${activeObj}`);
+                this.handleRemove(`${this.obj}Img`, `foucs_${this.obj}`);
+                this.obj = activeObj;
             },
             showOpacity(){
                 if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
@@ -269,6 +237,14 @@ import {mapGetters} from "vuex";
                 }else{
                     let routeData = this.$router.resolve({ path: '/login'});
                     window.open(routeData.href, '_blank');
+                }
+            },
+            handleTestMask(obj, className){
+                if (this.$refs[obj]) {
+                    if (!this.$refs[obj].classList.contains("is_show")) {
+                        this.$refs[obj].classList.add(className)
+                        this.$refs[obj].classList.add("is_show")
+                    }
                 }
             },
             handleRemove(obj, className){
@@ -321,7 +297,7 @@ import {mapGetters} from "vuex";
     .table_box{
         width: 70%;
         margin: 0 auto;
-        padding: 100px 0;
+        padding: 40px 0;
     } 
     .pic{
         width: 100%;

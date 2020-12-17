@@ -9,44 +9,51 @@
                 <div class="banner_content">
                 </div>
             </div>
+            
             <div class="table" id="userCenterFund">
+
                 <div class="table_box">
                     <div class="table_content">
                         <div class="table_title">诺游基金</div>
-                        <div class="column_title"> 
-                            <div class="title">基金名称</div>
-                            <div class="title" style="width: 160px;">净值日期</div>
-                            <div class="title">单位净值</div>
-                            <div class="title">累计净值</div>
-                            <div class="title">成立以来(%)</div>
-                            <div class="title">今年以来(%)</div>
-                            <div class="title">近一年(%)</div>
-                            <div class="title">近两年(%)</div>
-                            <div class="title">近三年(%)</div>
-                        </div>
-                        <div class="table_list">
-                            <div class="column_content" v-for="(item) in tableData" :key="item.ID">
-                                <div class="content">{{item.wond_name}}</div>
-                                <div class="content" style="width: 160px;">{{item.date_worth | formateTime}}</div>
-                                <div class="content" >{{item.unit_worth}}</div>
-                                <div class="content">{{item.net_worth}}</div>
-                                <div class="content">{{item.build_before}}</div>
-                                <div class="content red_color">{{item.now_year}}</div>
-                                <div class="content red_color">{{item.last_year}}</div>
-
-                                <div class="content red_color">{{item.three_muoth}}</div>
-                                <div class="content red_color">{{item.six_mouth}}</div>
-                                <!-- <div class="content"><span class="blur">3%</span></div>
-                                <div class="content"><span class="blur">3%</span></div>
-                                <div class="content"><span class="blur">3%</span></div>
-                                <div class="content"><span class="blur">3%</span></div>
-                                <div class="content red_color"><span class="blur">涨跌幅</span></div>
-                                <div class="content red_color"><span class="blur">成立以来</span></div>
-                                <div class="content"><span class="blur">风险等级</span></div> -->
-                            </div>
-                        </div>
+                        <table border="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th class="fund_name">基金名称</th>
+                                    <th>净值日期</th>
+                                    <th>单位净值</th>
+                                    <th>累计净值</th>
+                                    <th>成立以来(%)</th>
+                                    <th>今年以来(%)</th>
+                                    <th>近一年(%)</th>
+                                    <th>近两年(%)</th>
+                                    <th>近三年(%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item) in tableData" :key="item.ID">
+                                    <td>
+                                        <div>{{item.wond_name}} <span v-show="item.is_limit" style="color: #CD4645"> (限) </span></div>
+                                    </td>
+                                    <td>
+                                        <span>{{ item.date_worth | formateTime}}</span>
+                                    </td>
+                                    <td> {{item.unit_worth}} </td>
+                                    <td> {{item.net_worth}} </td>
+                                    <td> {{item.build_before}}</td>
+                                    <td> <div class="red_color"> {{item.now_year}} </div> </td>
+                                    <td> <div class="red_color"> {{item.last_year}} </div> </td>
+                                    <td> {{item.three_muoth}} </td>
+                                    <td> {{item.six_mouth}} </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+
+
+
+
+                
             </div>
             <div class="search">
                 <div class="left">
