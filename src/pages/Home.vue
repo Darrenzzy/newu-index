@@ -520,9 +520,25 @@ import {mapGetters} from "vuex";
            min-width: 70%;
         }
         .company{
+            .company_content{
+                width: 70%;
+                box-sizing: border-box;
+            }
+            .company_left_box{
+                .company_left{
+                    width: 78%;
+                }
+            }
             .company_right{
+                right: 6%;
                 .top_font, .green_font, .yellow_font, .left_font, .right_font{
-                    zoom: .6;
+                    transform: scale(0.4) translateX(-123%) translateY(-10px);
+                    width: 500%;
+                }
+                .top{
+                    .top_font{
+                        top: -10px;
+                    }
                 }
                 .js_show {
                     .small_img{
