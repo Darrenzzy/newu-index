@@ -123,7 +123,6 @@ export default {
             padding-top: 60px;
             .address_h2{
                 font-size: 27px;
-                font-family: Source Han Serif CN;
                 font-weight: bold;
                 color: #000000;
                 margin: 0;
@@ -131,7 +130,6 @@ export default {
             }
             .address_p{
                 font-size: 18px;
-                font-family: Source Han Serif CN;
                 color: #333333;
                 line-height: 40px;
             }

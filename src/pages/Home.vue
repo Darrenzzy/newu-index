@@ -9,7 +9,7 @@
             msg = "首页"
         >
         </FixedLeft>
-        <div class="video_box">
+        <div class="video_box" id="video">
             <!-- <video class="video" src="http://cdn.jian24.com/1548381208553958.mp4" preload="none" controls="controls" height="100%" >
             </video> -->
             <div class="play_box"> 
@@ -17,7 +17,7 @@
                 <a href="#">观看视频</a>
             </div>
         </div>
-        <div class="table_box">
+        <div class="table_box" id="net">
             <div class="table_content">
                 <div class="table_title">诺游基金</div>
                 <table border="0" cellspacing="0">
@@ -57,7 +57,7 @@
                 </table>
             </div>
         </div>
-        <div class="pic">
+        <div class="pic" id="attitude">
            <div class="pic_content">
                 <h1 class="pic_title">一<span class="pic_red">诺</span>千金 <span class="pic_red">游</span>刃有余</h1>
                 <p class="pic_p">
@@ -74,7 +74,7 @@
                 </p>
            </div>
         </div>
-        <div class="company">
+        <div class="company" id="methods">
             <div class="company_title">中长期达成稳定资产增长</div>
             <div class="company_content">
                 <div class="company_left_box">
@@ -312,7 +312,6 @@ import {mapGetters} from "vuex";
             height: 100%;
             .pic_title{
                 font-size: 38px;
-                font-family: Source Han Serif CN;
                 font-weight: 800;
                 color: #EFEFED;
                 margin-top: 100px;
@@ -326,7 +325,6 @@ import {mapGetters} from "vuex";
             }
             .pic_p{
                 font-size: 14px;
-                font-family: Source Han Serif CN;
                 font-weight: 500;
                 color: #EFEFED;
                 line-height: 23px;
@@ -341,7 +339,6 @@ import {mapGetters} from "vuex";
         .company_title{
             height: 44px;
             font-size: 36px;
-            font-family: Source Han Serif CN;
             font-weight: 800;
             color: #333333;
             line-height: 36px;
@@ -362,7 +359,6 @@ import {mapGetters} from "vuex";
                 margin-bottom: 120px;
                 .company_left_h4{
                     font-size: 30px;
-                    font-family: Source Han Serif CN;
                     font-weight: 800;
                     color: #666666;
                     margin-top: 0;
@@ -372,7 +368,6 @@ import {mapGetters} from "vuex";
                     width: 100%;
                     max-width: 502px;
                     font-size: 18px;
-                    font-family: Source Han Serif CN;
                     font-weight: 800;
                     color: #666666;
                     line-height: 27px;
@@ -517,18 +512,12 @@ import {mapGetters} from "vuex";
                 object-fit: cover;
             }
         }
-        // @media screen and (min-width:769px) {
-        //     .company_right{
-        //         width: 25%;
-        //         right: 20%;
-        //     }
-        // }
-        // @media screen and (max-width:769px) {
-        //     .company_right{
-        //         width: 25%;
-        //         right: 20%;
-        //         min-width: 25%;
-        //     }
-        // }
+        
     }
+    // @media screen and (min-width: 320px) and (max-width: 414px){
+    //     .table_box{
+    //         width: 85%;
+    //         margin-left: 15%;
+    //     }
+    // }
 </style>

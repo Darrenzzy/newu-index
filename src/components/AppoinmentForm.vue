@@ -253,14 +253,12 @@ export default {
             padding-left: 32px;
             .title{
                 font-size: 18px;
-                font-family: Source Han Serif CN;
                 font-weight: 800;
                 color: #414141;
                 margin: 0 0 27px;
             }
             .desc_one{
                 font-size: 14px;
-                font-family: Source Han Serif CN;
                 font-weight: 800;
                 color: #666666;
                 line-height: 27px;
@@ -268,7 +266,6 @@ export default {
             .desc_two{
                 margin-top: 20px;
                 font-size: 11px;
-                font-family: Source Han Serif CN;
                 font-weight: 500;
                 color: #414141;
                 line-height: 18px;
@@ -288,7 +285,6 @@ export default {
                     // border: 1px solid;
                     .label_style{
                         font-size: 11px;
-                        font-family: Source Han Serif CN;
                         font-weight: 800;
                         color: #414141;
                         height: 30px;

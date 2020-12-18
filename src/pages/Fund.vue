@@ -131,18 +131,10 @@
                         </el-form>
                     </div>
                 </div>
-                <div class="net">
-                    <div class="pub_head"> 诺游客户净值查询 </div>
-                    <div class="fund_list">
-                        <div class="list"  v-for="item in fourList" :key="item.ID">
-                            <div class="left">{{item.wond_name}}</div>
-                            <div class="right">
-                                <a :href="item.link" target="_blank" v-if="item.link"> 点击登入</a>
-                                <span v-else>点击登入</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="net_right">
+                    <Net />
                 </div>
+
             </div>
             <div class="process" id="fundProcess">
                 <h3 class="fund_public_title">认购流程</h3>
@@ -198,6 +190,7 @@
     import Head from './../components/Head.vue';
     import SendEmail from './../components/SendEmail';
     import FixedLeft from './../components/FixedLeft';
+    import Net from './../components/Net';
 
     export default {
         data() {
@@ -265,12 +258,6 @@
                     ],
                 },
                 listData:[] ,
-                fourList:[
-                    {wond_name: "诺游1号", ID: 1, link: ""},
-                    {wond_name: "诺游趋势精选", ID: 2, link: "https://iservice.citics.com/myfund/"},
-                    {wond_name: "诺游旌旗", ID: 3, link: "https://pb.gtja.com/equerying/"},
-                    {wond_name: "诺游先锋", ID: 4, link: "https://pb.htsc.com.cn/htsc-pos-is/user/login"}
-                ]
             };
         },
         components:{
@@ -279,6 +266,7 @@
             Head,
             SendEmail,
             FixedLeft,
+            Net
         },
         methods:{
             
@@ -378,7 +366,6 @@
         margin-top: 88px;
         .fund_desc{
             font-size: 18px;
-            font-family: Source Han Serif CN;
             font-weight: 500;
             color: #2F2F2F;
             line-height: 36px;
@@ -387,7 +374,6 @@
     }
     .fund_public_title{
         font-size: 25px;
-        font-family: Source Han Serif CN;
         font-weight: 800;
         color: #414141;
         text-align: center;
@@ -414,7 +400,6 @@
             }
             .fund_left_font{
                 font-size: 41px;
-                font-family: Source Han Serif CN;
                 font-weight: bold;
                 color: #FFFEFE;
                 letter-spacing: 10px;
@@ -467,7 +452,6 @@
                     margin: 0 10px 10px;
                     .fund_tite{
                         font-size: 18px;
-                        font-family: Source Han Serif CN;
                         font-weight: 800;
                         color: #414141;
                         text-align: center;
@@ -485,7 +469,6 @@
                     }
                     .fund_percent{
                         font-size: 21px;
-                        font-family: Source Han Serif CN;
                         font-weight: 800;
                         color: #B52E2D;
                         text-align: center;
@@ -493,7 +476,6 @@
                     }
                     .fund_create{
                         font-size: 11px;
-                        font-family: Source Han Serif CN;
                         font-weight: 400;
                         color: #000000;
                         text-align: center;
@@ -504,7 +486,6 @@
                     background: #FAFAFA;
                     .fund_desc{
                         font-size: 11px;
-                        font-family: Source Han Serif CN;
                         border-bottom: 1px dashed #E0CBCB;
                         font-weight: 600;
                         margin: 0 10px;
@@ -529,7 +510,6 @@
                     .fund_info{
                         font-size: 9px;
                         line-height: 15px;
-                        font-family: Source Han Serif CN;
                         font-weight: 600;
                     }
                 }
@@ -548,7 +528,6 @@
     }
     .risk_message{
         font-size: 12px;
-        font-family: Source Han Serif CN;
         font-weight: 600;
         color: #666666;
         margin-left: 15%;
@@ -580,7 +559,6 @@
             background-size: 20px;
             border-radius: 6px 6px 0px 0px;
             color: #FFFFFF;
-            font-family: Source Han Serif CN;
         }
         .login{
             // width: 444px;
@@ -590,7 +568,6 @@
             background: #F6F6F6;
             border-radius: 6px 6px 0px 0px;
             font-size: 14px;
-            font-family: Source Han Serif CN;
             font-weight: 800;
             color: #FFFFFF;
             .login_form{
@@ -603,7 +580,6 @@
                             margin-left: 5px;
                             display: inline-block;
                             font-size: 12px;
-                            font-family: Source Han Serif CN;
                             font-weight: 800;
                             color: #666666;
                             vertical-align: bottom;
@@ -630,7 +606,6 @@
                     }
                     /deep/.el-form-item__label{
                         font-size: 12px;
-                        font-family: Source Han Serif CN;
                         font-weight: 800;
                         color: #333333;
                         padding: 0;
@@ -669,45 +644,11 @@
                 }
             }
         }
-        .net{
+        .net_right{
             width: 40%;
             height: 290px;
-            background: #F6F6F6;
-            border-radius: 6px 6px 0px 0px;
-            .fund_list{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                margin-top: 30px;
-                .list{
-                    margin-bottom: 20px;
-                    display: flex;
-                    justify-content: center;
-                    width: 80%;
-                    .left{
-                        font-size: 14px;
-                        font-family: Source Han Serif CN;
-                        font-weight: 800;
-                        color: #666666;
-                        min-width: 80px;
-                        text-align: right;
-                    }
-                    .right{
-                        cursor: pointer;
-                        background: #C80200;
-                        border-radius: 6px;
-                        color: #ffffff;
-                        padding: 4px 10px;
-                        margin-left: 50px;
-                        font-size: 12px;
-                        a{
-                            color: #FFFFFF;
-                        }
-                    }
-                }
-            }
         }
+
     }
   
     .process{
@@ -718,7 +659,6 @@
             .process_p{
                 width: 100%;
                 font-size: 12px;
-                font-family: Source Han Serif CN;
                 font-weight: 800;
                 color: #414141;
                 line-height: 27px;

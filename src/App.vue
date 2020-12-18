@@ -15,13 +15,25 @@ export default {
   components: {
     // Head,
     // Footer
+  },
+  mounted(){
+    // if ( document.documentElement.clientWidth < 415) {
+    //   document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px'
+    // } else{
+    //   document.documentElement.style.fontSize = "unset";
+    // }
+    // window.onresize = function  () {
+    //   if ( document.documentElement.clientWidth < 415) {
+    //     document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px'
+    //   }
+    // }
   }
 }
 </script>
 
 <style lang="less">
   #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: Source Han Serif CN, Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     padding: 0;
@@ -32,7 +44,7 @@ export default {
     outline: none;
   }
   html,body{
-    width: 100%;
+  width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -64,7 +76,6 @@ export default {
         line-height: 40px;
         color: #999999;
         font-size: 12px;
-        font-family: Source Han Serif CN;
         tr{
           &::before, &::after {
             content: '';
@@ -102,7 +113,6 @@ export default {
             border-bottom: 1px dashed #D6D6D6;
             text-align: center;
             font-size: 12px;
-              font-family: Source Han Serif CN;
               font-weight: 800;
               color: #666666;
             &:nth-child(1){
@@ -144,4 +154,27 @@ export default {
     border-radius: 4px 4px 0 0;
     position: relative;
   }
+  // @media screen and (min-width: 320px) and (max-width: 414px){
+  //       .table_box{
+  //         width: 85%;
+  //         margin-left: 15%;
+  //       }
+  //       .table_content{
+  //         table{
+  //           thead{
+  //             font-size: 0.02rem;
+  //           }
+  //         }
+  //         tbody{
+  //           td{
+  //             font-size: 0.08rem;
+  //             &:nth-child(1){
+  //               font-size: 0.18rem;
+  //             }
+            
+  //           }
+  //         }
+  //       }
+        
+  //   }
 </style>

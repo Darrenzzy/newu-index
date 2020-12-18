@@ -71,7 +71,6 @@ export default {
         padding-bottom: 140px;
         .bread{
             font-size: 18px;
-            font-family: Source Han Serif CN;
             color: #000000;
             line-height: 27px;
             margin-top: 33px;

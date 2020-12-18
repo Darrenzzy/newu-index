@@ -79,7 +79,6 @@ export default {
             padding: 0 18px;
             .title{
                 font-size: 14px;
-                font-family: Source Han Serif CN;
                 font-weight: 800;
                 color: #000000;
                 margin: 28px 0 25px;
@@ -91,14 +90,12 @@ export default {
                 overflow-y: scroll;
                 .weight_p{
                     font-size: 16px;
-                    font-family: Source Han Serif CN;
                     font-weight: 900;
                     color: #333333;
                     line-height: 27px;
                 }
                 .law_p{
                     font-size: 12px;
-                    font-family: Source Han Serif CN;
                     font-weight: 500;
                     color: #333333;
                     line-height: 27px;
@@ -140,7 +137,6 @@ export default {
                 line-height: 26px;
                 text-align: center;
                 font-size: 12px;
-                font-family: Source Han Serif CN;
                 font-weight: 800;
                 color: #FFFFFF;
                 background: #C80200;

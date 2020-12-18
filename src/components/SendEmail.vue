@@ -199,7 +199,6 @@ export default {
         .top{
             width: 100%;
             font-size: 14px;
-            font-family: Source Han Serif CN;
             font-weight: 800;
             color: #FFFFFF;
             line-height: 21px;

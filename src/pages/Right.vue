@@ -320,7 +320,6 @@ export default {
         padding-bottom: 140px;
         .bread{
             font-size: 18px;
-            font-family: Source Han Serif CN;
             color: #000000;
             line-height: 27px;
             margin-top: 33px;
@@ -338,7 +337,6 @@ export default {
         }
         .small_title{
             font-size: 18px;
-            font-family: Source Han Serif CN;
             font-weight: bold;
             color: #000000;
             line-height: 42px;

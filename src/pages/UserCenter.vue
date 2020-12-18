@@ -49,22 +49,18 @@
                         </table>
                     </div>
                 </div>
-
-
-
-
-                
             </div>
             <div class="search">
                 <div class="left">
                 </div>
                 <div class="right"  id="vipSearch">
-                    <div class="right_content">
+                    <Net />
+                    <!-- <div class="right_content">
                         <div class="search_title">尊户查询</div>
                         <div class="search_link">
                             券商入口
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -80,6 +76,8 @@
     import Footer from './../components/Footer';
     import SendEmail from './../components/SendEmail';
     import FixedLeft from './../components/FixedLeft';
+    import Net from './../components/Net';
+
 
     export default {
         data() {
@@ -123,7 +121,8 @@
             Head,
             Footer,
             SendEmail,
-            FixedLeft
+            FixedLeft,
+            Net
         },
         created(){
             // if (this.showOpacity()) {
@@ -204,8 +203,8 @@
         .right{
             width: 30%;
             height: 100%;
-            background: #F2F2F2;
-            padding: 10px;
+            background: #C80200;
+            border-radius: 0 6px 0 0;
             box-sizing: border-box;
             .right_content{
                 background: #ffffff;
@@ -218,14 +217,12 @@
                 .search_title{
                     margin-bottom: 36px;
                     font-size: 27px;
-                    font-family: Source Han Serif CN;
                     font-weight: 800;
                     color: #333333;
                 }
                 .search_link{
                     background: #C80200;
                     font-size: 18px;
-                    font-family: Source Han Serif CN;
                     font-weight: 800;
                     color: #FFFFFF;
                     width: 140px;

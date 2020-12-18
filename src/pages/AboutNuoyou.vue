@@ -142,7 +142,6 @@
             line-height: 23px;
             background: #C00000;
             font-size: 11px;
-            font-family: Source Han Serif CN;
             font-weight: 800;
             color: #EFEFED;
             display: inline-block;
@@ -151,7 +150,6 @@
             width: 323px;
             height: 50px;
             font-size: 38px;
-            font-family: Source Han Serif CN;
             font-weight: 800;
             color: #C80200;
             margin-top: 24px;
@@ -162,7 +160,6 @@
         .fund_desc{
             max-width: 456px;
             font-size: 14px;
-            font-family: Source Han Serif CN;
             font-weight: 500;
             color: #333333;
             line-height: 23px;
@@ -178,7 +175,6 @@
         .title{
             margin-bottom: 60px;
             font-size: 34px;
-            font-family: Source Han Serif CN;
             font-weight: 800;
             color: #333333;
             text-align: center;
@@ -186,7 +182,6 @@
         .desc{
             width: 100%;
             font-size: 18px;
-            font-family: Source Han Serif CN;
             font-weight: 500;
             color: #333333;
             line-height: 36px;
@@ -241,14 +236,12 @@
         }
         .font_title{
             font-size: 27px;
-            font-family: Source Han Serif CN;
             font-weight: 800;
             color: #363630;
             text-align: center;
         }
         .font_p{
             font-size: 18px;
-            font-family: Source Han Serif CN;
             font-weight: 400;
             color: #363630;
             line-height: 27px;
@@ -271,7 +264,6 @@
             text-align: center;
             margin-bottom: 76px;
             font-size: 36px;
-            font-family: Source Han Serif CN;
             font-weight: 800;
             color: #333333;
         }

@@ -104,7 +104,6 @@
                 margin: 0 auto;
                 /deep/.el-form-item__label{
                     font-size: 12px;
-                    font-family: Source Han Serif CN;
                     font-weight: 800;
                     color: #333333;
                     padding: 0;
@@ -135,7 +134,6 @@
                     align-items: center;
                     .link_style{
                         font-size: 11px;
-                        font-family: Source Han Serif CN;
                         font-weight: 800;
                         color: #666666;
                         display: inline-block;

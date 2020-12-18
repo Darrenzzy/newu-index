@@ -15,10 +15,10 @@
             </div>
             <div class="menu_box">
                 <div class="menu_title">首页</div>
-                <div class="menu"><a href="">诺游投资视频</a></div>
-                <div class="menu"><a href="">基金净值</a></div>
-                <div class="menu"><a href="">投资理念</a></div>
-                <div class="menu"><a href="">投资策略</a></div>
+                <div class="menu"><a href="/home#video">诺游投资视频</a></div>
+                <div class="menu"><a href="/home#net">基金净值</a></div>
+                <div class="menu"><a href="/home#attitude">投资理念</a></div>
+                <div class="menu"><a href="/home#methods">投资策略</a></div>
             </div>
             <div class="menu_box">
                 <div class="menu_title">基金产品</div>
@@ -131,7 +131,6 @@ export default {
             margin-top: 20px;
             a, span{
                 font-size: 11px;
-                font-family: Source Han Serif CN;
                 font-weight: 800;
                 color: #EFEFED;
                 opacity: 0.6;
@@ -143,7 +142,6 @@ export default {
         }
         .menu_title{
             font-size: 14px;
-            font-family: Source Han Serif CN;
             font-weight: 800;
             color: #EFEFED;
             margin-bottom: 24px;
@@ -153,7 +151,6 @@ export default {
             a,span{
                 cursor: pointer;
                 font-size: 11px;
-                font-family: Source Han Serif CN;
                 font-weight: 800;
                 color: #EFEFED;
                 opacity: 0.4;
@@ -170,7 +167,6 @@ export default {
             margin-top: 30px;
             .item{
                 font-size: 11px;
-                font-family: Source Han Serif CN;
                 font-weight: 800;
                 color: #9A9A9A;
                 line-height: 27px;
@@ -192,7 +188,6 @@ export default {
             line-height: 50px;
             height: 50px;
             font-size: 11px;
-            font-family: Source Han Serif CN;
             font-weight: 800;
             color: #EFEFED;
             opacity: 0.3;
