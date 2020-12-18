@@ -1,57 +1,33 @@
 <template>
     <div class="fixed_right" ref="sendEmail">
-        <div>
-            <!-- <el-popover
-                placement="left-start"
-                width="323"
-                trigger="click"
-                enterable="true"
-                visible-arrow=false
-                popper-class="email_popper"
-
-            > -->
-                <div class="email" slot="reference" @click="handleEmailClick">
-                    <div class="email_box" v-show="emailFlag">
-                        <div class="top">
-                            诺游以客户为先，我们非常希望能帮助到您，欢迎留下联系方式及询问内容，我们会在1-3个工作天内回复，谢谢
-                        </div>
-                        <div class="form_content">
-                            <el-form  :model="formInline" :rules="rules"  ref="form" class="demo-form-inline" :label-position="labelPosition">
-                                <div class="eamil_input">
-                                    <el-form-item  prop="email">
-                                        <el-input v-model="formInline.email" placeholder="请填写邮箱"></el-input>
-                                    </el-form-item>
-                                </div>
-                                <div class="eamil_input">
-                                    <el-form-item prop="content">
-                                        <el-input type="textarea" :rows="2" v-model="formInline.content" placeholder="请填写内容...."></el-input>
-                                    </el-form-item>
-                                </div>
-                                <div class="email_button" @click="onSubmit('form')">发送</div>
-                            </el-form> 
-                        </div>
-                    </div>
-                </div> 
-            <!-- </el-popover> -->
-        </div>
-        <div>
-            <!-- <el-popover
-                placement="top-start"
-                width="150"
-                trigger="click"
-                enterable="true"
-                popper-class="barcode_popper"
-            > -->
-                
-                <div class="bar_code" slot="reference" @click="handleBcrCodeClick">
-
-                    <div class="code_box" v-show="barCodeFlag">
-                        <img src="./../assets/images/er_wei_ma.jpg"/>
-                    </div>
-
-
+        <div class="fixed_right_position">
+            <div class="email" slot="reference" @click="handleEmailClick"></div> 
+            <div class="email_box" v-show="emailFlag">
+                <div class="top">
+                    诺游以客户为先，我们非常希望能帮助到您，欢迎留下联系方式及询问内容，我们会在1-3个工作天内回复，谢谢
                 </div>
-            <!-- </el-popover> -->
+                <div class="form_content">
+                    <el-form  :model="formInline" :rules="rules"  ref="form" class="demo-form-inline" :label-position="labelPosition">
+                        <div class="eamil_input">
+                            <el-form-item  prop="email">
+                                <el-input v-model="formInline.email" placeholder="请填写邮箱"></el-input>
+                            </el-form-item>
+                        </div>
+                        <div class="eamil_input">
+                            <el-form-item prop="content">
+                                <el-input type="textarea" :rows="2" v-model="formInline.content" placeholder="请填写内容...."></el-input>
+                            </el-form-item>
+                        </div>
+                        <div class="email_button" @click="onSubmit('form')">发送</div>
+                    </el-form> 
+                </div>
+            </div>
+        </div>
+        <div class="fixed_right_position">
+            <div class="bar_code" slot="reference" @click="handleBcrCodeClick"></div>
+            <div class="code_box" v-show="barCodeFlag">
+                <img src="./../assets/images/er_wei_ma.jpg"/>
+            </div>
         </div>
         <div class="back_top" @click="backTop" ></div>
     </div>
@@ -176,12 +152,10 @@ export default {
         .email{
             background: url("./../assets/images/email.png");
             background-size: cover;
-            position: relative;
         }
         .bar_code{
             background: url("./../assets/images/bar_code.png");
             background-size: cover;
-            position: relative;
         } 
         .back_top{
             background: url("./../assets/images/back_top.png");
@@ -191,6 +165,10 @@ export default {
    
     .test[x-placement^=left] .popper__arrow::after{
         border-left-color: #C00000;
+
+    }
+    .fixed_right_position{
+        position: relative;
 
     }
     .email_box{
@@ -209,7 +187,7 @@ export default {
             border: 10px transparent solid;
             border-left-color: #C00000;
             position: absolute;
-            right: -19px;
+            right: -15px;
             top: 50%;
             transform: translateY(-50%);
         }
@@ -265,7 +243,7 @@ export default {
             border: 10px transparent solid;
             border-left-color: #C00000;
             position: absolute;
-            right: -29px;
+            right: -25px;
             top: 50%;
             transform: translateY(-50%);
         }
