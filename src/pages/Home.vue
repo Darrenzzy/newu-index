@@ -519,5 +519,19 @@ import {mapGetters} from "vuex";
            width: unset;
            min-width: 70%;
         }
+        .company{
+            .company_right{
+                .top_font, .green_font, .yellow_font, .left_font, .right_font{
+                    zoom: .6;
+                }
+                .js_show {
+                    .small_img{
+                        img{
+                            padding: 4px;
+                        }
+                    }
+                }
+            }
+        }
     }
 </style>
