@@ -14,6 +14,7 @@
                         trigger="hover"
                         enterable="true"
                         popper-class="user_popper"
+                        
                     >
                         <div class="user_box">
                             <div class="item">用户名：{{username}}</div>
@@ -216,29 +217,30 @@ export default {
             }
         }
     }
-  
    
-    // @media screen and (min-width: 320px) and (max-width: 414px){
-    //     .header_box{
-    //         width: 100%;
-    //         padding-right: 0.1rem;
-    //         box-sizing: border-box;
-    //         .header_left{
-    //             display: flex;
-    //             justify-content: center;
-    //             align-items: center;
-    //         }
-    //         .header_right{
-    //             justify-content: space-between;
-    //             width: 75%;
-    //             .header_item{
-    //                 font-size: 0.12rem;
-    //                 margin-left: unset;
-    //             }
-    //         }
+    @media screen and (min-width: 320px) and (max-width: 414px){
+        .user_popper{
+            left: unset!important;
+            right:0;
+        }
+        .header_box{
+            width: 90%;
+            .header_left{  
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .header_right{
+                width: 70%;
+                justify-content: space-between;
+                .header_item{
+                    font-size: 0.12rem;
+                    margin-left: unset;
+                }
+            }
             
-    //     }
-    // }
+        }
+    }
         
 
 </style>

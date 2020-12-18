@@ -44,7 +44,7 @@ export default {
     outline: none;
   }
   html,body{
-  width: 100%;
+    width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -154,27 +154,9 @@ export default {
     border-radius: 4px 4px 0 0;
     position: relative;
   }
-  // @media screen and (min-width: 320px) and (max-width: 414px){
-  //       .table_box{
-  //         width: 85%;
-  //         margin-left: 15%;
-  //       }
-  //       .table_content{
-  //         table{
-  //           thead{
-  //             font-size: 0.02rem;
-  //           }
-  //         }
-  //         tbody{
-  //           td{
-  //             font-size: 0.08rem;
-  //             &:nth-child(1){
-  //               font-size: 0.18rem;
-  //             }
-            
-  //           }
-  //         }
-  //       }
-        
-  //   }
+  @media screen and (min-width: 320px) and (max-width: 414px){
+    html,body{
+      zoom: .8;
+    }
+  }
 </style>

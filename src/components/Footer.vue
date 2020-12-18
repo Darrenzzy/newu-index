@@ -194,4 +194,10 @@ export default {
         }
 
     }
+    @media screen and (min-width: 320px) and (max-width: 414px){
+        .footer_menu_box{
+            width: 80%;
+            margin-left: unset;
+        }
+    }
 </style>

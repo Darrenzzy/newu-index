@@ -385,7 +385,8 @@
         justify-content: space-between;
         min-height: 400px;
         width: 70%;
-        margin: 0 auto;
+        margin-left: 15%;
+        overflow: hidden;
         .introduce_left{
             background: #C62C2C;
             width: 25%;
@@ -573,7 +574,7 @@
             .login_form{
                 padding: 40px 0 72px;
                 .login_form_content{
-                    width: 350px;
+                    max-width: 350px;
                     margin: 0 auto;
                     .input_box{
                         .link_style{
@@ -611,7 +612,7 @@
                         padding: 0;
                     }
                     /deep/.el-input{
-                        width: 200px;
+                        max-width: 200px;
                         height: 30px;
                         background: #F6F6F6!important;
                     }
@@ -665,5 +666,43 @@
             }
         }
     }
-
+    @media screen and (min-width: 320px) and (max-width: 414px){
+        .introduce{
+            min-width: 70%;
+            width: unset;
+        }
+        .net{
+            .net_content{
+                width: unset;
+                min-width: 70%;
+            }
+        }
+        .login_net_box{
+            width: unset;
+            min-width: 70%;
+            .login{
+                width: 45%;
+            }
+            .net_right{
+                width: 45%;
+            }
+        }
+        .login_net_box{
+            .login{
+                .login_form{
+                    .login_form_content{
+                        /deep/.el-input{
+                            width: 85%;
+                        }
+                    }
+                }
+            }
+        }
+        .process{
+            .process_content{
+                width: 70%;
+                min-width: 70%;
+            }
+        }
+    }
 </style>

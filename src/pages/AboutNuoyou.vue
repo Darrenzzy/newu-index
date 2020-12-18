@@ -280,6 +280,23 @@
             }
         }
     }
+    @media screen and (min-width: 320px) and (max-width: 414px){
+        .table_box{
+           width: unset;
+           min-width: 70%;
+        }
+        .structer{
+            .structer_img {
+                img{
+                    min-width: 80%;
+                    min-height: 80%;
+                    max-width: 80%;
+                    max-height: 80%;
+
+                }
+            }
+        } 
+    }
 </style>
 
 

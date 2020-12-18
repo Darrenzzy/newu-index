@@ -19,7 +19,7 @@
         </div>
         <div class="table_box" id="net">
             <div class="table_content">
-                <div class="table_title">诺游基金</div>
+                <div class="table_title">热销基金</div>
                 <table border="0" cellspacing="0">
                     <thead>
                         <tr>
@@ -296,8 +296,8 @@ import {mapGetters} from "vuex";
     }   
     .table_box{
         width: 70%;
-        margin: 0 auto;
         padding: 40px 0;
+        margin-left: 15%;
     } 
     .pic{
         width: 100%;
@@ -514,10 +514,10 @@ import {mapGetters} from "vuex";
         }
         
     }
-    // @media screen and (min-width: 320px) and (max-width: 414px){
-    //     .table_box{
-    //         width: 85%;
-    //         margin-left: 15%;
-    //     }
-    // }
+    @media screen and (min-width: 320px) and (max-width: 414px){
+        .table_box{
+           width: unset;
+           min-width: 70%;
+        }
+    }
 </style>

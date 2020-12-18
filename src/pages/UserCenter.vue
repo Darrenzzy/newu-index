@@ -235,4 +235,21 @@
             }
         }
     }
+ 
+    @media screen and (min-width: 320px) and (max-width: 414px){
+        .table{
+           width: unset;
+           min-width: 70%;
+        }
+        .search{
+            width: unset;
+            min-width: 70%;
+            .left{
+                width: 40%;
+            }
+            .right{
+                flex: 1;
+            }
+        }
+    }
 </style>

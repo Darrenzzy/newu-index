@@ -355,4 +355,21 @@ export default {
             }
         }
     }
+    @media screen and (min-width: 320px) and (max-width: 414px){
+        .appointment{
+            width: unset;
+            min-width: 70%;
+            .appointment_left{
+                width: 40%;
+                padding-top: 34px;
+                padding-left: 12px;
+                padding-right: 10px;
+                box-sizing: border-box;
+                .desc_two{
+                    width: 90%;
+                }
+            }
+        }
+    }
 </style>
+

@@ -56,8 +56,8 @@ export default {
             .list{
                 margin-bottom: 20px;
                 display: flex;
-                justify-content: center;
-                width: 80%;
+                justify-content: space-between;
+                min-width: 30%;
                 .left{
                     font-size: 14px;
                     font-weight: 800;
@@ -71,7 +71,7 @@ export default {
                     border-radius: 6px;
                     color: #ffffff;
                     padding: 4px 10px;
-                    margin-left: 50px;
+                    margin-left: 10px;
                     font-size: 12px;
                     a{
                         color: #FFFFFF;
