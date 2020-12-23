@@ -203,7 +203,10 @@ import {mapGetters} from "vuex";
             if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
                 this.$Axios.get('/api/v1/netWorth/list',{}).then((data)=>{
                     if (data.data.code == 200) {
-                        this.tableData = data.data.data.list;
+                        this.tableData = data.data.data.list.filter(item=>{
+                            return item.is_limit != 1;
+                        })
+                        //  = data.data.data.list;
                         this.showUser = true;
                     } else {
                         this.showUser = false;
