@@ -8,6 +8,7 @@ import './plugins/element.js';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import store from "./store"
+import  "./assets/css/iconfont.css";
 
 
 
@@ -34,7 +35,9 @@ Vue.filter('formateTime', function (dateString) {
         marr[2] = + parseInt(marr[2]);
     }
     // var timeStamp = parseInt(darr[0])+"-"+parseInt(darr[1])+"-"+parseInt(darr[2])+" "+parseInt(marr[0])+":"+parseInt(marr[1])+":"+parseInt(marr[2]);
-    var timeStamp = darr[0] +"-"+ darr[1] +"-"+ darr[2]+" "+ marr[0] +":"+ marr[1]+ ":" + marr[2];
+    // var timeStamp = darr[0] +"-"+ darr[1] +"-"+ darr[2]+" "+ marr[0] +":"+ marr[1]+ ":" + marr[2];
+
+    var timeStamp = darr[0] +"-"+ darr[1] +"-"+ darr[2];
         
     return timeStamp; 
   } else {
@@ -58,16 +61,15 @@ router.beforeEach((to, from, next) => {
             query: {redirect: to.path}  
           })
       }
-  }
-  else {
+  } else {
     next();
   }
-  if (to.name === 'login') {
-    if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
-      router.push({name: 'home'});
-    }
-  }
- 
+  // if (to.name === 'login' && !to.query.flag) {
+  //   next({
+  //     path: '/law',  
+  //     query: {redirect: to.path, tag: "login"}  
+  //   })
+  // }
 })
 
 

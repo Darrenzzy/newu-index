@@ -3,7 +3,6 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-
 import Test from '../pages/Test'
 import Zkp from '../pages/Zkp'
 import Home from '../pages/Home'
@@ -22,13 +21,11 @@ import Risk from '../pages/Risk'
 import Responseblity from '../pages/Responseblity'
 import ContactUs from '../pages/ContactUs'
 
-
-
-
 export default new VueRouter({
     mode: "history",
     routes:[
-        { path: '/', component: Home, name: "home"},
+        { path: '/', component: Law, name: "law"},
+        { path: '/home', component: Home, name: "home"},
         { path: '/test', component: Test },
         { path: '/zkp', component: Zkp },
         { 
@@ -38,7 +35,6 @@ export default new VueRouter({
                 requireAuth: true,  
             },
         },
-        { path: '/law', component: Law },
         { path: '/updatePwd', component: UpdatePwd },
         { path: '/forgetPwd', component: ForgetPwd },
         { path: '/right', component: Right },

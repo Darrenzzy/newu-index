@@ -1,50 +1,33 @@
 <template>
     <div class="fixed_right" ref="sendEmail">
-        <div>
-            <el-popover
-                placement="left"
-                width="323"
-                trigger="hover"
-                enterable="true"
-                visible-arrow=false
-                popper-class="test"
-            >
-                <div class="email_box">
-                    <div class="top">
-                        诺游以客户为先，我们非常希望能帮助到您，欢迎留下联系方式及询问内容，我们会在1-3个工作天内回复，谢谢
-                    </div>
-                    <div class="form_content">
-                        <el-form  :model="formInline" :rules="rules"  ref="form" class="demo-form-inline" :label-position="labelPosition">
-                            <div class="eamil_input">
-                                <el-form-item  prop="email">
-                                    <el-input v-model="formInline.email" placeholder="请填写邮箱"></el-input>
-                                </el-form-item>
-                            </div>
-                            <div class="eamil_input">
-                                <el-form-item prop="content">
-                                    <el-input type="textarea" :rows="2" v-model="formInline.content" placeholder="请填写内容...."></el-input>
-                                </el-form-item>
-                            </div>
-                            <div class="email_button" @click="onSubmit('form')">发送</div>
-                        </el-form> 
-                    </div>
+        <div class="fixed_right_position">
+            <div class="email" slot="reference" @click="handleEmailClick"></div> 
+            <div class="email_box" v-show="emailFlag">
+                <div class="top">
+                    诺游以客户为先，我们非常希望能帮助到您，欢迎留下联系方式及询问内容，我们会在1-3个工作天内回复，谢谢
                 </div>
-                <div class="email" slot="reference"></div>
-            </el-popover>
+                <div class="form_content">
+                    <el-form  :model="formInline" :rules="rules"  ref="form" class="demo-form-inline" :label-position="labelPosition">
+                        <div class="eamil_input">
+                            <el-form-item  prop="email">
+                                <el-input v-model="formInline.email" placeholder="请填写邮箱"></el-input>
+                            </el-form-item>
+                        </div>
+                        <div class="eamil_input">
+                            <el-form-item prop="content">
+                                <el-input type="textarea" :rows="2" v-model="formInline.content" placeholder="请填写内容...."></el-input>
+                            </el-form-item>
+                        </div>
+                        <div class="email_button" @click="onSubmit('form')">发送</div>
+                    </el-form> 
+                </div>
+            </div>
         </div>
-        <div>
-            <el-popover
-                placement="top-start"
-                width="150"
-                trigger="hover"
-                enterable="true"
-                popper-class="proper_code"
-            >
-                <div class="code_box" style="width: 150px; height: 150px; ">
-                    <img src="./../assets/images/email.png" style="width: 100%"/>
-                </div>
-                <div class="bar_code" slot="reference"></div>
-            </el-popover>
+        <div class="fixed_right_position">
+            <div class="bar_code" slot="reference" @click="handleBcrCodeClick"></div>
+            <div class="code_box" v-show="barCodeFlag">
+                <img src="./../assets/images/er_wei_ma.jpg"/>
+            </div>
         </div>
         <div class="back_top" @click="backTop" ></div>
     </div>
@@ -80,31 +63,23 @@ export default {
                     { required: true, message: '内容不能为空', trigger: 'change' }
                 ],
             },
+            emailFlag: false,
+            barCodeFlag: false,
             
         };
     },
     mounted(){
         window.addEventListener('scroll',()=>{
             let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
-            if (scrollHeight > 1000) {
-                this.$refs.sendEmail.style.opacity = 1;
-                this.$refs.sendEmail.style.display = "block";
-            } else{
-                this.$refs.sendEmail.style.opacity = 0;
-                this.$refs.sendEmail.style.display = "none";
+            if(this.$refs.sendEmail){
+                if (scrollHeight > 1000) {
+                    this.$refs.sendEmail.style.opacity = 1;
+                    this.$refs.sendEmail.style.display = "block";
+                } else{
+                    this.$refs.sendEmail.style.opacity = 0;
+                    this.$refs.sendEmail.style.display = "none";
+                }
             }
-            // if (scrollHeight > this.startHeight) {
-            //     this.$refs.sendEmail.style.display = "none"
-            //     // $('.navigation').addClass('hide');
-            // } else {
-            //     // $('.navigation').remove('hide');
-            //     this.$refs.sendEmail.style.display = "block";
-            // }
-            // if (scrollHeight < this.startHeight){
-            //     // $('.navigation').removeClass('hide');
-            //     this.$refs.sendEmail.style.display = "block";
-            // }
-            // this.startHeight = scrollHeight;
         })
     },
     methods:{
@@ -138,13 +113,27 @@ export default {
             }
             });
         },
+        handleEmailClick(){
+            let flag = !this.emailFlag;
+            this.emailFlag = flag;
+            if (this.emailFlag) {
+                this.barCodeFlag = false;
+            }
+        },
+        handleBcrCodeClick(){
+            let flag = !this.barCodeFlag;
+            this.barCodeFlag = flag;
+            if (this.barCodeFlag) {
+                this.emailFlag = false;
+            }
+        },
         resetForm(formName) {
             this.$refs[formName].resetFields();
         }
     },
 }
 </script>
-<style  lang="less" scoped>
+<style  lang="less">
     .fixed_right{
         width: 47px;
         position: fixed;
@@ -167,50 +156,55 @@ export default {
         .bar_code{
             background: url("./../assets/images/bar_code.png");
             background-size: cover;
-
         } 
         .back_top{
             background: url("./../assets/images/back_top.png");
             background-size: cover;
         }
     }
-    .test{
-        border: unset;
-        padding: 0;
-        border-radius: 5px;
-    }
+   
     .test[x-placement^=left] .popper__arrow::after{
         border-left-color: #C00000;
 
     }
-    .proper_code{
-        padding: 5px;
+    .fixed_right_position{
+        position: relative;
+
     }
     .email_box{
+        position: absolute;
+        right: 60px;
+        top: 50%;
+        transform: translateY(-50%);
         width: 323px;
-        // height: 271px;
         background: #C00000;
         border-radius: 5px;
         padding: 14px 14px;
         box-sizing: border-box;
-
+        &::after{
+            content: "";
+            display: block;
+            border: 10px transparent solid;
+            border-left-color: #C00000;
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
         .top{
             width: 100%;
             font-size: 14px;
-            font-family: Source Han Serif CN;
             font-weight: 800;
             color: #FFFFFF;
             line-height: 21px;
         }
         .form_content{
             width: 100%;
-            // height: 159px;
             background: #FFFFFF;
             padding: 15px;
             box-sizing: border-box;
             margin-top: 23px;
             .eamil_input{
-                // border: 1px solid #CDCDCD;
                 margin-bottom: 19px;
             }
             .email_button{
@@ -233,6 +227,33 @@ export default {
                 line-height: 30px;
             }
         }
+    }
+    .code_box{
+        position: absolute;
+        width: 150px; 
+        height: 150px;
+        border: 10px solid #C00000;
+        border-radius: 5px;
+        right: 60px;
+        top: 50%;
+        transform: translateY(-50%);
+        &::after{
+            content: "";
+            display: block;
+            border: 10px transparent solid;
+            border-left-color: #C00000;
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        img{
+            width: 100%;
+        }
+    }
+    @media screen and (min-width: 320px) and (max-width: 414px){
+       
+       
     }
     
 </style>

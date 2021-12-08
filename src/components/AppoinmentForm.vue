@@ -1,7 +1,7 @@
 <template>
     <div class="appointment">
         <div class="appointment_left">
-            <p class="title">专户预约</p>
+            <p class="title">购买预约</p>
             <p class="desc_one">专业人士提供个性化资产管理建议</p>
             <p class="desc_two">
                 尊敬的投资者，基金专户仅面向合格投资者，您需提交合格投资者相关证明材料，感谢您的关注。
@@ -48,18 +48,23 @@
                             </el-radio-group>
                         </el-form-item>
                     </div>
-                    
+                    <div class="input_box">
+                        <el-form-item label="基金名称:" prop="content">
+                            <el-select v-model="formInline.content" multiple collapse-tags placeholder="请选择">
+                                <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </div>
                     <div class="input_box">
                         <div class="button_box">
                             <div class="button" @click="onSubmit('form')">提交预约</div>
                         </div>
                     </div>
-                    <div class="input_box">
-                        <!-- <el-form-item label="验证码:" prop="code">
-                            <el-input v-model="formInline.code" placeholder="">电话</el-input>
-                        </el-form-item> -->
-                    </div>
-                   
 
                     <div class="input_box">
                         
@@ -101,6 +106,23 @@ export default {
         }
         return {
             activeIndex: 0,
+            // options: [{
+            //     value: '选项1',
+            //     label: '黄金糕'
+            //     }, {
+            //     value: '选项2',
+            //     label: '双皮奶'
+            //     }, {
+            //     value: '选项3',
+            //     label: '蚵仔煎'
+            //     }, {
+            //     value: '选项4',
+            //     label: '龙须面'
+            //     }, {
+            //     value: '选项5',
+            //     label: '北京烤鸭'
+            // }],
+            options:[],
             selectData:[
                 "北京市",
                 "天津市",
@@ -158,20 +180,34 @@ export default {
                 ],
                 code: [
                     { required: true, message: '验证码不能为空', trigger: 'blur' },
-                ]
+                ],
+                content: [
+                    { required: true, message: '基金名称不能为空', trigger: 'blur' },
+                ],
             }
         };
     },
     created(){
+        this.$Axios.get('/api/v1/netWorth/list',{}).then((data)=>{
+            if (data.data.code == 200) {
+                data.data.data.list.map(item=>{
+                    item.label = item.wond_name;
+                    item.value = item.ID;
+                });
+                this.options = data.data.data.list;
+            }
+        }).catch(function (error) {
+            console.log(error);
+        });
     },
-    // props: {
-    //     msg: String
-    // },
+  
     methods:{
         onSubmit(formName) {
             this.$refs[formName].validate((valid) => {
                 this.formInline.class = parseInt(this.formInline.class)
+
             if (valid) {
+                this.formInline.content = this.formInline.content.toString()
                 this.$Axios.post('/api/v1/appointment/',{
                     ...this.formInline
                 }).then((res)=>{
@@ -217,14 +253,12 @@ export default {
             padding-left: 32px;
             .title{
                 font-size: 18px;
-                font-family: Source Han Serif CN;
                 font-weight: 800;
                 color: #414141;
                 margin: 0 0 27px;
             }
             .desc_one{
                 font-size: 14px;
-                font-family: Source Han Serif CN;
                 font-weight: 800;
                 color: #666666;
                 line-height: 27px;
@@ -232,7 +266,6 @@ export default {
             .desc_two{
                 margin-top: 20px;
                 font-size: 11px;
-                font-family: Source Han Serif CN;
                 font-weight: 500;
                 color: #414141;
                 line-height: 18px;
@@ -252,7 +285,6 @@ export default {
                     // border: 1px solid;
                     .label_style{
                         font-size: 11px;
-                        font-family: Source Han Serif CN;
                         font-weight: 800;
                         color: #414141;
                         height: 30px;
@@ -323,4 +355,21 @@ export default {
             }
         }
     }
+    @media screen and (min-width: 320px) and (max-width: 414px){
+        .appointment{
+            width: unset;
+            min-width: 70%;
+            .appointment_left{
+                width: 40%;
+                padding-top: 34px;
+                padding-left: 12px;
+                padding-right: 10px;
+                box-sizing: border-box;
+                .desc_two{
+                    width: 90%;
+                }
+            }
+        }
+    }
 </style>
+

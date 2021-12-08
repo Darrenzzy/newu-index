@@ -156,7 +156,6 @@
     .login_form{
         .title{
             font-size: 18px;
-            font-family: Source Han Serif CN;
             font-weight: 800;
             color: #C00000;
             text-align: center;
@@ -181,7 +180,6 @@
                         background: #DFDFDF;
                         border-radius: 8px;
                         font-size: 11px;
-                        font-family: Source Han Serif CN;
                         font-weight: 800;
                         color: #333333;
                         height: 30px;
@@ -198,7 +196,6 @@
             }
             /deep/.el-form-item__label{
                 font-size: 12px;
-                font-family: Source Han Serif CN;
                 font-weight: 800;
                 color: #333333;
                 padding: 0;
@@ -230,7 +227,6 @@
                 align-items: center;
                 .link_style{
                     font-size: 11px;
-                    font-family: Source Han Serif CN;
                     font-weight: 800;
                     color: #666666;
                     display: inline-block;

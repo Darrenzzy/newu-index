@@ -9,7 +9,7 @@
             msg = "首页"
         >
         </FixedLeft>
-        <div class="video_box">
+        <div class="video_box" id="video">
             <!-- <video class="video" src="http://cdn.jian24.com/1548381208553958.mp4" preload="none" controls="controls" height="100%" >
             </video> -->
             <div class="play_box"> 
@@ -17,104 +17,141 @@
                 <a href="#">观看视频</a>
             </div>
         </div>
-        <div class="table_box">
+        <div class="table_box" id="net">
             <div class="table_content">
-                <div class="table_title">诺游基金</div>
-                <div class="column_title"> 
-                    <div class="title">基金名称</div>
-                    <div class="title">基金代码</div>
-                    <div class="title" style="width: 160px;">净值日期</div>
-                    <div class="title">单位净值</div>
-                    <div class="title">累计净值</div>
-                    <div class="title">涨跌幅</div>
-                    <div class="title">成立以来</div>
-                    <div class="title">风险等级</div>
-                </div>
-                <div class="table_list" style="cursor: pointer;" @click="handleTableClick">
-                    <div class="column_content" v-for="(item) in tableData" :key="item.ID">
-                        <div class="content">{{item.wond_name}}</div>
-                        <div class="content"><span :class="showUser ?'': 'blur'">{{item.code}}</span></div>
-                        <div class="content" style="width: 160px;">
-                            <span v-if="showUser" >{{ item.update_by | formateTime}}</span>
-                            <span v-else  class="blur">{{(item.update_by)}}</span>
-                        </div>
-                        <div class="content"><span :class="showUser?'': 'blur'">{{item.net_worth}}</span></div>
-                        <div class="content"><span :class="showUser ?'': 'blur'">{{item.unit_worth}}</span></div>
-                        <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
-                        <div class="content red_color"><span :class="showUser ?'': 'blur'">{{item.build_before}}</span></div>
-                        <div class="content"><span :class="showUser ?'': 'blur'">中风险</span></div>
-                    </div>
-                </div>
+                <div class="table_title">热销基金</div>
+                <table border="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="fund_name">基金名称</th>
+                            <th>净值日期</th>
+                            <th>单位净值</th>
+                            <th>累计净值</th>
+                            <th>成立以来(%)</th>
+                            <th>今年以来(%)</th>
+                            <th>近一年(%)</th>
+                            <th>近两年(%)</th>
+                            <th>近三年(%)</th>
+                        </tr>
+                    </thead>
+                    <tbody style="cursor: pointer;" @click="handleTableClick">
+                        <tr v-for="(item) in tableData" :key="item.ID">
+                            <td>
+                                <div>{{item.wond_name}} <span v-show="item.is_limit" style="color: #CD4645"> (限) </span></div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span v-if="showUser" >{{ item.date_worth | formateTime}}</span>
+                                    <span v-else  class="blur">{{(item.date_worth)}}</span>
+                                </div>
+                            </td>
+                            <td> <span :class="showUser ?'': 'blur'">{{item.unit_worth}}</span></td>
+                            <td> <span :class="showUser?'': 'blur'">{{item.net_worth}}</span></td>
+                            <td> <span :class="showUser ?'': 'blur'">{{item.build_before}}</span> </td>
+                            <td> <div class="red_color"><span :class="showUser ?'': 'blur'">{{item.now_year}}</span></div> </td>
+                            <td> <div class="red_color"><span :class="showUser ?'': 'blur'">{{item.last_year}}</span></div> </td>
+                            <td> <span :class="showUser ?'': 'blur'">{{item.three_muoth}}</span> </td>
+                            <td> <span :class="showUser ?'': 'blur'">{{item.six_mouth}}</span> </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="pic">
+        <div class="pic" id="attitude">
            <div class="pic_content">
-                <h1 class="pic_title">价值与成长相结合</h1>
+                <h1 class="pic_title">一<span class="pic_red">诺</span>千金 <span class="pic_red">游</span>刃有余</h1>
                 <p class="pic_p">
-                    坚守价值与成长相结合的投资模式，专注于挖掘企业内生增长价值和成长性；
-                    同时兼顾收益率曲线的稳定性与资产配置的流动性、灵活性， 为投资者创造持续稳定的（高于指数增长？/且高于同类产品？）的业绩回报。
+                    重信守诺是为人和做事的第一准则。
+                </p>
+                <p class="pic_p" >
+                    市场存在低风险和高收益的机会。股价会上下波动，但最终会回归公司的内生价值。
+                </p>
+                 <p class="pic_p">
+                    价值与成长同样性感。
+                </p>
+                 <p class="pic_p">
+                    流动性和灵活性非常关键。
                 </p>
            </div>
         </div>
-        <div class="company">
+        <div class="company" id="methods">
             <div class="company_title">中长期达成稳定资产增长</div>
             <div class="company_content">
-                <div class="company_right" ref="companyRight">
-                    <div class="js_show top" ref="topImg">
-                        <div class="small_img top_img">
-                            <img src="./../assets/images/touzi.png"/>
-                        </div>
+                <div class="company_left_box">
+                    <div class="company_left" id="group">
+                        <h4 class="company_left_h4">·与优秀企业共同成长</h4>
+                        <p class="company_left_p" style="margin-bottom: 30px;">
+                            价值投资最重要的是寻找优秀的企业，是买公司而并非单纯的买股票。好的公司可能会在一个阶段不被发现或不被认可，但最终会得到市场的公平定价，回归价值。所以，公司是否是好的行业，好的赛道，是否有很深的护城河，管理层是否品德优良、能力超群，这些都是重要的衡量维度。
+                        </p>
                     </div>
-                     <div class="js_show left" ref="leftImg">
-                        <div class="small_img left_img">
-                            <img src="./../assets/images/shichang.png"/>
-                        </div>
+                    <div class="company_left" id="cycle">
+                        <h4 class="company_left_h4">·周期的力量</h4>
+                        <p class="company_left_p">
+                            经济周期是永远存在的，复苏，繁荣，滞涨，衰退。。。更替周而复始。经济有周期，行业有周期，公司也有周期。每个周期的大小不同、长短不一。我们要用心去感受与体验周期的力量，顺势而行并与之共舞。
+                        </p>
+                    </div>
+                    <div class="company_left" id="logic">
+                        <h4 class="company_left_h4">·真的逻辑</h4>
+                        <p class="company_left_p">
+                            世上往往有些事是似是而非，有些事是似非而是。在投资中要不断寻找和验证逻辑的正确性，并区分是长逻辑还是短逻辑。去伪存真，方可立于不败之地。
+                        </p>
+                    </div>
+                    <div class="company_left" id="market">
+                        <h4 class="company_left_h4">·跟随市场，不要预测市场</h4>
+                        <p class="company_left_p">
+                            资本市场是一个复杂的非稳定的系统。对市场怀有敬畏之心，切记市场永远是对的。不要过度主观与自信，更不要夸夸其谈，以防误入歧途。要跟随市场的节奏与脉动，认可，跟随，并享受市场的变化与波动。
+                        </p>
+                    </div>
+                    <div class="company_left" id="transaction">
+                        <h4 class="company_left_h4">·交易的本质</h4>
+                        <p class="company_left_p">
+                            交易本质上是一场游戏。与其他游戏一样，对技巧和智慧有要求。运气在短期内会起到作用，然而从长远考虑，只有交易技巧才能决定业绩。
+                        </p>
+                    </div>
+                </div>
+                <div class="company_right" ref="companyRight">
+                    <div class="js_show top foucs_top" ref="topImg">
+                        <a href="#group" @click="handleClick('top')">
+                            <div class="top_font">与优秀企业共同成长</div>
+                            <div class="small_img top_img">
+                                <img src="./../assets/images/touzi.png"/>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="js_show green" ref="greenImg">
+                        <a href="#cycle" @click="handleClick('green')">
+                            <div class="green_font">周期的力量</div>
+                            <div class="small_img green_img">
+                                <img src="./../assets/images/green.png"/>
+                            </div>
+                        </a>
                     </div>
                     <div class="js_show right" ref="rightImg">
-                         <div class="small_img right_img">
-                            <img src="./../assets/images/fengkong.png"/>
-                        </div>
+                        <a href="#logic" @click="handleClick('right')">
+                            <div class="small_img right_img">
+                                <img src="./../assets/images/fengkong.png"/>
+                            </div>
+                            <div class="right_font">真的逻辑</div>
+                        </a>
                     </div>
-                    <div class="logo" ref="logo_box">
-                        <img src="./../assets/images/logo.png" ref="logo_img"/>
+
+                    <div class="js_show left" ref="leftImg">
+                        <a href="#market" @click="handleClick('left')">
+                            <div class="small_img left_img">
+                                <img src="./../assets/images/shichang.png"/>
+                            </div>
+                            <div class="left_font">跟随市场，不要预测市场</div>
+                        </a>
                     </div>
-                    <!-- <div class="circle_font">
-                        <div><span>成立</span><p>2016</p> </div>
-                        <div><span>成立</span><p>2016</p> </div>
-                        <div><span>成立</span><p>2016</p> </div>
-                    </div> -->
-                    <img src="./../assets/images/circle.png"/>
-                </div>
-                <div class="company_left_box">
-                    <div class="company_left">
-                        <h4 class="company_left_h4" @click="handleTestMask('foucs_right')">·价值投资</h4>
-                        <p class="company_left_p" style="margin-bottom: 30px;">
-                                基本面研究为首要依据，诺游投研团队具
-                            有平均10年以上高级版行业研究从业经历
-                        </p>
-                        <p class="company_left_p">
-                            诺游以投研团队水平的优势，多次捕捉到
-                            公司业绩拐点，抢先发现低估企业，享受
-                            戴维斯双击带来的增值红利
-                        </p>
+                    <div class="js_show yellow" ref="yellowImg">
+                        <a href="#transaction" @click="handleClick('yellow')">
+                            <div class="yellow_font">交易的本质</div>
+                            <div class="small_img yellow_img">
+                                <img src="./../assets/images/yellow.png"/>
+                            </div>
+                        </a>
                     </div>
-                    <div class="company_left">
-                        <h4 class="company_left_h4">·资产分配灵活性</h4>
-                        <p class="company_left_p">
-                            诺游相信趋势与交易的力量，把握进行资
-                            产配资调整的机会，让收益能够最大化
-                        </p>
-                    </div>
-                
-                    <div class="company_left">
-                        <h4 class="company_left_h4">·仓位管控</h4>
-                        <p class="company_left_p">
-                            诺游执行严格的风控措施，风控团队监控日内交易数据，依据风险分析模型做出仓位管控主
-                        </p>
-                        <p class="company_left_p">
-                            动择时来控制产品的回撤风险，力求产品净值曲线的平滑
-                        </p>
-                    </div>
+                    <img src="./../assets/images/circle_one.png"/>
                 </div>
             </div>
         </div>
@@ -123,95 +160,53 @@
     </div>
 </template>
 <script>
-import logo from "./../assets/images/logo.png";
-import font_logo from "./../assets/images/font_logo.png";
-import font_circle from "./../assets/images/font_circle.png";
 import Head from './../components/Head.vue';
 import Footer from './../components/Footer';
 import SendEmail from './../components/SendEmail';
 import FixedLeft from './../components/FixedLeft';
-import {mapGetters} from "vuex"
-
+import {mapGetters} from "vuex";
     export default {
         name: 'Home',
         components: {
             Head,
             Footer,
             SendEmail,
-            FixedLeft
+            FixedLeft,
         },
         data() {
             return {
                 showUser: false,
+                obj: "top",
                 tableData: [
                     {
-                        build_before: "52", 
-                        code: 23444, 
+                        build_before: "***", 
+                        code: "***", 
                         ID: 3, 
-                        last_year: "552", 
-                        net_worth: "552", 
-                        now_year: "111",
+                        date_worth:"2020-09-08",
+                        last_year: "***", 
+                        net_worth: "***", 
+                        now_year: "***",
                         create_by: "2020-09-08",
-                        six_mouth: "222",
-                        three_muoth: "222",
-                        unit_worth: "222",
+                        six_mouth: "***",
+                        three_muoth: "***",
+                        unit_worth: "***",
                         update_by: "2020-09-08",
-                        wond_name: "诺游一号"
-                    },
-                    {
-                        build_before: "52", 
-                        code: 23444, 
-                        ID: 4, 
-                        last_year: "552", 
-                        net_worth: "552", 
-                        now_year: "111",
-                        create_by: "2020-09-08",
-                        six_mouth: "222",
-                        three_muoth: "222",
-                        unit_worth: "222",
-                        update_by: "2020-09-08",
-                        wond_name: "诺游一号"
-                    },
-                    {
-                        build_before: "52", 
-                        code: 23444, 
-                        ID: 5, 
-                        last_year: "552", 
-                        net_worth: "552", 
-                        now_year: "111",
-                        create_by: "2020-09-08",
-                        six_mouth: "222",
-                        three_muoth: "222",
-                        unit_worth: "222",
-                        update_by: "2020-09-08",
-                        wond_name: "诺游一号"
-                    },
-                    {
-                        build_before: "52", 
-                        code: 23444, 
-                        ID: 6, 
-                        last_year: "552", 
-                        net_worth: "552", 
-                        now_year: "111",
-                        create_by: "2020-09-08",
-                        six_mouth: "222",
-                        three_muoth: "222",
-                        unit_worth: "222",
-                        update_by: "2020-09-08",
-                        wond_name: "诺游一号"
+                        wond_name: "诺游基金"
                     }
-                ]
+                ]       
             }
         },
         computed: mapGetters({
             'getCount':  'getCount'
         }),
         created(){
-            console.log(this.getCount)
             if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
                 this.$Axios.get('/api/v1/netWorth/list',{}).then((data)=>{
                     if (data.data.code == 200) {
-                        this.tableData = data.data.data.list;
+                        this.tableData = data.data.data.list.filter(item=>{
+                            return item.is_limit != 1;
+                        })
+                        //  = data.data.data.list;
                         this.showUser = true;
                     } else {
                         this.showUser = false;
@@ -222,59 +217,13 @@ import {mapGetters} from "vuex"
             }
         },
         mounted(){
-            window.addEventListener('scroll',()=>{
-                let scrollHeight= document.documentElement.scrollTop || document.body.scrollTop;
-                console.log(scrollHeight)
-            
-                // if (scrollHeight > 1705 && scrollHeight < 2700 && this.$refs.companyRight) {
-                //     this.$refs.companyRight.style.display = "block";
-                // } else {
-                //     this.$refs.companyRight.style.display = "none";
-                // }
-                if (scrollHeight > 1705 && scrollHeight < 2500 && this.$refs.companyRight) {
-                    this.$refs.companyRight.style.display = "block";
-                } else {
-                    this.$refs.companyRight.style.display = "none";
-            }
-
-                if (scrollHeight > 1014 &&  scrollHeight < 2060 && this.$refs.logo_img) {
-                    this.handleTestMask("topImg", "foucs_top");
-                    this.$refs.logo_img.setAttribute("src", logo);
-                } else {
-                    this.handleRemove("topImg", "foucs_top");
-                }
-                if ( scrollHeight >= 2060 && scrollHeight < 2340 && this.$refs.logo_img) {
-                    this.handleTestMask("leftImg", "foucs_left")
-                    if (this.$refs.logo_img) {
-                        this.$refs.logo_img.setAttribute("src", font_logo)
-                    }
-                } 
-                else {
-                    this.handleRemove("leftImg", "foucs_left");
-                }
-                if ( scrollHeight >= 2340 && this.$refs.logo_img) {
-                    this.handleTestMask("rightImg", "foucs_right");
-
-                    this.$refs.logo_img.setAttribute("src", font_circle);
-                    setTimeout(()=>{
-                        this.$refs.logo_box.classList.add("font_circle")
-                    },10)
-
-                } 
-                else {
-                    this.handleRemove("rightImg", "foucs_right")
-                    this.handleRemove("logo_box", "font_circle")
-                }
-            })
+            this.handleTestMask("topImg", "foucs_top");
         },
         methods:{
-            handleTestMask(obj, className){
-                if (this.$refs[obj]) {
-                    if (!this.$refs[obj].classList.contains("is_show")) {
-                        this.$refs[obj].classList.add(className)
-                        this.$refs[obj].classList.add("is_show")
-                    }
-                }
+            handleClick(activeObj){
+                this.handleTestMask(`${activeObj}Img`, `foucs_${activeObj}`);
+                this.handleRemove(`${this.obj}Img`, `foucs_${this.obj}`);
+                this.obj = activeObj;
             },
             showOpacity(){
                 if (localStorage.getItem("username") && localStorage.getItem("email") && localStorage.getItem("mobile")) {
@@ -291,6 +240,14 @@ import {mapGetters} from "vuex"
                 }else{
                     let routeData = this.$router.resolve({ path: '/login'});
                     window.open(routeData.href, '_blank');
+                }
+            },
+            handleTestMask(obj, className){
+                if (this.$refs[obj]) {
+                    if (!this.$refs[obj].classList.contains("is_show")) {
+                        this.$refs[obj].classList.add(className)
+                        this.$refs[obj].classList.add("is_show")
+                    }
                 }
             },
             handleRemove(obj, className){
@@ -342,9 +299,8 @@ import {mapGetters} from "vuex"
     }   
     .table_box{
         width: 70%;
-        margin: 0 auto;
-        padding: 100px 0;
-        
+        padding: 40px 0;
+        margin-left: 15%;
     } 
     .pic{
         width: 100%;
@@ -358,22 +314,26 @@ import {mapGetters} from "vuex"
             overflow: hidden;
             height: 100%;
             .pic_title{
-                width: 443px;
-                font-size: 51px;
-                font-family: Source Han Serif CN;
+                font-size: 38px;
                 font-weight: 800;
                 color: #EFEFED;
-                margin-top: 170px;
+                margin-top: 100px;
+                .pic_red{
+                    color: #C80200;
+                    font-size: 75px;
+                    &:last-child{
+                        margin-left: 15px;
+                    }
+                }
             }
             .pic_p{
                 font-size: 14px;
-                width: 443px;
-                font-family: Source Han Serif CN;
                 font-weight: 500;
                 color: #EFEFED;
                 line-height: 23px;
+                line-height: 30px;
+                opacity: .9;
             }
-
         }
     }
     .company{
@@ -381,69 +341,55 @@ import {mapGetters} from "vuex"
         padding-bottom: 360px;
         .company_title{
             height: 44px;
-            font-size: 45px;
-            font-family: Source Han Serif CN;
+            font-size: 36px;
             font-weight: 800;
             color: #333333;
             line-height: 36px;
-            margin-bottom: 146px;
+            margin-bottom: 100px;
             margin-left: 20%;
         }
         .company_content{
             margin-left: 20%;
-            margin-right: 100px;
+            width: 60%;
             position: relative;
+            justify-content: space-between;
+            display: flex;
         }
         .company_left_box{
-            // height: 400px;
+            width: 60%;
             .company_left{
-                width: 35%;
-                margin-bottom: 130px;
+                width: 80%;
+                margin-bottom: 120px;
                 .company_left_h4{
-                    font-size: 36px;
-                    font-family: Source Han Serif CN;
+                    font-size: 30px;
                     font-weight: 800;
                     color: #666666;
                     margin-top: 0;
-                    margin-bottom: 40px;
+                    margin-bottom: 30px;
                 }
                 .company_left_p{
                     width: 100%;
+                    max-width: 502px;
                     font-size: 18px;
-                    font-family: Source Han Serif CN;
                     font-weight: 800;
                     color: #666666;
                     line-height: 27px;
                     opacity: 0.65;
                 }
+                &:last-child{
+                    margin-bottom: 160px;
+                }
             }
         }
-        @media screen and (min-width:769px) {
-            .company_right{
-                width: 20%;
-                right: 20%;
-            }
-        }
-        @media screen and (max-width:770px) {
-            .company_right{
-                width: 20%;
-                right: 20%;
-            }
-        
-        }
-        // @media screen and (max-width: 768px) and (min-width:481px) {
-        
-        // }
         .company_right{
-            // position: absolute;
-            position: fixed;
+            position: sticky;
+            opacity: 1;
+            width: 40%;
+            max-width: 334px;
+            right: 20%;
             top: 200px;
-            // top: 20px;
             margin-top: 30px;
-            // display: block;
-            display: none;
-            // transform: scale(0.0001);
-            transition: transform 1s ease;
+            height: 20%;
             .js_show{
                 position: absolute;
                 width: 26%;
@@ -456,7 +402,6 @@ import {mapGetters} from "vuex"
                     position: relative;
                     transition: transform 1s ease ;
                     line-height: .8;
-
                     img{
                         max-height: 100%;
                         max-width: 100%;
@@ -472,112 +417,140 @@ import {mapGetters} from "vuex"
             .is_show{
                 .right_img{
                     border: 1px solid rgba(30,12,63, .85);
-                    // box-shadow: 0 0 15px rgba(188, 304, 40, .5);
                     img{
                         border: 1px solid rgba(30,12,63, .45);
-                        // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
+                    }
+                }
+                .yellow_img{
+                    border: 1px solid rgba(255,200,92, .85);
+                    img{
+                        border: 1px solid rgba(255,200, 92, 45);
+                    }
+                }
+                .green_img{
+                    border: 1px solid rgba(89,136,107, .85);
+                    img{
+                        border: 1px solid rgba(89,136,107, .45);
                     }
                 }
                 .left_img{
                     border: 1px solid rgba(235,26,49, .85);
-                    // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     img{
                         border: 1px solid rgba(235,26,49, .45);
-                        // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     }
                 }
                 .top_img{
                     border: 1px solid rgba(239,162,135, .85);
-                    // box-shadow: 0 0 15px rgba(32, 334, 45, .5);
                     img{
                         border: 1px solid rgba(239,162,135, .45);
-                        // box-shadow: 0 0 15px rgba(232, 34, 45, .5);
                     }
-                }
-            }
-            .logo{
-                position: absolute;
-                width: 23%;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%) scale(1.3);
-                // transition: all 1s ease ;
-                img{
-                    max-height: 100%;
-                    max-width: 100%;
-                    min-width: 100%;
-                    min-height: 100%;
-                    object-fit: cover;
                 }
             }
             .font_circle{
                 width: 110%;
                 transform: translate(-50%, -90%) scale(1.3);
             }
-            .circle_font{
-                position: absolute;
-                width: 100%;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%) scale(1.3);
-                transition: transform 1s ease ;
-                display: flex;
-                justify-content: space-between;
-                div{
-                    p{
-                        color: #E8222D;
-                        font-size: 36px;
-                        font-weight: 800;
-                    }
-                    span{
-                        color: #333333;
-                        font-size: 12px;
-                        font-family: Source Han Serif CN;
-                    }
-                }   
-            }
-           
             .top{
                 left: 50%;
                 transition: transform 1s ease ;
                 transform: translate(-50%, -50%) scale(1.3);
+                .top_font{
+                    color: #EEA282;
+                    top: -20px;
+                }
+            }
+            .top_font, .left_font,.right_font, .yellow_font, .green_font{
+                font-size: 14px;
+                text-align: center;
+                position: absolute;
+                transform: translateX(-50%);
+                left: 50%;
+                width: 200%;
             }
             .foucs_top{
                 transform: translate(-50%, -50%) scale(1.6);
             }
-            .foucs_left{
-                transform: translateX(-20%) scale(1.6);
-            }
-            .left{
-                bottom: 15%;
+           
+            .left,.right, .green, .yellow{
                 transition: transform 1s ease ;
                 transform: translateX(-20%) scale(1.3);
             }
-            .foucs_left{
+            .left{
+                bottom: 10%;
+            }
+            .left_font{
+                color: #E8222D;
+            }
+            .yellow{
+                top: 15%;
+                left: -5%;
+            }
+            .green{
+                right: -15%;
+                top: 15%;
+            }
+            .yellow_font{
+                color: #FFC85C;
+                bottom: -20px;
+            }
+            .green_font{
+                color: #59886B;
+                bottom: -20px;
+            }
+            .foucs_left, .foucs_right, .foucs_yellow, .foucs_green{
                 transform: translateX(-20%) scale(1.6);
             }
             .right{
-                bottom: 15%;
-                right: 0;
-                transition: transform 1s ease ;
-                transform: translateX(20%) scale(1.3);
-            }
-            .foucs_right{
-                transform: translateX(20%) scale(1.6);
-                // border: 1px solid red;
-                // img{
-                //     border: 1px solid red;
-                // }
+                right: -10%;
+                bottom: 10%;
+                .right_font{
+                    color: #200A3E;
+                }
             }
             img{
-                max-height: 100%;
-                max-width: 100%;
-                min-width: 100%;
-                min-height: 100%;
+                max-height: 99%;
+                min-height: 99%;
+                max-width: 99%;
+                min-width: 99%;
                 object-fit: cover;
             }
-                
         }
-
+        
+    }
+    @media screen and (min-width: 320px) and (max-width: 414px){
+        .table_box{
+           width: unset;
+           min-width: 70%;
+        }
+        .company{
+            .company_content{
+                width: 70%;
+                box-sizing: border-box;
+            }
+            .company_left_box{
+                .company_left{
+                    width: 78%;
+                }
+            }
+            .company_right{
+                right: 6%;
+                .top_font, .green_font, .yellow_font, .left_font, .right_font{
+                    transform: scale(0.4) translateX(-123%) translateY(-10px);
+                    width: 500%;
+                }
+                .top{
+                    .top_font{
+                        top: -10px;
+                    }
+                }
+                .js_show {
+                    .small_img{
+                        img{
+                            padding: 4px;
+                        }
+                    }
+                }
+            }
+        }
     }
 </style>

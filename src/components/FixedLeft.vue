@@ -32,7 +32,6 @@ export default {
         transform: translateX(-100%);
         color: #ffffff;
         font-size: 14px;
-        font-family: Source Han Serif CN;
         font-weight: 800;
         padding: 10px 0;
         box-sizing: border-box;

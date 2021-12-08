@@ -5,7 +5,7 @@
                 <img src="./../assets/images/logo.png" />
             </div>
             <div class="header_right">
-                <router-link to="/"><div class="header_item">首页</div></router-link>
+                <router-link to="/home"><div class="header_item">首页</div></router-link>
                 <router-link to="/fund"><div class="header_item">基金产品</div></router-link>
                 <router-link to="/about_nuoyou"> <div class="header_item"> 关于诺游 </div> </router-link>
                 <div v-if="showUser">
@@ -14,7 +14,7 @@
                         trigger="hover"
                         enterable="true"
                         popper-class="user_popper"
-                        close-delay=300000
+                        
                     >
                         <div class="user_box">
                             <div class="item">用户名：{{username}}</div>
@@ -23,19 +23,19 @@
                             <div class="item" style="cursor:pointer;text-align: center;" @click="changePwd">修改密码</div>
                             <div class="item" style="border-bottom:unset; cursor:pointer;text-align: center;" @click="LogOut">退出</div>
                         </div>
-                        <div class="header_item" slot="reference" style="cursor:pointer;">
-                            <img src="./../assets/images/user.png" alt="">
+                        <div class="" slot="reference" style="cursor:pointer;">
+                            <!-- <img src="./../assets/images/user.png" alt=""> -->
+                            <router-link to="/userCenter"> <div class="header_item"> 用户中心 </div> </router-link>
                         </div> 
-
                     </el-popover>
                 </div>
                 <router-link to="/login" target="_blank" v-else> 
                     <div class="header_item"> 用户登录 </div> 
                 </router-link>
                  <!-- <div @click="handleLanguage('en')"> 英语</div>
-                 <div @click="handleLanguage('zh')"> 中文</div> -->
+                 <div @click="handleLanguage('zh')"> 中文</div>  -->
 
-            </div>
+            </div> 
         </div>
     </div>
 </template>
@@ -51,7 +51,32 @@ export default {
             username: "",
             mobile: "",
             email: "",
-
+            tabList: [
+                {
+                    title: '首页',
+                    hasChildren: false,
+                    key: 'home',
+                    routeName: '/'
+                },
+                {
+                    title: '基金产品',
+                    hasChildren: false,
+                    key: 'fund',
+                    routeName: '/fund'
+                },
+                {
+                    title: '关于诺游',
+                    hasChildren: false,
+                    key: 'about_nuoyou',
+                    routeName: '/about_nuoyou'
+                },
+                {
+                    title: '用户登录',
+                    hasChildren: false,
+                    key: 'login',
+                    routeName: '/login'
+                },
+            ]
         }
     },
     created(){
@@ -59,6 +84,12 @@ export default {
         this.showOpacity()
     },
     methods:{
+        
+        linkToPage(name) {
+            this.$router.push({
+                path: name
+            })
+        },
         handleLanguage(language){
             localStorage.setItem("locale",language)
             this.$i18n.locale = language;
@@ -91,11 +122,6 @@ export default {
             let routeData = this.$router.resolve({ path: '/login'});
             window.open(routeData.href, '_blank');
             this.showUser = false;
-
-            // this.$message({
-            //     message: '退出成功',
-            //     type: 'success'
-            // });
         }
 
     }
@@ -123,14 +149,11 @@ export default {
                 border-bottom: 1px solid rgba(239, 239, 239, 1);
                 font-size: 12px;
                 padding: 0 10px;
-                font-family: Source Han Serif CN;
                 color: #343434;
                 overflow: hidden;
             }
         }
-
     }
-        
     .header{
         width: 100%;
         height: 80px;
@@ -163,10 +186,9 @@ export default {
         display: flex;
         align-items: center;
     }
+   
     .header_item{
         color: black;
-        // height: 40px;
-        // line-height: 40px;
         margin-left: 60px;
         display: flex;
         justify-content: center;
@@ -195,4 +217,30 @@ export default {
             }
         }
     }
+   
+    @media screen and (min-width: 320px) and (max-width: 414px){
+        .user_popper{
+            left: unset!important;
+            right:0;
+        }
+        .header_box{
+            width: 90%;
+            .header_left{  
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .header_right{
+                width: 70%;
+                justify-content: space-between;
+                .header_item{
+                    font-size: 0.12rem;
+                    margin-left: unset;
+                }
+            }
+            
+        }
+    }
+        
+
 </style>

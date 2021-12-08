@@ -9,39 +9,44 @@
                 <div class="banner_content">
                 </div>
             </div>
+            
             <div class="table" id="userCenterFund">
+
                 <div class="table_box">
                     <div class="table_content">
                         <div class="table_title">诺游基金</div>
-                        <div class="column_title"> 
-                            <div class="title">基金名称</div>
-                            <div class="title" >基金代码</div>
-                            <div class="title" >净值日期</div>
-                            <div class="title">单位净值</div>
-                            <div class="title">累计净值</div>
-                            <div class="title">涨跌幅</div>
-                            <div class="title">成立以来</div>
-                            <div class="title">风险等级</div>
-                        </div>
-                        <div class="table_list">
-                            <div class="column_content" v-for="(item) in tableData" :key="item.ID">
-                                <div class="content">{{item.wond_name}}</div>
-                                <div class="content" >{{item.code}}</div>
-                                <div class="content" >{{formateTime(item.update_by)}}</div>
-                                <div class="content">{{item.net_worth}}</div>
-                                <div class="content">{{item.unit_worth}}</div>
-                                <div class="content red_color">{{item.build_before}}</div>
-                                <div class="content red_color">{{item.build_before}}</div>
-                                <div class="content">中风险</div>
-                                <!-- <div class="content"><span class="blur">3%</span></div>
-                                <div class="content"><span class="blur">3%</span></div>
-                                <div class="content"><span class="blur">3%</span></div>
-                                <div class="content"><span class="blur">3%</span></div>
-                                <div class="content red_color"><span class="blur">涨跌幅</span></div>
-                                <div class="content red_color"><span class="blur">成立以来</span></div>
-                                <div class="content"><span class="blur">风险等级</span></div> -->
-                            </div>
-                        </div>
+                        <table border="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th class="fund_name">基金名称</th>
+                                    <th>净值日期</th>
+                                    <th>单位净值</th>
+                                    <th>累计净值</th>
+                                    <th>成立以来(%)</th>
+                                    <th>今年以来(%)</th>
+                                    <th>近一年(%)</th>
+                                    <th>近两年(%)</th>
+                                    <th>近三年(%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item) in tableData" :key="item.ID">
+                                    <td>
+                                        <div>{{item.wond_name}} <span v-show="item.is_limit" style="color: #CD4645"> (限) </span></div>
+                                    </td>
+                                    <td>
+                                        <span>{{ item.date_worth | formateTime}}</span>
+                                    </td>
+                                    <td> {{item.unit_worth}} </td>
+                                    <td> {{item.net_worth}} </td>
+                                    <td> {{item.build_before}}</td>
+                                    <td> <div class="red_color"> {{item.now_year}} </div> </td>
+                                    <td> <div class="red_color"> {{item.last_year}} </div> </td>
+                                    <td> {{item.three_muoth}} </td>
+                                    <td> {{item.six_mouth}} </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -49,12 +54,13 @@
                 <div class="left">
                 </div>
                 <div class="right"  id="vipSearch">
-                    <div class="right_content">
+                    <Net />
+                    <!-- <div class="right_content">
                         <div class="search_title">尊户查询</div>
                         <div class="search_link">
                             券商入口
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -70,6 +76,8 @@
     import Footer from './../components/Footer';
     import SendEmail from './../components/SendEmail';
     import FixedLeft from './../components/FixedLeft';
+    import Net from './../components/Net';
+
 
     export default {
         data() {
@@ -113,7 +121,8 @@
             Head,
             Footer,
             SendEmail,
-            FixedLeft
+            FixedLeft,
+            Net
         },
         created(){
             // if (this.showOpacity()) {
@@ -194,8 +203,8 @@
         .right{
             width: 30%;
             height: 100%;
-            background: #F2F2F2;
-            padding: 10px;
+            background: #C80200;
+            border-radius: 0 6px 0 0;
             box-sizing: border-box;
             .right_content{
                 background: #ffffff;
@@ -208,14 +217,12 @@
                 .search_title{
                     margin-bottom: 36px;
                     font-size: 27px;
-                    font-family: Source Han Serif CN;
                     font-weight: 800;
                     color: #333333;
                 }
                 .search_link{
                     background: #C80200;
                     font-size: 18px;
-                    font-family: Source Han Serif CN;
                     font-weight: 800;
                     color: #FFFFFF;
                     width: 140px;
@@ -225,6 +232,23 @@
                     line-height: 40px;
                     cursor: pointer;
                 }
+            }
+        }
+    }
+ 
+    @media screen and (min-width: 320px) and (max-width: 414px){
+        .table{
+           width: unset;
+           min-width: 70%;
+        }
+        .search{
+            width: unset;
+            min-width: 70%;
+            .left{
+                width: 40%;
+            }
+            .right{
+                flex: 1;
             }
         }
     }

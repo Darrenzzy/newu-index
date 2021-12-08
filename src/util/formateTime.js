@@ -2,14 +2,11 @@ export default (dateString)=>{
     if(dateString){
         var arr = dateString.split("T");
         var d=arr[0];
-        console.log("1111111111111");
         var darr = d.split('-');
         var t=arr[1];
-        console.log("22222");
 
         var tarr = t.split('.000');
         var marr = tarr[0].split(':');
-        console.log("33333333333");
 
         darr.map(item=>{
             if (item < 10) {
