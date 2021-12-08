@@ -17,6 +17,7 @@ export default {
     // Footer
   },
   mounted(){
+    // 只是用来测试的
     // if ( document.documentElement.clientWidth < 415) {
     //   document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px'
     // } else{
